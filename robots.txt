@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+Disallow: /gracias.html
+Disallow: /testimonio
+
+User-agent: GPTBot
+Allow: /
+Disallow: /gracias.html
+Disallow: /testimonio
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /gracias.html
+Disallow: /testimonio
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /gracias.html
+Disallow: /testimonio
+
+Sitemap: https://albaside.com/sitemap.xml

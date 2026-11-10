@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¡Videollamada agendada! | Albaside Studio</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/f3h66ynr/image/upload/c_pad,w_96,h_96,b_rgb:F6F2EC,f_png/logo_negro">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<!-- META PIXEL: pendiente. Pegar aquí el mismo código base de index.html -->
+<style>
+:root{--bg:#F6F2EC;--ink:#1C1A17;--accent:#5F6B3C;--accent-2:#4C5730;--muted:#6E655D}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;min-height:100svh;display:grid;place-items:center;
+  background-image:radial-gradient(rgba(28,26,23,.07) 1.3px,transparent 1.3px);background-size:26px 26px}
+.card{max-width:640px;margin:24px;text-align:center}
+img.logo{height:40px;width:auto;margin:0 auto 34px}
+.photo{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:20px;margin-bottom:34px}
+h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(34px,6vw,52px);line-height:1.1}
+h1 em{font-style:italic;color:var(--accent)}
+p{color:var(--muted);margin-top:16px;font-size:18px}
+.btn{display:inline-flex;margin-top:30px;padding:16px 30px;border-radius:100px;text-decoration:none;font-weight:500;letter-spacing:.03em;color:#fff;
+  background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 8px 22px rgba(37,211,102,.35)}
+.micro{display:block;font-size:13px;color:var(--muted);margin-top:12px}
+</style>
+</head>
+<body>
+<main class="card">
+  <a href="/"><img class="logo" src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_120/logo_negro" alt="Albaside Studio"></a>
+  <img class="photo" src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200,h_675,c_fill,g_auto/DSC00003" alt="Novios en un mirador frente a la Catedral de Cusco">
+  <h1>¡Listo! <em>Nos vemos pronto</em></h1>
+  <p>Tu videollamada quedó agendada. Te llegó un correo con el día, la hora y el link para conectarte.</p>
+  <p>Mientras tanto, si quieres adelantarnos la fecha y el lugar de tu boda, escríbenos.</p>
+  <a class="btn" href="https://wa.me/51977217281?text=Hola%20Albaside%2C%20acabo%20de%20agendar%20una%20videollamada%20para%20mi%20boda" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  <span class="micro">Se abre WhatsApp con un mensaje listo para enviar</span>
+</main>
+<script>
+document.querySelector('.btn').addEventListener('click',()=>{ if(typeof fbq==='function') fbq('track','Contact'); });
+</script>
+</body>
+</html>

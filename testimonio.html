@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuéntanos cómo lo viviste | Albaside Studio</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/f3h66ynr/image/upload/c_pad,w_96,h_96,b_rgb:F6F2EC,f_png/logo_negro">
+<meta property="og:title" content="Cuéntanos cómo vivieron su boda · Albaside Studio">
+<meta property="og:description" content="Unas palabras suyas nos ayudan a que otras parejas nos conozcan.">
+<meta property="og:image" content="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_jpg,w_1200,h_630,c_fill,g_auto/DSC00442">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F2EC;--ink:#1C1A17;--accent:#5F6B3C;--accent-2:#4C5730;--muted:#6E655D}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;
+  background-image:radial-gradient(rgba(28,26,23,.07) 1.3px,transparent 1.3px);background-size:26px 26px}
+.wrap{max-width:620px;margin:0 auto;padding:40px 24px 80px}
+.logo{height:38px;width:auto;margin:0 auto 30px;display:block}
+.photo{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:18px;margin-bottom:30px}
+h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(34px,6vw,48px);line-height:1.1;text-align:center}
+h1 em{font-style:italic;color:var(--accent)}
+.intro{color:var(--muted);text-align:center;margin:14px auto 34px;max-width:480px}
+label{display:block;font-size:14px;letter-spacing:.03em;margin:22px 0 8px}
+label small{color:var(--muted)}
+input,textarea{width:100%;font:inherit;padding:14px 16px;border:1px solid rgba(28,26,23,.18);border-radius:12px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus{outline:2px solid var(--accent);border-color:transparent}
+textarea{min-height:170px;resize:vertical}
+.hint{font-size:13px;color:var(--muted);margin-top:6px}
+.check{display:flex;gap:12px;align-items:flex-start;margin-top:26px;font-size:14px;color:var(--muted)}
+.check input{width:20px;height:20px;flex:none;margin-top:3px;accent-color:var(--accent)}
+button{width:100%;margin-top:30px;padding:17px;border:none;border-radius:100px;cursor:pointer;font:500 15px/1 'Jost',sans-serif;letter-spacing:.06em;color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 10px 26px rgba(95,107,60,.32)}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <img class="logo" src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_120/logo_negro" alt="Albaside Studio">
+  <img class="photo" src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200,h_800,c_fill,g_auto/DSC00442" alt="Novios besándose frente a un portón colonial en Cusco">
+  <h1>¿Cómo vivieron <em>su boda</em> con nosotros?</h1>
+  <p class="intro">Fue un honor contar su historia. Unas palabras suyas, con sus propias palabras, ayudan a otras parejas a conocernos. Toma dos minutos.</p>
+
+  <!-- Netlify Forms: las respuestas llegan a Netlify → tu sitio → Forms (y por correo si activas la notificación) -->
+  <form name="testimonios" method="POST" action="/testimonio-gracias.html" data-netlify="true" netlify-honeypot="empresa">
+    <input type="hidden" name="form-name" value="testimonios">
+    <p class="hidden"><label>No llenar: <input name="empresa"></label></p>
+
+    <label for="nombres">Sus nombres</label>
+    <input id="nombres" name="nombres" placeholder="Ej.: Ana &amp; Diego" required>
+
+    <label for="lugar">Lugar y fecha de la boda</label>
+    <input id="lugar" name="lugar" placeholder="Ej.: Valle Sagrado, mayo 2026" required>
+
+    <label for="testimonio">¿Cómo lo vivieron? <small>(lo que quieran contar)</small></label>
+    <textarea id="testimonio" name="testimonio" required></textarea>
+    <p class="hint">Algunas ideas: ¿cómo se sintieron el día de la boda con nosotros cerca? ¿Qué sintieron al ver sus fotos y su película por primera vez?</p>
+
+    <label for="contacto">Instagram o WhatsApp <small>(opcional, por si queremos agradecerles)</small></label>
+    <input id="contacto" name="contacto">
+
+    <label class="check"><input type="checkbox" name="autorizacion" value="si" required>
+      Autorizamos a Albaside Studio a publicar este texto con nuestros nombres y fotos de nuestra boda en su web y redes.</label>
+
+    <button type="submit">Enviar nuestras palabras</button>
+  </form>
+</main>
+</body>
+</html>
