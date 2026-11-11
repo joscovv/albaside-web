@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://res.cloudinary.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- JSON-LD: negocio local -->
 <script type="application/ld+json">
@@ -46,7 +46,7 @@
   "priceRange":"Desde USD 1,500",
   "address":{"@type":"PostalAddress","addressLocality":"Cusco","addressRegion":"Cusco","addressCountry":"PE"},
   "areaServed":["Cusco","Valle Sagrado","Machu Picchu","Perú","Internacional"],
-  "sameAs":["https://www.instagram.com/albaside/"],
+  "sameAs":["https://www.instagram.com/albaside/","https://www.facebook.com/AlbaSideCusco"],
   "knowsAbout":["Fotografía de bodas","Video de bodas","Bodas de destino en Cusco"]
 }
 </script>
@@ -88,212 +88,323 @@ trackBoth('PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2263785428352764&ev=PageView&noscript=1"/></noscript>
 
+
 <style>
+/* Albaside Studio · diseño editorial (blanco, aireado, tipografía mixta: serif + manuscrita + mayúsculas espaciadas) */
 :root{
-  --bg:#F6F2EC; --bg-alt:#ECE5DA; --ink:#1C1A17; --accent:#5F6B3C; --accent-2:#4C5730;
-  --alert:#4C5730; --muted:#6E655D; --white:#fff;
-  --radius-pill:100px; --radius-card:20px; --max:1160px;
-  --ease:cubic-bezier(.22,1,.36,1);
-  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+  --bg:#FFFFFF; --bg-alt:#F7F4EF; --ink:#2B2926; --text:#4A4743; --accent:#5F6B3C; --accent-2:#4C5730;
+  --alert:#4C5730; --muted:#857E75; --line:rgba(43,41,38,.14); --white:#fff;
+  --max:1240px; --ease:cubic-bezier(.22,1,.36,1);
+  --serif:'Cormorant',Georgia,serif; --sans:'Montserrat',system-ui,sans-serif; --script:var(--serif);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);font-weight:400;color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
-  background-color:var(--bg);background-image:radial-gradient(rgba(28,26,23,.07) 1.3px,transparent 1.3px);background-size:26px 26px}
+body{font-family:var(--sans);font-weight:300;color:var(--text);background:var(--bg);line-height:1.85;font-size:15.5px;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-section{padding:56px 0}
-@media(min-width:768px){section{padding:96px 0}}
-.bg-alt{background-color:var(--bg-alt);background-image:radial-gradient(rgba(28,26,23,.08) 1.3px,transparent 1.3px);background-size:26px 26px}
+@media(min-width:768px){.wrap{padding:0 40px}}
+section{padding:80px 0}
+@media(min-width:768px){section{padding:130px 0}}
+.bg-alt{background:var(--bg-alt)}
 
-h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;letter-spacing:-.01em}
-h1{font-size:clamp(40px,7vw,84px)}
-h2{font-size:clamp(32px,4.6vw,56px)}
-h3{font-size:clamp(22px,2.4vw,28px)}
-h2 em,h1 em{font-style:italic}
-.eyebrow{font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
-.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:620px}
-p+p{margin-top:14px}
+/* Tipografía */
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.12;color:var(--ink);letter-spacing:0}
+h2{font-size:clamp(36px,4.6vw,62px)}
+h3{font-size:clamp(23px,2.2vw,28px)}
+h2 em{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1em;line-height:1.1;color:var(--accent);letter-spacing:0}
+.eyebrow{display:block;font:400 12px/1.4 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.lead{font-size:clamp(15.5px,1.3vw,17px);color:var(--text);max-width:620px}
+p+p{margin-top:16px}
+.t-serif{display:block;font-family:var(--serif);font-weight:300}
+.t-script{display:block;font-family:var(--serif);font-style:italic;font-weight:300;line-height:1.1}
+.t-caps{display:block;font-family:var(--sans);font-weight:300;text-transform:uppercase;letter-spacing:.42em}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
 
-/* Botones */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 32px;border-radius:var(--radius-pill);
-  font:500 15px/1 var(--sans);letter-spacing:.04em;text-decoration:none;cursor:pointer;border:none;transition:transform .15s ease,box-shadow .15s ease}
-.btn:hover{transform:translateY(-2px)}
-.btn-accent{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 10px 26px rgba(95,107,60,.32)}
-.btn-accent:hover{box-shadow:0 14px 32px rgba(95,107,60,.42)}
-.btn-sm{padding:11px 20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--ink);border:1px solid var(--ink);box-shadow:none}
-.btn-sm:hover{background:var(--ink);color:var(--bg)}
-.micro{display:block;font-size:13px;color:var(--muted);margin-top:12px}
-.cta-block{margin-top:34px}
+/* Botones: rectos, finos, en mayúsculas */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 38px;border-radius:0;
+  font:400 12px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;text-decoration:none;cursor:pointer;
+  border:1px solid var(--ink);background:transparent;color:var(--ink);transition:background .3s ease,color .3s ease,border-color .3s ease}
+.btn:hover{background:var(--ink);color:#fff}
+.btn-accent{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.micro{display:block;font-size:13px;color:var(--muted);margin-top:16px;letter-spacing:.02em}
+.cta-block{margin-top:44px}
+.center-cta{text-align:center;margin-top:56px}
 
-/* Encabezado */
-header{position:sticky;top:0;z-index:50;background:rgba(246,242,236,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(28,26,23,.08)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:var(--max);margin:0 auto}
-.nav img{height:36px;width:auto}
-@media(min-width:768px){.nav img{height:46px}}
+/* Encabezado: transparente sobre la portada, blanco al bajar */
+header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s ease,box-shadow .4s ease,color .4s ease;color:var(--ink);background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--line)}
+header.on-dark{background:transparent;box-shadow:none;color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;max-width:1440px;margin:0 auto}
+@media(min-width:768px){.nav{padding:22px 40px}}
+.logo{position:relative;display:block;height:34px}
+.logo img{height:34px;width:auto;transition:opacity .4s ease}
+@media(min-width:768px){.logo,.logo img{height:42px}}
+.logo .logo-w{position:absolute;left:0;top:0;opacity:0}
+header.on-dark .logo .logo-w{opacity:1}
+header.on-dark .logo .logo-b{opacity:0}
+.nav-right{display:flex;align-items:center;gap:22px}
+.nav .btn{padding:12px 20px;font-size:11px;letter-spacing:.24em;color:inherit;border-color:currentColor}
+.nav .btn:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+header.on-dark .nav .btn:hover{background:#fff;border-color:#fff;color:var(--ink)}
+.menu-btn{display:flex;align-items:center;gap:10px;background:none;border:0;cursor:pointer;color:inherit;font:400 11px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;padding:8px 0}
+.menu-btn i{display:block;width:22px;height:1px;background:currentColor;position:relative}
+.menu-btn i::after{content:"";position:absolute;left:6px;right:0;top:6px;height:1px;background:currentColor}
+@media(max-width:520px){.nav .btn{display:none}.menu-btn span{display:none}}
 
-/* Hero minimalista */
-.hero{position:relative;min-height:calc(100svh - 59px);display:flex;align-items:flex-end;justify-content:center;color:#fff;padding:0;overflow:hidden;background:var(--ink)}
+/* Menú a pantalla completa */
+.menu{position:fixed;inset:0;z-index:80;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:80px 24px;
+  opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s}
+.menu.open{opacity:1;visibility:visible}
+.menu-close{position:absolute;top:22px;right:24px;background:none;border:0;cursor:pointer;font:400 11px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--ink);padding:10px}
+.menu .t-script{font-size:38px;color:var(--accent);margin-bottom:18px}
+.menu nav{display:flex;flex-direction:column;align-items:center;gap:4px}
+.menu nav a{font-family:var(--serif);font-size:clamp(28px,4vw,40px);color:var(--ink);text-decoration:none;line-height:1.35;transition:color .2s}
+.menu nav a:hover{color:var(--accent)}
+.menu .menu-foot{margin-top:36px;display:flex;gap:28px;font:400 11px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase}
+.menu .menu-foot a{text-decoration:none;color:var(--muted)}
+.menu .menu-foot a:hover{color:var(--ink)}
+
+/* Portada */
+.hero{position:relative;height:100svh;min-height:560px;display:flex;align-items:flex-end;justify-content:flex-start;color:#fff;padding:0;overflow:hidden;background:#1d1b19}
 .hero-slides{position:absolute;inset:0}
 .hero-slide,.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-slide{opacity:0;transition:opacity 1.6s ease}
+.hero-slide{opacity:0;transition:opacity 1.8s ease}
 .hero-slide.is-active{opacity:1}
-.hero-slide img{transform:scale(1.08);transition:transform 7s linear}
+.hero-slide img{transform:scale(1.06);transition:transform 8s linear}
 .hero-slide.is-active img{transform:scale(1)}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,13,11,0) 45%,rgba(15,13,11,.6) 100%)}
-.hero-inner{position:relative;z-index:2;width:100%;padding:0 24px 56px;max-width:var(--max);margin:0 auto;text-align:center}
-.hero h1{font-size:clamp(30px,4.4vw,56px);font-weight:500;letter-spacing:.01em;max-width:640px;margin:0 auto}
-.hero .btn-ghost{margin-top:26px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.75);box-shadow:none;letter-spacing:.14em;text-transform:uppercase;font-size:12px;padding:15px 30px}
-.hero .btn-ghost:hover{background:rgba(255,255,255,.12)}
-@keyframes fade-up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.hero h1{animation:fade-up 1s var(--ease) .1s both}
-.hero .btn-ghost{animation:fade-up 1s var(--ease) .35s both}
-@media(min-width:768px){.hero-inner{padding-bottom:80px}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,.35) 0%,rgba(20,18,16,0) 25%,rgba(20,18,16,0) 45%,rgba(20,18,16,.58) 100%),linear-gradient(90deg,rgba(20,18,16,.35) 0%,rgba(20,18,16,0) 55%)}
+.hero-inner{position:relative;z-index:2;text-align:left;width:100%;max-width:1440px;margin:0 auto;padding:0 24px 96px}
+@media(min-width:768px){.hero-inner{padding:0 40px 90px}}
+.hero h1{color:#fff;font-weight:400;text-shadow:0 2px 24px rgba(0,0,0,.18)}
+.hero h1 .t-serif{font-size:clamp(42px,5.2vw,74px);font-weight:300;letter-spacing:.01em}
+.hero h1 .t-script{font-size:clamp(42px,5.2vw,74px);margin:.05em 0 0}
+.hero h1 .t-caps{font-size:clamp(11px,1.1vw,14px);letter-spacing:.6em;margin-top:14px}
+.hero .btn{margin-top:32px;color:#fff;border-color:rgba(255,255,255,.85)}
+.hero .btn:hover{background:#fff;color:var(--ink)}
+.scroll-cue{position:absolute;z-index:2;left:auto;right:40px;bottom:28px;width:1px;height:54px;background:rgba(255,255,255,.35);overflow:hidden}
+.scroll-cue::after{content:"";position:absolute;left:0;top:-54px;width:1px;height:54px;background:#fff;animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{to{top:54px}}
+@keyframes fade-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero h1 .t-serif{animation:fade-up 1.2s var(--ease) .1s both}
+.hero h1 .t-script{animation:fade-up 1.2s var(--ease) .35s both}
+.hero h1 .t-caps{animation:fade-up 1.2s var(--ease) .6s both}
+.hero .btn{animation:fade-up 1.2s var(--ease) .85s both}
 
-/* Problema */
-.problem{text-align:center}
-.problem h2{max-width:820px;margin:0 auto}
-.problem h2 em{color:var(--alert)}
-.problem .lead{margin:22px auto 0}
+/* Intro + mosaico */
+.intro h2{max-width:900px;margin:0 auto}
+.intro h2 .t-serif{font-weight:400}
+.intro h2 .t-script{font-size:1.25em;color:var(--accent);margin-top:.08em}
+.intro .lead{margin-top:30px}
+.mosaic{columns:2;column-gap:10px;margin-top:70px}
+@media(min-width:900px){.mosaic{columns:4;column-gap:14px;margin-top:96px}}
+.mosaic img{width:100%;height:auto;margin-bottom:10px;break-inside:avoid;background:var(--bg-alt)}
+@media(min-width:900px){.mosaic img{margin-bottom:14px}}
 
 /* Video */
-.video-frame{position:relative;border-radius:var(--radius-card);overflow:hidden;aspect-ratio:16/9;background:var(--ink);box-shadow:0 30px 60px -24px rgba(28,26,23,.35);margin-top:36px}
+.section-head{max-width:760px;margin-bottom:56px}
+.section-head.center{margin-left:auto;margin-right:auto}
+.video-frame{position:relative;overflow:hidden;aspect-ratio:16/9;background:#1d1b19}
 .video-frame iframe,.video-frame button{position:absolute;inset:0;width:100%;height:100%;border:0}
 .video-frame button{cursor:pointer;background:none;padding:0}
-.video-frame button img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s}
-.video-frame button:hover img{opacity:1}
-.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:rgba(246,242,236,.92);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-.mini-videos{display:grid;gap:28px;margin-top:40px}
-@media(min-width:900px){.mini-videos{grid-template-columns:repeat(3,1fr)}}
-.video-frame.sm{margin-top:0;border-radius:14px;box-shadow:0 18px 40px -26px rgba(28,26,23,.4)}
-.video-frame.sm .play{width:56px;height:56px}
-.mini-video h3{margin-top:16px;font-size:24px}
-.mini-video p{color:var(--muted);font-size:15px;margin-top:4px}
-.play::after{content:"";border-left:20px solid var(--accent);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+.video-frame button img{width:100%;height:100%;object-fit:cover;opacity:.88;transition:opacity .4s,transform 1.2s var(--ease)}
+.video-frame button:hover img{opacity:1;transform:scale(1.02)}
+.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;border:1px solid rgba(255,255,255,.9);display:grid;place-items:center;background:rgba(255,255,255,.08);backdrop-filter:blur(2px)}
+.play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
+.mini-videos{display:grid;gap:44px;margin-top:64px}
+@media(min-width:900px){.mini-videos{grid-template-columns:repeat(3,1fr);gap:28px}}
+.video-frame.sm .play{width:58px;height:58px}
+.video-frame.sm .play::after{border-left-width:12px;border-top-width:8px;border-bottom-width:8px}
+.mini-video h3{margin-top:22px;font-size:25px}
+.mini-video p{color:var(--muted);font-size:15px;margin-top:6px}
 
 /* Portafolio */
-.section-head{max-width:720px;margin-bottom:40px}
-.carousel{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab;margin-top:8px}
+.carousel{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
 .carousel::-webkit-scrollbar{display:none}
 .carousel.dragging{cursor:grabbing}
-.carousel-track{display:flex;gap:12px;width:max-content;padding:0 12px}
-.carousel-track img{height:clamp(300px,52vh,560px);width:auto;border-radius:12px;flex:none;user-select:none;-webkit-user-drag:none;background:var(--bg-alt)}
-@media(min-width:900px){.carousel-track{gap:18px}}
-.center-cta{text-align:center;margin-top:44px}
+.carousel-track{display:flex;gap:10px;width:max-content;padding:0 10px}
+.carousel-track img{height:clamp(320px,62vh,640px);width:auto;flex:none;user-select:none;-webkit-user-drag:none;background:var(--bg-alt)}
+@media(min-width:900px){.carousel-track{gap:14px}}
 
 /* Proceso */
-.process{display:grid;gap:40px;align-items:center}
-@media(min-width:900px){.process{grid-template-columns:1fr 1fr;gap:72px}}
-.process-img{border-radius:var(--radius-card);overflow:hidden;aspect-ratio:4/5}
+.process{display:grid;gap:56px;align-items:center}
+@media(min-width:900px){.process{grid-template-columns:5fr 6fr;gap:96px}}
+.process-img{aspect-ratio:4/5;overflow:hidden}
 .process-img img{width:100%;height:100%;object-fit:cover}
-.steps{list-style:none;margin-top:30px}
-.steps li{display:grid;grid-template-columns:48px 1fr;gap:18px;padding:22px 0;border-top:1px solid rgba(28,26,23,.12)}
-.steps .num{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-family:var(--serif);font-size:22px}
-.steps h3{margin-bottom:4px}
-.steps p{color:var(--muted)}
+.steps{list-style:none;margin-top:40px}
+.steps li{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:26px 0;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps .num{font-family:var(--serif);font-size:34px;line-height:1;color:var(--accent);font-style:italic}
+.steps h3{margin-bottom:6px}
+.steps p{color:var(--text);font-size:16px}
 
-/* Promesa */
-.promise{position:relative;color:#fff;text-align:center;padding:120px 0;overflow:hidden;background:var(--ink)}
-.promise img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
-.promise .wrap{position:relative;z-index:1}
-.promise h2{max-width:860px;margin:0 auto}
-.promise .lead{color:rgba(255,255,255,.88);margin:22px auto 0}
+/* Promesa: frase grande sobre la foto */
+.promise{position:relative;color:#fff;text-align:center;padding:0;min-height:88vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1d1b19}
+.promise img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.promise::after{content:"";position:absolute;inset:0;background:rgba(20,18,16,.48)}
+.promise h2,.promise .lead{text-shadow:0 2px 18px rgba(0,0,0,.25)}
+.promise .wrap{position:relative;z-index:1;padding-top:110px;padding-bottom:110px}
+.promise h2{color:#fff;max-width:980px;margin:0 auto}
+.promise h2 .t-caps{font-size:clamp(14px,1.6vw,20px);letter-spacing:.5em;padding-left:.5em}
+.promise h2 .t-script{font-size:clamp(48px,7vw,98px);margin:.25em 0 0}
+.promise h2 .t-serif{font-size:clamp(26px,3.2vw,42px);font-weight:400;font-style:italic}
+.promise .lead{color:rgba(255,255,255,.9);margin:30px auto 0}
 
-/* Nosotros */
-.about{display:grid;gap:40px;align-items:center}
-@media(min-width:900px){.about{grid-template-columns:5fr 6fr;gap:72px}}
-.about-img{border-radius:var(--radius-card);overflow:hidden;aspect-ratio:2/3;box-shadow:0 30px 60px -30px rgba(28,26,23,.4)}
+/* Quiénes somos: foto + tarjeta superpuesta */
+.about{display:grid;grid-template-columns:minmax(0,1fr);align-items:center}
+.about-img{aspect-ratio:2/3;overflow:hidden}
 .about-img img{width:100%;height:100%;object-fit:cover;object-position:center bottom}
-.about .lead{margin-top:20px}
-.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px;border-top:1px solid rgba(28,26,23,.12);padding-top:26px}
-.about-stats strong{display:block;font-family:var(--serif);font-size:clamp(34px,4vw,48px);font-weight:500;line-height:1;color:var(--accent)}
-.about-stats span{font-size:13px;color:var(--muted)}
+.about-card{background:#fff;padding:44px 28px;margin:-70px 16px 0;position:relative;z-index:1;text-align:center;box-shadow:0 30px 70px -40px rgba(43,41,38,.35)}
+@media(min-width:900px){
+  .about{grid-template-columns:5fr 6fr}
+  .about-img{grid-column:1;grid-row:1}
+  .about-card{grid-column:2;grid-row:1;margin:0 0 0 -90px;padding:72px 64px}
+}
+.about-card .t-script{font-size:clamp(50px,5.4vw,74px);color:var(--ink);margin-bottom:8px}
+.about-card h2{font-family:var(--sans);font-weight:400;font-size:15px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px}
+.about-card .lead{margin:0 auto;font-size:16px;max-width:520px}
+.about-card .lead+.lead{margin-top:14px}
+.signature{display:block;margin-top:26px;font-family:var(--serif);font-style:italic;font-weight:300;font-size:24px;color:var(--accent)}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px;border-top:1px solid var(--line);padding-top:30px}
+.about-stats strong{display:block;font-family:var(--serif);font-size:clamp(36px,4vw,50px);font-weight:400;line-height:1;color:var(--accent)}
+.about-stats span{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 
 /* Testimonios */
-.testis{display:grid;gap:18px}
+.testis{display:grid;gap:22px}
 @media(min-width:900px){.testis{grid-template-columns:repeat(3,1fr)}}
-.testi-card{background:var(--white);border-radius:var(--radius-card);padding:30px;box-shadow:0 14px 34px -26px rgba(28,26,23,.35)}
-.testi-card blockquote{font-family:var(--serif);font-size:22px;line-height:1.35;font-style:italic}
-.testi-card cite{display:block;margin-top:18px;font-style:normal;font-size:14px;color:var(--muted)}
-.stories{display:grid;gap:22px}
-@media(min-width:900px){.stories{grid-template-columns:repeat(3,1fr);gap:28px}}
-.story{display:flex;flex-direction:column;gap:20px}
-.story img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
-.story blockquote{font-family:var(--serif);font-size:23px;line-height:1.35;font-style:italic}
-.story cite{display:block;margin-top:14px;font-style:normal;font-size:15px;letter-spacing:.03em}
-.story cite small{display:block;color:var(--muted);font-size:13px}
-.story.placeholder{padding:14px;border-radius:18px}
+.testi-card{background:#fff;padding:40px 34px;text-align:center}
+.testi-card blockquote{font-family:var(--serif);font-size:23px;line-height:1.45;font-style:italic;color:var(--ink)}
+.testi-card cite{display:block;margin-top:22px;font-style:normal;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
 /* Marcador visible: NO publicar con esto */
-.placeholder{border:2px dashed rgba(76,87,48,.5);background:repeating-linear-gradient(135deg,rgba(28,26,23,.04) 0 10px,transparent 10px 20px)}
+.placeholder{border:2px dashed rgba(76,87,48,.5);background:repeating-linear-gradient(135deg,rgba(28,26,23,.04) 0 10px,#fff 10px 20px)}
 .ph-tag{display:block;font:500 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--alert);margin-bottom:12px}
 
 /* Qué pasa en la llamada */
-.call{max-width:760px;margin:0 auto;text-align:center}
-.call-list{list-style:none;margin:34px 0 0;text-align:left;display:grid;gap:14px}
-.call-list li{background:var(--white);border-radius:16px;padding:20px 22px 20px 58px;position:relative;box-shadow:0 10px 30px -24px rgba(28,26,23,.4)}
-.call-list li::before{content:"✓";position:absolute;left:20px;top:19px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;display:grid;place-items:center}
+.call{max-width:780px;margin:0 auto;text-align:center}
+.call-list{list-style:none;margin:48px 0 0;counter-reset:c}
+.call-list li{counter-increment:c;padding:24px 0;border-top:1px solid var(--line);font-family:var(--serif);font-size:clamp(20px,2vw,24px);color:var(--ink);line-height:1.4}
+.call-list li:last-child{border-bottom:1px solid var(--line)}
+.call-list li::before{content:"0" counter(c);display:block;font:400 11px/1 var(--sans);letter-spacing:.3em;color:var(--accent);margin-bottom:10px}
 
 /* FAQ */
-.faq{max-width:820px;margin:0 auto}
-.faq-item{border-bottom:1px solid rgba(28,26,23,.14)}
-.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;padding:24px 0;
-  font-family:var(--serif);font-size:clamp(20px,2.2vw,24px);text-align:left;color:var(--ink)}
-.faq-q .plus{transition:transform .25s ease;font-family:var(--sans);font-size:24px;color:var(--accent);flex:none}
+.faq{max-width:860px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item:first-child{border-top:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;padding:28px 0;
+  font-family:var(--serif);font-size:clamp(20px,2.2vw,25px);text-align:left;color:var(--ink)}
+.faq-q .plus{transition:transform .3s ease;font:300 26px/1 var(--sans);color:var(--accent);flex:none}
 .faq-item.open .plus{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.faq-a p{padding-bottom:24px;color:var(--muted)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a p{padding-bottom:28px;color:var(--text)}
 
-.post-grid{display:grid;gap:18px}
-@media(min-width:700px){.post-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1000px){.post-grid{grid-template-columns:repeat(4,1fr)}}
-.post-card{display:block;text-decoration:none;color:var(--ink);background:var(--white);border-radius:var(--radius-card);overflow:hidden;box-shadow:0 14px 34px -26px rgba(28,26,23,.35);transition:transform .3s var(--ease)}
-.post-card:hover{transform:translateY(-4px)}
-.post-card img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
-.post-card div{padding:18px 20px 22px}
-.post-card span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-.post-card h3{margin:8px 0 6px;font-size:22px;line-height:1.2}
-.post-card p{font-size:15px;color:var(--muted);line-height:1.55}
-.link-more{display:inline-block;font-size:15px;letter-spacing:.06em;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px}
+/* Blog: tarjetas editoriales (foto + texto) */
+.post-grid{display:grid;gap:56px}
+@media(min-width:1000px){.post-grid{grid-template-columns:1fr 1fr;gap:72px 56px}}
+.post-card{display:grid;gap:26px;text-decoration:none;color:var(--ink)}
+@media(min-width:600px){.post-card{grid-template-columns:1fr 1fr;align-items:center;gap:32px}}
+.post-card .pc-img{overflow:hidden;aspect-ratio:4/5}
+.post-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.post-card:hover img{transform:scale(1.04)}
+.post-card span{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.post-card h3{margin:12px 0 12px;font-size:clamp(24px,2.3vw,30px);line-height:1.2}
+.post-card p{font-size:15px;color:var(--text);line-height:1.7}
+.post-card .read{display:inline-block;margin-top:20px;padding:12px 22px;border:1px solid var(--ink);font-size:11px;letter-spacing:.26em;text-transform:uppercase;transition:background .3s,color .3s}
+.post-card:hover .read{background:var(--ink);color:#fff}
+.link-more{display:inline-block;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px}
 .micro a{color:var(--muted)}
+
 /* Cierre */
 .final{text-align:center}
-.final h2{max-width:780px;margin:0 auto}
-.scarcity{display:inline-block;margin-top:22px;padding:8px 18px;border-radius:var(--radius-pill);border:1px solid rgba(76,87,48,.35);color:var(--alert);font-size:14px;letter-spacing:.03em}
+.final h2{max-width:860px;margin:0 auto}
+.scarcity{display:inline-block;margin-top:30px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
 
-/* Footer */
-footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size:14px}
-.foot{display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center}
-@media(min-width:768px){.foot{flex-direction:row;justify-content:space-between;text-align:left}}
-.foot img{height:40px;width:auto}
-.foot nav{display:flex;gap:22px;flex-wrap:wrap;justify-content:center}
-.foot a{text-decoration:none}
-.foot a:hover{color:#fff}
+/* Pie */
+footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size:13px;text-align:center}
+.foot img{height:44px;width:auto;margin:0 auto}
+.foot .t-script{font-size:28px;color:var(--ink);margin-top:20px}
+.foot nav{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin:34px 0 40px}
+.foot nav a{text-decoration:none;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
+.foot nav a:hover{color:var(--accent)}
+.foot small{display:block;font-size:12px;letter-spacing:.06em;border-top:1px solid var(--line);padding-top:28px}
 
-/* Reveal */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+/* Frase principal */
+.statement{max-width:960px;margin:0 auto}
+.statement .t-caps{font-size:clamp(13px,1.5vw,18px);letter-spacing:.5em;padding-left:.5em;color:var(--ink)}
+.statement .t-script{font-size:clamp(46px,6.6vw,92px);color:var(--accent);margin:.3em 0 .35em}
+.mosaic{margin-top:80px}
+
+/* Testimonios en carrusel */
+.t-carousel{max-width:820px;margin:0 auto}
+.t-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+.t-track::-webkit-scrollbar{display:none}
+.t-slide{flex:0 0 100%;scroll-snap-align:center;padding:20px 8px}
+.t-slide blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3vw,36px);line-height:1.4;color:var(--ink)}
+.t-slide cite{display:block;margin-top:28px;font-style:normal;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.t-slide.placeholder{padding:40px 24px}
+.t-nav{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:40px}
+.t-nav button{background:none;border:0;cursor:pointer;font:300 22px/1 var(--sans);color:var(--ink);padding:6px 10px}
+.t-dots{display:flex;gap:10px}
+.t-dots button{width:7px;height:7px;padding:0;border-radius:50%;border:1px solid var(--ink);background:transparent}
+.t-dots button[aria-current="true"]{background:var(--ink)}
+
+/* Instagram */
+.ig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:768px){.ig-grid{grid-template-columns:repeat(3,1fr);gap:12px}}
+.ig-tile{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:var(--bg-alt)}
+.ig-tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.ig-tile::after{content:"Ver en Instagram";position:absolute;inset:0;display:grid;place-items:center;background:rgba(43,41,38,.45);color:#fff;font:400 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;opacity:0;transition:opacity .4s}
+.ig-tile:hover img{transform:scale(1.04)}
+.ig-tile:hover::after{opacity:1}
+
+/* Aparición al hacer scroll */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in-view{opacity:1;transform:none}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .hero h1,.hero .btn-ghost{animation:none}
+  .hero h1 span,.hero .btn{animation:none}
   .hero-slide,.hero-slide img{transition:none;transform:none}
-  .btn{transition:none}
+  .scroll-cue::after{animation:none}
 }
 #nl-badge-frame{display:none!important}
 </style>
 </head>
 <body>
 
-<header>
+<header class="on-dark" id="top-header">
   <div class="nav">
-    <a href="#inicio" aria-label="Albaside Studio, inicio">
-      <img src="https://res.cloudinary.com/f3h66ynr/image/upload/e_trim/q_auto,f_auto,h_140/logo_negro" alt="Albaside Studio" width="140" height="46">
+    <a class="logo" href="#inicio" aria-label="Albaside Studio, inicio">
+      <img class="logo-b" src="https://res.cloudinary.com/f3h66ynr/image/upload/e_trim/q_auto,f_auto,h_140/logo_negro" alt="Albaside Studio" width="128" height="42">
+      <img class="logo-w" src="https://res.cloudinary.com/f3h66ynr/image/upload/e_trim/q_auto,f_auto,h_140/logo_blanco" alt="" aria-hidden="true" width="128" height="42">
     </a>
-    <a class="btn btn-sm js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Agendar</a>
+    <div class="nav-right">
+      <a class="btn js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Agendar</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span>Menú</span><i aria-hidden="true"></i></button>
+    </div>
   </div>
 </header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menú">
+  <button class="menu-close" type="button">Cerrar ✕</button>
+  <span class="t-script">Albaside</span>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#video">Películas</a>
+    <a href="#portafolio">Portafolio</a>
+    <a href="#proceso">Cómo trabajamos</a>
+    <a href="#nosotros">Quiénes somos</a>
+    <a href="#preguntas">Preguntas</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+  <a class="btn btn-accent js-agenda" style="margin-top:34px" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Agenda tu videollamada</a>
+  <div class="menu-foot">
+    <a href="https://www.instagram.com/albaside/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/AlbaSideCusco" target="_blank" rel="noopener">Facebook</a>
+    <a href="/whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="/blog/en/" hreflang="en">English</a>
+  </div>
+</div>
 
 <main>
 <!-- 1 · INICIO -->
@@ -321,63 +432,18 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
     </picture>
   </div>
   <div class="hero-inner">
-    <h1>Fotografía y video de bodas en <em>Cusco</em></h1>
-    <a class="btn btn-ghost js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Agenda tu videollamada</a>
+    <h1><span class="t-serif">Fotografía y video</span> <span class="t-script">de bodas</span> <span class="t-caps">en Cusco · Perú</span></h1>
+    <a class="btn js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Agenda tu videollamada</a>
   </div>
+  <span class="scroll-cue" aria-hidden="true"></span>
 </section>
 
-<!-- 2 · PROBLEMA -->
-<section class="problem">
-  <div class="wrap reveal">
-    <span class="eyebrow">Lo que el tiempo se lleva</span>
-    <h2>La memoria olvida los detalles. <em>Nosotros los hacemos eternos.</em></h2>
-    <p class="lead">Con los años se borran el temblor de su voz antes del sí, la risa de tu mamá, la canción que los hizo bailar hasta tarde. Nosotros los guardamos tal como fueron, para que cada vez que mires tus fotos o tu película vuelvas a sentirlos.</p>
-  </div>
-</section>
-
-<!-- 3 · VIDEO -->
-<section class="bg-alt" id="video">
-  <div class="wrap reveal">
-    <div class="section-head">
-      <span class="eyebrow">Película de boda</span>
-      <h2>Así se siente <em>volver a ese día</em></h2>
-    </div>
-    <div class="video-frame" id="video-frame">
-      <button type="button" class="yt" data-id="KG9ydC19jm4" aria-label="Reproducir el video highlight de boda de Albaside Studio">
-        <img src="https://img.youtube.com/vi/KG9ydC19jm4/maxresdefault.jpg" alt="Vista previa del video de boda de Albaside Studio" loading="lazy">
-        <span class="play" aria-hidden="true"></span>
-      </button>
-    </div>
-    <div class="mini-videos">
-      <article class="mini-video">
-        <div class="video-frame sm"><button type="button" class="yt" data-id="Pje_S6xz4XQ" aria-label="Reproducir: Pre boda en el Valle Sagrado">
-          <img src="https://img.youtube.com/vi/Pje_S6xz4XQ/hqdefault.jpg" alt="Vista previa: Pre boda en el Valle Sagrado" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
-        <h3>Pre boda en el Valle Sagrado</h3><p>Una sesión entre montañas y campos andinos, días antes del gran día.</p>
-      </article>
-      <article class="mini-video">
-        <div class="video-frame sm"><button type="button" class="yt" data-id="QtOngHF9Nj4" aria-label="Reproducir: Cóctel en Mountain View">
-          <img src="https://img.youtube.com/vi/QtOngHF9Nj4/hqdefault.jpg" alt="Vista previa: Cóctel en Mountain View" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
-        <h3>Cóctel en Mountain View</h3><p>El momento del cóctel, con los Andes como telón de fondo.</p>
-      </article>
-      <article class="mini-video">
-        <div class="video-frame sm"><button type="button" class="yt" data-id="lhIL0hLxwck" aria-label="Reproducir: Una boda destino fuera de lo común">
-          <img src="https://img.youtube.com/vi/lhIL0hLxwck/hqdefault.jpg" alt="Vista previa: Una boda destino fuera de lo común" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
-        <h3>Una boda destino fuera de lo común</h3><p>Una pareja que se atrevió a todo, en una boda tan única como ellos.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- 4 · PORTAFOLIO -->
-<section id="portafolio">
+<!-- 2 · FRASE + GALERÍA (única galería del sitio) -->
+<section class="intro" id="portafolio">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Portafolio</span>
-      <h2>Historias reales, <em>sin poses forzadas</em></h2>
-      <p class="lead" style="margin-top:16px">Iglesias coloniales, calles de piedra, el Valle Sagrado y destinos lejos de casa.</p>
-    </div>
+    <h2 class="statement center reveal"><span class="t-caps">No buscamos la foto perfecta</span> <span class="t-script">buscamos la verdadera</span></h2>
   </div>
-  <div class="carousel reveal" aria-label="Galería de bodas de Albaside Studio">
+  <div class="carousel reveal" style="margin-top:80px" aria-label="Galería de bodas de Albaside Studio">
     <div class="carousel-track" id="carousel-track">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00446" width="600" height="900" loading="lazy" alt="Novios saliendo de una iglesia colonial de Cusco bajo una lluvia de pétalos" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00003" width="1350" height="900" loading="lazy" alt="Pareja de novios en un mirador frente a las torres de la Catedral de Cusco" draggable="false">
@@ -409,23 +475,55 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
   <div class="wrap">
     <div class="center-cta reveal">
       <a class="btn btn-accent js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Quiero hablar sobre mi boda</a>
-      <span class="micro">Cuéntanos tu idea de boda soñada</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · VIDEO -->
+<section class="bg-alt" id="video">
+  <div class="wrap reveal">
+    <div class="section-head center">
+      <span class="eyebrow">Película de boda</span>
+      <h2>Así se siente <em>volver a ese día</em></h2>
+    </div>
+    <div class="video-frame" id="video-frame">
+      <button type="button" class="yt" data-id="KG9ydC19jm4" aria-label="Reproducir el video highlight de boda de Albaside Studio">
+        <img src="https://img.youtube.com/vi/KG9ydC19jm4/maxresdefault.jpg" alt="Vista previa del video de boda de Albaside Studio" loading="lazy">
+        <span class="play" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="mini-videos">
+      <article class="mini-video">
+        <div class="video-frame sm"><button type="button" class="yt" data-id="Pje_S6xz4XQ" aria-label="Reproducir: Pre boda en el Valle Sagrado">
+          <img src="https://img.youtube.com/vi/Pje_S6xz4XQ/hqdefault.jpg" alt="Vista previa: Pre boda en el Valle Sagrado" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
+        <h3>Pre boda en el Valle Sagrado</h3>
+      </article>
+      <article class="mini-video">
+        <div class="video-frame sm"><button type="button" class="yt" data-id="QtOngHF9Nj4" aria-label="Reproducir: Cóctel en Mountain View">
+          <img src="https://img.youtube.com/vi/QtOngHF9Nj4/hqdefault.jpg" alt="Vista previa: Cóctel en Mountain View" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
+        <h3>Cóctel en Mountain View</h3>
+      </article>
+      <article class="mini-video">
+        <div class="video-frame sm"><button type="button" class="yt" data-id="lhIL0hLxwck" aria-label="Reproducir: Una boda destino fuera de lo común">
+          <img src="https://img.youtube.com/vi/lhIL0hLxwck/hqdefault.jpg" alt="Vista previa: Una boda destino fuera de lo común" loading="lazy"><span class="play" aria-hidden="true"></span></button></div>
+        <h3>Una boda destino fuera de lo común</h3>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- 5 · CÓMO TRABAJAMOS -->
-<section class="bg-alt">
+<section id="proceso">
   <div class="wrap process">
     <div class="process-img reveal"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_900,h_1125,c_fill,g_auto/DSC00442" loading="lazy" alt="Beso de novios en blanco y negro frente a un portón colonial, con el velo extendido" width="900" height="1125"></div>
     <div class="reveal">
       <span class="eyebrow">Cómo trabajamos</span>
-      <h2>Cuatro pasos, <em>cero estrés</em></h2>
+      <h2>Tú te casas. <em>Del resto nos encargamos.</em></h2>
       <ol class="steps">
-        <li><span class="num">1</span><div><h3>Videollamada</h3><p>Nos cuentas tu historia y te mostramos nuestro trabajo. Después te enviamos una propuesta a la medida.</p></div></li>
-        <li><span class="num">2</span><div><h3>Reservamos tu fecha</h3><p>Con el 20% de anticipo tu fecha queda separada solo para ustedes. Firmamos el contrato y desde ese momento somos parte de tu equipo.</p></div></li>
-        <li><span class="num">3</span><div><h3>Planificación</h3><p>Agendamos tu sesión pre boda y las reuniones previas al gran día. Juntos definimos horarios, lugares, momentos clave y la lista de fotos familiares, para que ese día solo tengas que disfrutar.</p></div></li>
-        <li><span class="num">4</span><div><h3>Tu galería y tu película</h3><p>En 6 semanas recibes tus fotos editadas y tu película, listas para compartir y guardar para siempre.</p></div></li>
+        <li><span class="num">01</span><div><h3>Videollamada</h3><p>Conocemos tu historia y te enviamos una propuesta.</p></div></li>
+        <li><span class="num">02</span><div><h3>Reservamos tu fecha</h3><p>Con el 20% de anticipo y contrato firmado.</p></div></li>
+        <li><span class="num">03</span><div><h3>Planificación</h3><p>Sesión pre boda, horarios y momentos clave.</p></div></li>
+        <li><span class="num">04</span><div><h3>Tu galería y tu película</h3><p>Listas en 6 semanas.</p></div></li>
       </ol>
     </div>
   </div>
@@ -433,11 +531,9 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 
 <!-- 6 · PROMESA -->
 <section class="promise">
-  <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1600/DSC08046" loading="lazy" alt="" aria-hidden="true" style="object-position:44% 82%">
+  <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2000/DSC08046" loading="lazy" alt="" aria-hidden="true" style="object-position:44% 82%">
   <div class="wrap reveal">
-    <span class="eyebrow" style="color:#E3E6D2">La promesa</span>
-    <h2>Un álbum y una película que no envejecen. <em>Se vuelven más valiosos con cada año.</em></h2>
-    <p class="lead">Dentro de veinte años no vas a recordar el menú. Vas a recordar cómo se miraban, y eso es lo que nosotros cuidamos.</p>
+    <h2><span class="t-caps">Tu boda</span> <span class="t-script">nuestra visión</span></h2>
   </div>
 </section>
 
@@ -445,11 +541,14 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 <section id="nosotros">
   <div class="wrap about">
     <div class="about-img reveal"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_900/DSC04167-Editar" loading="lazy" alt="Equipo de fotógrafos y videógrafos de Albaside Studio en Cusco" width="900" height="1350"></div>
-    <div class="reveal">
-      <span class="eyebrow">Quiénes somos</span>
-      <h2>Somos <em>Albaside Studio</em></h2>
-      <p class="lead">Somos un equipo de foto y video en Cusco. En 8 años hemos contado más de 180 historias, desde iglesias coloniales hasta el Valle Sagrado, Machu Picchu y destinos fuera del Cusco.</p>
-      <p class="lead">Nos movemos sin que lo notes, para que tú solo vivas tu día.</p>
+    <div class="about-card reveal">
+      <span class="t-script" aria-hidden="true">Bienvenidos</span>
+      <h2>Somos Albaside Studio</h2>
+      <p class="lead">Más de 180 bodas en 8 años nos enseñaron algo que no se aprende en ningún curso: conocemos las iglesias de Cusco, sabemos a qué hora la luz del Valle Sagrado se vuelve dorada y cómo trabajar en la altura sin perder un solo momento.</p>
+      <p class="lead">Foto y video los hace un mismo equipo, coordinado como uno solo. Nadie se estorba, nadie improvisa y ningún momento se queda sin contar.</p>
+      <p class="lead">Solo tomamos 4 bodas al mes. No es una estrategia: es lo que nos permite darte toda nuestra atención antes, durante y después de tu boda, y entregarte tus fotos y tu película en 6 semanas.</p>
+      <p class="lead">Tu boda pasa una sola vez. Que la cuenten quienes mejor conocen Cusco y más bodas han vivido aquí.</p>
+      <span class="signature">Con cariño, el equipo Albaside</span>
       <div class="about-stats">
         <div><strong>180+</strong><span>bodas</span></div>
         <div><strong>8</strong><span>años</span></div>
@@ -459,45 +558,31 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
   </div>
 </section>
 
-<!-- 8 · TESTIMONIOS -->
-<!-- PENDIENTE: reemplazar los 3 bloques .placeholder con testimonios REALES (texto textual + nombre de la pareja + lugar).
-     Los testimonios pueden llegar desde albaside.com/testimonio (Netlify → Forms).
-     Al reemplazar, quitar la clase "placeholder" y el <span class="ph-tag">. No publicar con estos marcadores. -->
-<section class="bg-alt" id="testimonios">
+<!-- 8.5 · INSTAGRAM (feed en vivo con Behold; si no hay feed, muestra estas 6 fotos) -->
+<section class="bg-alt" id="instagram">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Parejas Albaside</span>
-      <h2>Lo que dicen <em>después de ver sus fotos</em></h2>
+    <div class="section-head center reveal">
+      <span class="eyebrow">Instagram</span>
+      <h2><em>@albaside</em></h2>
     </div>
-    <div class="testis reveal">
-      <figure class="testi-card placeholder"><span class="ph-tag">Testimonio pendiente 1</span><blockquote>Aquí va el texto real que te envíe la pareja.</blockquote><cite>Nombre y nombre · Lugar de la boda</cite></figure>
-      <figure class="testi-card placeholder"><span class="ph-tag">Testimonio pendiente 2</span><blockquote>Aquí va el texto real que te envíe la pareja.</blockquote><cite>Nombre y nombre · Lugar de la boda</cite></figure>
-      <figure class="testi-card placeholder"><span class="ph-tag">Testimonio pendiente 3</span><blockquote>Aquí va el texto real que te envíe la pareja.</blockquote><cite>Nombre y nombre · Lugar de la boda</cite></figure>
+    <div class="ig-grid reveal" id="ig-grid">
+      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/IMG_1291" width="600" height="600" loading="lazy" alt="Novia con velo largo bordado frente a un arco de flores blancas"></a>
+      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/DSC04891" width="600" height="600" loading="lazy" alt="Novios en un campo verde con montañas del Valle Sagrado al fondo"></a>
+      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/DSC03474_1" width="600" height="600" loading="lazy" alt="Pedida de mano en Machu Picchu"></a>
+      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/DSC00003" width="600" height="600" loading="lazy" alt="Novios en un mirador frente a la Catedral de Cusco"></a>
+      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/DSC04301" width="600" height="600" loading="lazy" alt="Novios brindando frente a muros coloniales"></a>
+      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg" width="600" height="600" loading="lazy" alt="Ceremonia al aire libre frente a montañas nevadas de Cusco"></a>
     </div>
-  </div>
-</section>
-
-<!-- 9 · QUÉ PASA EN LA LLAMADA -->
-<section>
-  <div class="wrap call reveal">
-    <span class="eyebrow">La videollamada</span>
-    <h2>Qué pasa en esos <em>30 minutos</em></h2>
-    <ul class="call-list">
-      <li>Conocemos tu historia: fecha, lugar y cómo imaginas tu día.</li>
-      <li>Te mostramos bodas completas, no solo las mejores fotos.</li>
-      <li>Te enviamos una propuesta a la medida, sin compromiso.</li>
-    </ul>
-    <div class="cta-block">
-      <a class="btn btn-accent js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Elegir día y hora</a>
-      <span class="micro">Eliges un horario libre en nuestra agenda y te llega el link por correo</span>
+    <div class="center-cta reveal">
+      <a class="btn" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener">Síguenos en Instagram</a>
     </div>
   </div>
 </section>
 
 <!-- 10 · PREGUNTAS FRECUENTES -->
-<section class="bg-alt" id="preguntas">
+<section id="preguntas">
   <div class="wrap">
-    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+    <div class="section-head center reveal">
       <span class="eyebrow">Preguntas frecuentes</span>
       <h2>Lo que <em>todas las parejas</em> nos preguntan</h2>
     </div>
@@ -512,21 +597,20 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 </section>
 
 <!-- 10.5 · BLOG -->
-<section id="blog">
+<section class="bg-alt" id="blog">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head center reveal">
       <span class="eyebrow">Blog</span>
       <h2>Guías para <em>tu boda en Cusco</em></h2>
-      <p class="lead" style="margin-top:16px">Lo que aprendimos en más de 180 bodas, para que planifiques con calma.</p>
     </div>
     <div class="post-grid reveal">
-      <a class="post-card" href="/blog/cuanto-cuesta-fotografo-de-bodas-en-cusco"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_450,c_fill,g_auto/DSC04301" alt="¿Cuánto cuesta un fotógrafo de bodas en Cusco?" width="600" height="450" loading="lazy"><div><span>Precios</span><h3>¿Cuánto cuesta un fotógrafo de bodas en Cusco?</h3><p>Qué influye en el precio de la foto y el video de tu boda.</p></div></a>
-      <a class="post-card" href="/blog/lugares-sesion-pre-boda-cusco"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_450,c_fill,g_auto/DSC00003" alt="Los mejores lugares de Cusco para tu sesión pre boda" width="600" height="450" loading="lazy"><div><span>Lugares</span><h3>Los mejores lugares de Cusco para tu sesión pre boda</h3><p>Plaza de Armas, San Blas, calles incas y miradores.</p></div></a>
-      <a class="post-card" href="/blog/boda-en-el-valle-sagrado"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_450,c_fill,g_auto/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg" alt="Casarte en el Valle Sagrado: guía práctica" width="600" height="450" loading="lazy"><div><span>Destinos</span><h3>Casarte en el Valle Sagrado: guía práctica</h3><p>Clima, temporada, traslados y planificación.</p></div></a>
-      <a class="post-card" href="/blog/sesion-de-fotos-en-machu-picchu"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_450,c_fill,g_auto/DSC03474_1" alt="Sesión de fotos de novios en Machu Picchu" width="600" height="450" loading="lazy"><div><span>Destinos</span><h3>Sesión de fotos de novios en Machu Picchu</h3><p>Boletos, circuitos, horarios y reglas.</p></div></a>
+      <a class="post-card" href="/blog/cuanto-cuesta-fotografo-de-bodas-en-cusco"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/DSC04301" alt="¿Cuánto cuesta un fotógrafo de bodas en Cusco?" width="640" height="800" loading="lazy"></div><div><span>Precios</span><h3>¿Cuánto cuesta un fotógrafo de bodas en Cusco?</h3><p>Qué influye en el precio de la foto y el video de tu boda.</p><span class="read">Leer más</span></div></a>
+      <a class="post-card" href="/blog/lugares-sesion-pre-boda-cusco"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/DSC00003" alt="Los mejores lugares de Cusco para tu sesión pre boda" width="640" height="800" loading="lazy"></div><div><span>Lugares</span><h3>Los mejores lugares de Cusco para tu sesión pre boda</h3><p>Plaza de Armas, San Blas, calles incas y miradores.</p><span class="read">Leer más</span></div></a>
+      <a class="post-card" href="/blog/boda-en-el-valle-sagrado"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg" alt="Casarte en el Valle Sagrado: guía práctica" width="640" height="800" loading="lazy"></div><div><span>Destinos</span><h3>Casarte en el Valle Sagrado: guía práctica</h3><p>Clima, temporada, traslados y planificación.</p><span class="read">Leer más</span></div></a>
+      <a class="post-card" href="/blog/sesion-de-fotos-en-machu-picchu"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/DSC03474_1" alt="Sesión de fotos de novios en Machu Picchu" width="640" height="800" loading="lazy"></div><div><span>Destinos</span><h3>Sesión de fotos de novios en Machu Picchu</h3><p>Boletos, circuitos, horarios y reglas.</p><span class="read">Leer más</span></div></a>
     </div>
     <div class="center-cta reveal">
-      <a class="link-more" href="/blog/">Ver todas las guías →</a>
+      <a class="link-more" href="/blog/">Ver todas las guías</a>
       <span class="micro"><a href="/blog/en/" hreflang="en">Planning a destination wedding? Read our guides in English</a></span>
     </div>
   </div>
@@ -536,11 +620,11 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 <section class="final">
   <div class="wrap reveal">
     <span class="eyebrow">Tu fecha</span>
-    <h2>Tu boda merece ser contada <em>como la vas a recordar</em></h2>
+    <h2>Tu boda merece ser contada. <em>¿Cómo la vas a recordar?</em></h2>
     <span class="scarcity">Solo tomamos 4 bodas por mes</span>
     <div class="cta-block">
       <a class="btn btn-accent js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Agenda tu videollamada gratis</a>
-      <span class="micro">30 minutos · sin compromiso</span>
+      <span class="micro">30 minutos · gratis · sin compromiso</span>
     </div>
   </div>
 </section>
@@ -548,14 +632,16 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 
 <footer>
   <div class="wrap foot">
-    <img src="https://res.cloudinary.com/f3h66ynr/image/upload/e_trim/q_auto,f_auto,h_120/logo_blanco" alt="Albaside Studio" loading="lazy" width="122" height="40">
+    <img src="https://res.cloudinary.com/f3h66ynr/image/upload/e_trim/q_auto,f_auto,h_140/logo_negro" alt="Albaside Studio" loading="lazy" width="134" height="44">
+    <span class="t-script">fotografía y video de bodas</span>
     <nav>
-      <a href="https://www.instagram.com/albaside/" target="_blank" rel="noopener">Instagram</a>
-      <a href="/privacidad.html">Privacidad</a>
+      <a href="https://www.instagram.com/albaside/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/AlbaSideCusco" target="_blank" rel="noopener">Facebook</a>
+      <a href="/whatsapp" target="_blank" rel="noopener">WhatsApp</a>
       <a href="/blog/">Blog</a>
-      <a href="/blog/en/">Blog (English)</a>
+      <a href="/blog/en/" hreflang="en">English</a>
+      <a href="/privacidad.html">Privacidad</a>
     </nav>
-    <span>© 2026 Albaside Studio · Cusco, Perú</span>
+    <small>© 2026 Albaside Studio · Cusco, Perú</small>
   </div>
 </footer>
 
@@ -570,6 +656,7 @@ document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',function(
   f.referrerPolicy='strict-origin-when-cross-origin';
   this.replaceWith(f);
 }));
+
 
 // Carrusel automático: se mueve solo, se pausa al tocarlo o pasar el mouse, y se puede arrastrar
 (function(){
@@ -604,6 +691,51 @@ document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',function(
   document.addEventListener('visibilitychange',function(){ document.hidden?stop():start(); });
 })();
 
+// Encabezado: transparente sobre la portada, blanco al bajar
+(function(){
+  var h=document.getElementById('top-header'), hero=document.getElementById('inicio');
+  function upd(){ h.classList.toggle('on-dark', window.scrollY < hero.offsetHeight-90 && !document.body.classList.contains('menu-open')); }
+  window.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
+  // Menú a pantalla completa
+  var m=document.getElementById('menu'), b=document.querySelector('.menu-btn'), c=m.querySelector('.menu-close');
+  function open(){ m.classList.add('open'); b.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; c.focus(); }
+  function close(){ m.classList.remove('open'); b.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  b.addEventListener('click',open); c.addEventListener('click',close);
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+})();
+
+// Testimonios: carrusel con flechas, puntos y avance automático
+(function(){
+  var c=document.querySelector('.t-carousel'); if(!c) return;
+  var tr=c.querySelector('.t-track'), sl=tr.children, dots=c.querySelector('.t-dots'), i=0, t=null;
+  for(var k=0;k<sl.length;k++){var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Testimonio '+(k+1));(function(k){d.onclick=function(){go(k);rest()}})(k);dots.appendChild(d)}
+  function mark(){[].forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===i?'true':'false')})}
+  function go(k){i=(k+sl.length)%sl.length;tr.scrollTo({left:sl[i].offsetLeft-tr.offsetLeft,behavior:'smooth'});mark()}
+  function play(){if(!t&&!matchMedia('(prefers-reduced-motion: reduce)').matches)t=setInterval(function(){go(i+1)},6000)}
+  function stop(){clearInterval(t);t=null}
+  function rest(){stop();setTimeout(play,8000)}
+  c.querySelector('.t-prev').onclick=function(){go(i-1);rest()};
+  c.querySelector('.t-next').onclick=function(){go(i+1);rest()};
+  tr.addEventListener('scroll',function(){var n=Math.round(tr.scrollLeft/tr.clientWidth);if(n!==i){i=n;mark()}},{passive:true});
+  c.addEventListener('mouseenter',stop);c.addEventListener('mouseleave',play);
+  mark();play();
+})();
+
+// Instagram en vivo con Behold (behold.so). Pega aquí el ID de tu feed JSON; si queda vacío se ven las fotos fijas.
+var BEHOLD_FEED_ID='';
+(function(){
+  var g=document.getElementById('ig-grid'); if(!g||!BEHOLD_FEED_ID) return;
+  var done=false, o=new IntersectionObserver(function(es){ if(done||!es[0].isIntersecting) return; done=true; o.disconnect();
+    fetch('https://feeds.behold.so/'+BEHOLD_FEED_ID).then(function(r){return r.json()}).then(function(d){
+      var ps=(d.posts||[]).slice(0,6); if(!ps.length) return;
+      g.innerHTML=ps.map(function(p){var s=(p.sizes&&p.sizes.medium&&p.sizes.medium.mediaUrl)||p.thumbnailUrl||p.mediaUrl;
+        var alt=(p.altText||p.prunedCaption||'Publicación de Albaside Studio en Instagram').slice(0,140).replace(/"/g,'&quot;');
+        return '<a class="ig-tile" href="'+p.permalink+'" target="_blank" rel="noopener"><img src="'+s+'" alt="'+alt+'" loading="lazy" width="700" height="700"></a>'}).join('');
+    }).catch(function(){});
+  },{rootMargin:'400px'}); o.observe(g);
+})();
+
 // Reveal al hacer scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
@@ -622,7 +754,7 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 document.addEventListener('click',function(e){
   var a=e.target.closest('a'); if(!a||!a.href) return;
   if(a.href.indexOf('cal.com')>-1) trackBoth('interesado_reunion',{content_name:'Agendar videollamada'});
-  if(a.href.indexOf('wa.me')>-1||a.href.indexOf('api.whatsapp.com')>-1) trackBoth('Contact');
+  if(a.href.indexOf('wa.me')>-1||a.pathname==='/whatsapp'||a.href.indexOf('api.whatsapp.com')>-1) trackBoth('Contact');
 });
 // ViewContent: llegó al portafolio (pasó de la portada a mirar el trabajo)
 (function(){var s=document.getElementById('portafolio');if(!s)return;
