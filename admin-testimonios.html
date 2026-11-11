@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Testimonios · Administración | Albaside Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--bg-alt:#F7F4EF;--ink:#2B2926;--text:#4A4743;--accent:#5F6B3C;--muted:#857E75;--line:rgba(43,41,38,.14);--serif:'Cormorant',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:300;color:var(--text);background:var(--bg-alt);line-height:1.6;font-size:15px}
+.wrap{max-width:900px;margin:0 auto;padding:40px 20px 80px}
+h1{font-family:var(--serif);font-weight:300;font-size:40px;color:var(--ink)}
+h1 em{color:var(--accent)}
+.sub{color:var(--muted);margin:6px 0 30px}
+.btn{display:inline-block;padding:12px 22px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:400 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;cursor:pointer}
+.btn:hover{background:var(--ink);color:#fff}
+.btn-accent{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-accent:hover{background:#4C5730;border-color:#4C5730}
+.login{background:#fff;padding:28px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.login input{flex:1;min-width:200px;padding:12px 14px;border:1px solid var(--line);font:inherit}
+.msg{margin:16px 0;color:var(--accent)}
+.msg.err{color:#a33}
+.card{background:#fff;padding:24px;margin-top:16px;border-left:3px solid transparent}
+.card.pub{border-left-color:var(--accent)}
+.meta{font-size:12px;color:var(--muted);letter-spacing:.04em;margin-bottom:12px;display:flex;gap:14px;flex-wrap:wrap}
+.tag{font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:4px 8px;background:var(--bg-alt)}
+.tag.ok{background:#E7EADB;color:#4C5730}
+.tag.no{background:#F3E3E0;color:#8a3a2e}
+label{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px}
+input.f,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);font:inherit;color:var(--ink)}
+textarea{min-height:110px;font-family:var(--serif);font-size:19px;font-style:italic;line-height:1.45}
+.row{display:grid;gap:12px}
+@media(min-width:640px){.row{grid-template-columns:1fr 1fr}}
+.actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.empty{background:#fff;padding:28px;color:var(--muted);margin-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Testimonios <em>Albaside</em></h1>
+  <p class="sub">Aquí llegan los testimonios del formulario albaside.com/testimonio. Solo los que publiques aparecen en la página de inicio. Puedes corregir el texto antes de publicarlo.</p>
+
+  <div class="login" id="login">
+    <input type="password" id="key" placeholder="Clave de administración" autocomplete="current-password">
+    <button class="btn btn-accent" id="enter">Entrar</button>
+  </div>
+  <p class="msg" id="msg"></p>
+  <div id="list"></div>
+</div>
+
+<script>
+var KEY='';
+try{KEY=sessionStorage.getItem('albaside_admin')||''}catch(e){}
+var $=function(id){return document.getElementById(id)};
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function msg(t,err){var m=$('msg');m.textContent=t||'';m.className='msg'+(err?' err':'')}
+function api(method,body){
+  return fetch('/api/testimonios-admin',{method:method,headers:{'Content-Type':'application/json','x-admin-key':KEY},body:body?JSON.stringify(body):undefined})
+    .then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||'Error');return d})});
+}
+function load(){
+  msg('Cargando…');
+  api('GET').then(function(d){
+    try{sessionStorage.setItem('albaside_admin',KEY)}catch(e){}
+    $('login').style.display='none'; msg('');
+    var pub={}; (d.publicados||[]).forEach(function(t){pub[t.id]=t});
+    if(!d.envios.length){$('list').innerHTML='<div class="empty">Todavía no llegó ningún testimonio. Comparte el link albaside.com/testimonio con tus parejas.</div>';return}
+    $('list').innerHTML=d.envios.map(function(s){
+      var p=pub[s.id], t=p||s;
+      return '<div class="card'+(p?' pub':'')+'" data-id="'+esc(s.id)+'">'+
+        '<div class="meta"><span>'+new Date(s.fecha).toLocaleDateString('es-PE',{day:'numeric',month:'long',year:'numeric'})+'</span>'+
+        '<span class="tag '+(s.autorizado?'ok':'no')+'">'+(s.autorizado?'Autorizó publicar':'Sin autorización')+'</span>'+
+        (p?'<span class="tag ok">Publicado en la web</span>':'')+
+        (s.contacto?'<span>Contacto: '+esc(s.contacto)+'</span>':'')+'</div>'+
+        '<div class="row"><div><label>Nombres</label><input class="f n" value="'+esc(t.nombres)+'"></div><div><label>Lugar de la boda</label><input class="f l" value="'+esc(t.lugar)+'"></div></div>'+
+        '<label>Testimonio</label><textarea class="t">'+esc(t.testimonio)+'</textarea>'+
+        '<div class="actions">'+
+          (s.autorizado?'<button class="btn btn-accent pubbtn">'+(p?'Guardar cambios':'Publicar en la web')+'</button>':'<span class="sub" style="margin:0">No se puede publicar: la pareja no marcó la autorización.</span>')+
+          (p?'<button class="btn hidebtn">Quitar de la web</button>':'')+
+        '</div></div>';
+    }).join('');
+  }).catch(function(e){ $('login').style.display='flex'; msg(e.message,true) });
+}
+$('enter').onclick=function(){KEY=$('key').value.trim(); if(KEY) load()};
+$('key').addEventListener('keydown',function(e){if(e.key==='Enter')$('enter').click()});
+$('list').addEventListener('click',function(e){
+  var c=e.target.closest('.card'); if(!c) return;
+  var id=c.getAttribute('data-id');
+  if(e.target.classList.contains('pubbtn')){
+    msg('Publicando…');
+    api('POST',{id:id,accion:'publicar',nombres:c.querySelector('.n').value,lugar:c.querySelector('.l').value,testimonio:c.querySelector('.t').value})
+      .then(function(){msg('Listo. Aparecerá en la web en unos minutos.');load()}).catch(function(err){msg(err.message,true)});
+  }
+  if(e.target.classList.contains('hidebtn')){
+    msg('Quitando…');
+    api('POST',{id:id,accion:'ocultar'}).then(function(){msg('Quitado de la web.');load()}).catch(function(err){msg(err.message,true)});
+  }
+});
+if(KEY) load();
+</script>
+</body>
+</html>

@@ -335,6 +335,7 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
 .mosaic{margin-top:80px}
 
 /* Testimonios en carrusel */
+.testi-wrap{margin-top:110px;padding-top:90px;border-top:1px solid var(--line)}
 .t-carousel{max-width:820px;margin:0 auto}
 .t-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
 .t-track::-webkit-scrollbar{display:none}
@@ -556,6 +557,18 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
       </div>
     </div>
   </div>
+  <!-- TESTIMONIOS: se muestran solos cuando publicas alguno en /admin-testimonios.html -->
+  <div class="wrap center testi-wrap" id="testimonios" hidden>
+    <span class="eyebrow">Parejas Albaside</span>
+    <div class="t-carousel" aria-roledescription="carrusel" aria-label="Testimonios">
+      <div class="t-track"></div>
+      <div class="t-nav">
+        <button type="button" class="t-prev" aria-label="Testimonio anterior">←</button>
+        <div class="t-dots"></div>
+        <button type="button" class="t-next" aria-label="Testimonio siguiente">→</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- 8.5 · INSTAGRAM (feed en vivo con Behold; si no hay feed, muestra estas 6 fotos) -->
@@ -705,21 +718,29 @@ document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',function(
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
 })();
 
-// Testimonios: carrusel con flechas, puntos y avance automático
+// Testimonios: se cargan desde /api/testimonios (los que publicaste en /admin-testimonios.html)
 (function(){
-  var c=document.querySelector('.t-carousel'); if(!c) return;
-  var tr=c.querySelector('.t-track'), sl=tr.children, dots=c.querySelector('.t-dots'), i=0, t=null;
-  for(var k=0;k<sl.length;k++){var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Testimonio '+(k+1));(function(k){d.onclick=function(){go(k);rest()}})(k);dots.appendChild(d)}
-  function mark(){[].forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===i?'true':'false')})}
-  function go(k){i=(k+sl.length)%sl.length;tr.scrollTo({left:sl[i].offsetLeft-tr.offsetLeft,behavior:'smooth'});mark()}
-  function play(){if(!t&&!matchMedia('(prefers-reduced-motion: reduce)').matches)t=setInterval(function(){go(i+1)},6000)}
-  function stop(){clearInterval(t);t=null}
-  function rest(){stop();setTimeout(play,8000)}
-  c.querySelector('.t-prev').onclick=function(){go(i-1);rest()};
-  c.querySelector('.t-next').onclick=function(){go(i+1);rest()};
-  tr.addEventListener('scroll',function(){var n=Math.round(tr.scrollLeft/tr.clientWidth);if(n!==i){i=n;mark()}},{passive:true});
-  c.addEventListener('mouseenter',stop);c.addEventListener('mouseleave',play);
-  mark();play();
+  var box=document.getElementById('testimonios'); if(!box) return;
+  function esc(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  fetch('/api/testimonios').then(function(r){return r.ok?r.json():[]}).then(function(list){
+    if(!list||!list.length) return;
+    var c=box.querySelector('.t-carousel'), tr=c.querySelector('.t-track');
+    tr.innerHTML=list.map(function(t){return '<figure class="t-slide"><blockquote>'+esc(t.testimonio)+'</blockquote><cite>'+esc(t.nombres)+(t.lugar?' · '+esc(t.lugar):'')+'</cite></figure>'}).join('');
+    box.hidden=false;
+    var sl=tr.children, dots=c.querySelector('.t-dots'), nav=c.querySelector('.t-nav'), i=0, t=null;
+    if(sl.length<2){nav.style.display='none';return}
+    for(var k=0;k<sl.length;k++){var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Testimonio '+(k+1));(function(k){d.onclick=function(){go(k);rest()}})(k);dots.appendChild(d)}
+    function mark(){[].forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===i?'true':'false')})}
+    function go(k){i=(k+sl.length)%sl.length;tr.scrollTo({left:sl[i].offsetLeft-tr.offsetLeft,behavior:'smooth'});mark()}
+    function play(){if(!t&&!matchMedia('(prefers-reduced-motion: reduce)').matches)t=setInterval(function(){go(i+1)},6000)}
+    function stop(){clearInterval(t);t=null}
+    function rest(){stop();setTimeout(play,8000)}
+    c.querySelector('.t-prev').onclick=function(){go(i-1);rest()};
+    c.querySelector('.t-next').onclick=function(){go(i+1);rest()};
+    tr.addEventListener('scroll',function(){var n=Math.round(tr.scrollLeft/tr.clientWidth);if(n!==i){i=n;mark()}},{passive:true});
+    c.addEventListener('mouseenter',stop);c.addEventListener('mouseleave',play);
+    mark();play();
+  }).catch(function(){});
 })();
 
 // Instagram en vivo con Behold (behold.so). Pega aquí el ID de tu feed JSON; si queda vacío se ven las fotos fijas.

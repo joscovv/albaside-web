@@ -2,16 +2,19 @@ User-agent: *
 Allow: /
 Disallow: /gracias.html
 Disallow: /testimonio
+Disallow: /admin-testimonios
 
 User-agent: GPTBot
 Allow: /
 Disallow: /gracias.html
 Disallow: /testimonio
+Disallow: /admin-testimonios
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /gracias.html
 Disallow: /testimonio
+Disallow: /admin-testimonios
 
 User-agent: Google-Extended
 Allow: /
@@ -20,5 +23,6 @@ User-agent: PerplexityBot
 Allow: /
 Disallow: /gracias.html
 Disallow: /testimonio
+Disallow: /admin-testimonios
 
 Sitemap: https://albaside.com/sitemap.xml

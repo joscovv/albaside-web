@@ -1,0 +1,8 @@
+{
+  "name": "albaside-web",
+  "private": true,
+  "description": "Landing de Albaside Studio. Dependencias solo para las funciones de Netlify.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
