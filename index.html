@@ -43,6 +43,7 @@
   "image":"https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_jpg,w_1200/DSC04301",
   "logo":"https://res.cloudinary.com/f3h66ynr/image/upload/f_png,w_600/logo_negro",
   "telephone":"+51977217281",
+  "priceRange":"Desde USD 1,500",
   "address":{"@type":"PostalAddress","addressLocality":"Cusco","addressRegion":"Cusco","addressCountry":"PE"},
   "areaServed":["Cusco","Valle Sagrado","Machu Picchu","Perú","Internacional"],
   "sameAs":["https://www.instagram.com/albaside/"],
@@ -134,8 +135,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(246,242,236,.9);backdrop
 
 /* Hero minimalista */
 .hero{position:relative;min-height:calc(100svh - 59px);display:flex;align-items:flex-end;justify-content:center;color:#fff;padding:0;overflow:hidden;background:var(--ink)}
-.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero picture img{object-position:center 35%}
+.hero-slides{position:absolute;inset:0}
+.hero-slide,.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-slide{opacity:0;transition:opacity 1.6s ease}
+.hero-slide.is-active{opacity:1}
+.hero-slide img{transform:scale(1.08);transition:transform 7s linear}
+.hero-slide.is-active img{transform:scale(1)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,13,11,0) 45%,rgba(15,13,11,.6) 100%)}
 .hero-inner{position:relative;z-index:2;width:100%;padding:0 24px 56px;max-width:var(--max);margin:0 auto;text-align:center}
 .hero h1{font-size:clamp(30px,4.4vw,56px);font-weight:500;letter-spacing:.01em;max-width:640px;margin:0 auto}
@@ -239,6 +244,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(246,242,236,.9);backdrop
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
 .faq-a p{padding-bottom:24px;color:var(--muted)}
 
+.post-grid{display:grid;gap:18px}
+@media(min-width:700px){.post-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.post-grid{grid-template-columns:repeat(4,1fr)}}
+.post-card{display:block;text-decoration:none;color:var(--ink);background:var(--white);border-radius:var(--radius-card);overflow:hidden;box-shadow:0 14px 34px -26px rgba(28,26,23,.35);transition:transform .3s var(--ease)}
+.post-card:hover{transform:translateY(-4px)}
+.post-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.post-card div{padding:18px 20px 22px}
+.post-card span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.post-card h3{margin:8px 0 6px;font-size:22px;line-height:1.2}
+.post-card p{font-size:15px;color:var(--muted);line-height:1.55}
+.link-more{display:inline-block;font-size:15px;letter-spacing:.06em;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px}
+.micro a{color:var(--muted)}
 /* Cierre */
 .final{text-align:center}
 .final h2{max-width:780px;margin:0 auto}
@@ -261,6 +278,7 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   .hero h1,.hero .btn-ghost{animation:none}
+  .hero-slide,.hero-slide img{transition:none;transform:none}
   .btn{transition:none}
 }
 #nl-badge-frame{display:none!important}
@@ -280,11 +298,28 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 <main>
 <!-- 1 · INICIO -->
 <section class="hero" id="inicio">
-  <picture>
-    <source media="(min-width:768px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1600/DSC04301 1600w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2400/DSC04301 2400w" sizes="100vw">
-    <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC08912" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC08912 800w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200/DSC08912 1200w" sizes="100vw"
-      alt="Novios abrazados frente a la iglesia de la Compañía de Jesús en la Plaza de Armas de Cusco al atardecer" fetchpriority="high">
-  </picture>
+  <div class="hero-slides" aria-roledescription="carrusel">
+    <picture class="hero-slide is-active">
+      <source media="(min-width:768px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1600/DSC04301 1600w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2400/DSC04301 2400w" sizes="100vw">
+      <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/saves_2" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/saves_2 800w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200/saves_2 1200w" sizes="100vw" style="object-position:center center" alt="Vista aérea en blanco y negro de la entrada de una iglesia de Cusco con un auto clásico de novios" fetchpriority="high">
+    </picture>
+    <picture class="hero-slide">
+      <source media="(min-width:768px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1600/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg 1600w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2400/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg 2400w" sizes="100vw">
+      <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC04891" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC04891 800w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200/DSC04891 1200w" sizes="100vw" style="object-position:center 40%" alt="Ceremonia de boda al aire libre frente a las montañas de Cusco" loading="lazy">
+    </picture>
+    <picture class="hero-slide">
+      <source media="(min-width:768px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1600/DSC03474_1 1600w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2400/DSC03474_1 2400w" sizes="100vw">
+      <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC03474_1" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC03474_1 800w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200/DSC03474_1 1200w" sizes="100vw" style="object-position:42% center" alt="Pedida de mano en Machu Picchu con las montañas al fondo" loading="lazy">
+    </picture>
+    <picture class="hero-slide">
+      <source media="(min-width:768px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1600/DSC04342 1600w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2400/DSC04342 2400w" sizes="100vw">
+      <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC00003" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC00003 800w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200/DSC00003 1200w" sizes="100vw" style="object-position:62% center" alt="Novios en un mirador con las torres de la Catedral de Cusco al fondo" loading="lazy">
+    </picture>
+    <picture class="hero-slide">
+      <source media="(min-width:768px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1600/DSC00003 1600w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2400/DSC00003 2400w" sizes="100vw">
+      <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC07928" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC07928 800w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200/DSC07928 1200w" sizes="100vw" style="object-position:center 45%" alt="Novios frente a las torres de la Catedral de Cusco" loading="lazy">
+    </picture>
+  </div>
   <div class="hero-inner">
     <h1>Fotografía y video de bodas en <em>Cusco</em></h1>
     <a class="btn btn-ghost js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Agenda tu videollamada</a>
@@ -294,9 +329,9 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 <!-- 2 · PROBLEMA -->
 <section class="problem">
   <div class="wrap reveal">
-    <span class="eyebrow">Lo que de verdad queda</span>
-    <h2>El día de tu boda pasa en un suspiro. <em>Lo que queda es lo que alguien supo mirar.</em></h2>
-    <p class="lead">La mirada antes del sí, el abrazo de tu papá, la fiesta cuando ya nadie posa. Si eso no se captura bien, se pierde para siempre. No hay segunda toma.</p>
+    <span class="eyebrow">Lo que el tiempo se lleva</span>
+    <h2>La memoria olvida los detalles. <em>Nosotros los hacemos eternos.</em></h2>
+    <p class="lead">Con los años se borran el temblor de su voz antes del sí, la risa de tu mamá, la canción que los hizo bailar hasta tarde. Nosotros los guardamos tal como fueron, para que cada vez que mires tus fotos o tu película vuelvas a sentirlos.</p>
   </div>
 </section>
 
@@ -346,17 +381,25 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
     <div class="carousel-track" id="carousel-track">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00446" width="600" height="900" loading="lazy" alt="Novios saliendo de una iglesia colonial de Cusco bajo una lluvia de pétalos" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00003" width="1350" height="900" loading="lazy" alt="Pareja de novios en un mirador frente a las torres de la Catedral de Cusco" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg" width="1350" height="900" loading="lazy" alt="Novio levantando a la novia en una ceremonia al aire libre frente a montañas nevadas de Cusco" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC03474_1" width="1350" height="900" loading="lazy" alt="Pedida de mano en Machu Picchu con las montañas al fondo" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00503" width="600" height="900" loading="lazy" alt="Novio emocionado secándose las lágrimas al ver llegar a la novia" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00328" width="1350" height="900" loading="lazy" alt="La novia deja caer el anillo en la mano del novio" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC04342" width="1350" height="900" loading="lazy" alt="Invitados lanzando arroz a los novios a la salida de una capilla andina" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC07928" width="600" height="900" loading="lazy" alt="Novia en una escalera de piedra inca y novio apoyado en el muro, con reflejo" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/IMG_1603" width="506" height="900" loading="lazy" alt="Secuencia de novios bailando frente a un muro de piedra inca" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC06906" width="1600" height="900" loading="lazy" alt="Detalle del anillo de compromiso entre flores de gypsophila" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00442" width="600" height="900" loading="lazy" alt="Beso de novios en blanco y negro frente a un portón colonial de madera" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC08046" width="1350" height="900" loading="lazy" alt="Pareja caminando de la mano entre dunas de arena en una boda de destino" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC08912" width="600" height="900" loading="lazy" alt="Novios abrazados frente a la iglesia de la Compañía de Jesús en Cusco" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC04891" width="600" height="900" loading="lazy" alt="Novios en un campo verde con montañas del Valle Sagrado al fondo" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC01166" width="1350" height="900" loading="lazy" alt="Primer baile de los novios en una recepción bajo carpa iluminada" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/IMG_1291" width="720" height="900" loading="lazy" alt="Novia con velo largo bordado frente a un arco de flores blancas en un salón de recepción" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00869" width="600" height="900" loading="lazy" alt="Novios abrazados en un jardín entre árboles" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00840" width="1350" height="900" loading="lazy" alt="Detalles de la novia: anillos, perfume e invitación" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00277" width="600" height="900" loading="lazy" alt="Anillos de boda dorados en la palma de la mano junto al ramo de flores" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC06934" width="600" height="900" loading="lazy" alt="Retrato en blanco y negro de la novia de perfil con aretes" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC04504" width="600" height="900" loading="lazy" alt="Beso de novios al anochecer con fondo cálido" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC04301" width="1350" height="900" loading="lazy" alt="Novios brindando frente a muros coloniales bajo un cielo dramático" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00196" width="600" height="900" loading="lazy" alt="Novio besando la mano de la novia en una antigua estación de tren" draggable="false">
         <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC05034" width="1350" height="900" loading="lazy" alt="Novios besándose en un altar de madera rodeado de flores y bosque" draggable="false">
@@ -374,7 +417,7 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 <!-- 5 · CÓMO TRABAJAMOS -->
 <section class="bg-alt">
   <div class="wrap process">
-    <div class="process-img reveal"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_900,h_1125,c_fill,g_auto/DSC05034" loading="lazy" alt="Novios besándose en un altar de madera rodeado de flores y bosque" width="900" height="1125"></div>
+    <div class="process-img reveal"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_900,h_1125,c_fill,g_auto/DSC00442" loading="lazy" alt="Beso de novios en blanco y negro frente a un portón colonial, con el velo extendido" width="900" height="1125"></div>
     <div class="reveal">
       <span class="eyebrow">Cómo trabajamos</span>
       <h2>Cuatro pasos, <em>cero estrés</em></h2>
@@ -468,6 +511,27 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
   </div>
 </section>
 
+<!-- 10.5 · BLOG -->
+<section id="blog">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Blog</span>
+      <h2>Guías para <em>tu boda en Cusco</em></h2>
+      <p class="lead" style="margin-top:16px">Lo que aprendimos en más de 180 bodas, para que planifiques con calma.</p>
+    </div>
+    <div class="post-grid reveal">
+      <a class="post-card" href="/blog/cuanto-cuesta-fotografo-de-bodas-en-cusco"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_450,c_fill,g_auto/DSC04301" alt="¿Cuánto cuesta un fotógrafo de bodas en Cusco?" width="600" height="450" loading="lazy"><div><span>Precios</span><h3>¿Cuánto cuesta un fotógrafo de bodas en Cusco?</h3><p>Qué influye en el precio de la foto y el video de tu boda.</p></div></a>
+      <a class="post-card" href="/blog/lugares-sesion-pre-boda-cusco"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_450,c_fill,g_auto/DSC00003" alt="Los mejores lugares de Cusco para tu sesión pre boda" width="600" height="450" loading="lazy"><div><span>Lugares</span><h3>Los mejores lugares de Cusco para tu sesión pre boda</h3><p>Plaza de Armas, San Blas, calles incas y miradores.</p></div></a>
+      <a class="post-card" href="/blog/boda-en-el-valle-sagrado"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_450,c_fill,g_auto/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg" alt="Casarte en el Valle Sagrado: guía práctica" width="600" height="450" loading="lazy"><div><span>Destinos</span><h3>Casarte en el Valle Sagrado: guía práctica</h3><p>Clima, temporada, traslados y planificación.</p></div></a>
+      <a class="post-card" href="/blog/sesion-de-fotos-en-machu-picchu"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_450,c_fill,g_auto/DSC03474_1" alt="Sesión de fotos de novios en Machu Picchu" width="600" height="450" loading="lazy"><div><span>Destinos</span><h3>Sesión de fotos de novios en Machu Picchu</h3><p>Boletos, circuitos, horarios y reglas.</p></div></a>
+    </div>
+    <div class="center-cta reveal">
+      <a class="link-more" href="/blog/">Ver todas las guías →</a>
+      <span class="micro"><a href="/blog/en/" hreflang="en">Planning a destination wedding? Read our guides in English</a></span>
+    </div>
+  </div>
+</section>
+
 <!-- 11 · CIERRE -->
 <section class="final">
   <div class="wrap reveal">
@@ -488,7 +552,8 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
     <nav>
       <a href="https://www.instagram.com/albaside/" target="_blank" rel="noopener">Instagram</a>
       <a href="/privacidad.html">Privacidad</a>
-      <!-- BLOG: agregar <a href="/blog/">Blog</a> cuando exista -->
+      <a href="/blog/">Blog</a>
+      <a href="/blog/en/">Blog (English)</a>
     </nav>
     <span>© 2026 Albaside Studio · Cusco, Perú</span>
   </div>
@@ -523,6 +588,20 @@ document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',function(
   window.addEventListener('pointerup',()=>{down=false;box.classList.remove('dragging')});
   box.addEventListener('scroll',()=>{if(!auto)pos=box.scrollLeft;const half=track.scrollWidth/2;if(box.scrollLeft>=half){box.scrollLeft-=half;pos=box.scrollLeft}});
   (function step(){ if(auto){pos+=0.5;box.scrollLeft=pos} requestAnimationFrame(step) })();
+})();
+
+// Portada: las fotos cambian cada 5 segundos con un fundido suave
+(function(){
+  var slides=document.querySelectorAll('.hero-slide'); if(slides.length<2) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var i=0, timer=null;
+  function next(){ slides[i].classList.remove('is-active'); i=(i+1)%slides.length;
+    var img=slides[i].querySelector('img'); img.loading='eager'; slides[i].classList.add('is-active'); }
+  function start(){ if(!timer) timer=setInterval(next,5000); }
+  function stop(){ clearInterval(timer); timer=null; }
+  // precarga la segunda foto apenas termina de cargar la página
+  window.addEventListener('load',function(){ slides[1].querySelector('img').loading='eager'; start(); });
+  document.addEventListener('visibilitychange',function(){ document.hidden?stop():start(); });
 })();
 
 // Reveal al hacer scroll

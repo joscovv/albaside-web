@@ -3,5 +3,56 @@
   <url>
     <loc>https://albaside.com/</loc>
     <lastmod>2026-11-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/en/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/cuanto-cuesta-fotografo-de-bodas-en-cusco</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/lugares-sesion-pre-boda-cusco</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/boda-en-el-valle-sagrado</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/sesion-de-fotos-en-machu-picchu</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/en/cusco-wedding-photographer-cost</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/en/cusco-pre-wedding-photo-locations</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/en/sacred-valley-wedding-guide</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/en/machu-picchu-engagement-photos</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>
