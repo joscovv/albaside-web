@@ -34,6 +34,28 @@ button{width:100%;margin-top:30px;padding:17px;border:none;border-radius:100px;c
 .hidden{display:none}
 #nl-badge-frame{display:none!important}
 </style>
+<!-- META PIXEL + CAPI (deduplicados con event_id) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('set','autoConfig',false,'2263785428352764');
+fbq('init','2263785428352764');
+var STD_EVENTS=['PageView','ViewContent','Contact','Lead','Schedule','InitiateCheckout','Purchase','CustomizeProduct'];
+function makeEventId(p){return p+'_'+Date.now()+'_'+Math.random().toString(36).slice(2,10)}
+function getCookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?m[2]:null}
+function sendCapiEvent(name,id,params){try{fetch('/.netlify/functions/capi',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
+  body:JSON.stringify({event_name:name,event_id:id,event_source_url:location.href,fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),custom_data:params||{}})}).catch(function(){})}catch(e){}}
+function trackBoth(name,params){var id=makeEventId(name.toLowerCase());
+  fbq(STD_EVENTS.indexOf(name)>-1?'track':'trackCustom',name,params||{},{eventID:id});sendCapiEvent(name,id,params)}
+trackBoth('PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2263785428352764&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <main class="wrap">
@@ -65,6 +87,7 @@ button{width:100%;margin-top:30px;padding:17px;border:none;border-radius:100px;c
 
     <button type="submit">Enviar nuestras palabras</button>
   </form>
+<script>document.querySelector('form[name=testimonios]').addEventListener('submit',function(){trackBoth('envio_testimonio')});</script>
 </main>
 </body>
 </html>

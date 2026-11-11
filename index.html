@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<!-- VERIFICACIONES: Google listo. Meta pendiente (pegar la etiqueta facebook-domain-verification debajo de esta línea) -->
+<!-- VERIFICACIONES -->
+<meta name="facebook-domain-verification" content="1z4dtjw4ki0u9qmlqnav06ir9ws863" />
 <meta name="google-site-verification" content="_QkTot2F6AJPtylJ1ciwGtVHao0lGME49i1WKxwGKco" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -63,7 +64,28 @@
 }
 </script>
 
-<!-- META PIXEL: pendiente. Pegar aquí el código base con el ID real cuando tengas acceso al Pixel -->
+<!-- META PIXEL + CAPI (deduplicados con event_id) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('set','autoConfig',false,'2263785428352764');
+fbq('init','2263785428352764');
+var STD_EVENTS=['PageView','ViewContent','Contact','Lead','Schedule','InitiateCheckout','Purchase','CustomizeProduct'];
+function makeEventId(p){return p+'_'+Date.now()+'_'+Math.random().toString(36).slice(2,10)}
+function getCookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?m[2]:null}
+function sendCapiEvent(name,id,params){try{fetch('/.netlify/functions/capi',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
+  body:JSON.stringify({event_name:name,event_id:id,event_source_url:location.href,fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),custom_data:params||{}})}).catch(function(){})}catch(e){}}
+function trackBoth(name,params){var id=makeEventId(name.toLowerCase());
+  fbq(STD_EVENTS.indexOf(name)>-1?'track':'trackCustom',name,params||{},{eventID:id});sendCapiEvent(name,id,params)}
+trackBoth('PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2263785428352764&ev=PageView&noscript=1"/></noscript>
 
 <style>
 :root{
@@ -107,8 +129,8 @@ p+p{margin-top:14px}
 /* Encabezado */
 header{position:sticky;top:0;z-index:50;background:rgba(246,242,236,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(28,26,23,.08)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:var(--max);margin:0 auto}
-.nav img{height:34px;width:auto}
-@media(min-width:768px){.nav img{height:42px}}
+.nav img{height:36px;width:auto}
+@media(min-width:768px){.nav img{height:46px}}
 
 /* Hero minimalista */
 .hero{position:relative;min-height:calc(100svh - 59px);display:flex;align-items:flex-end;justify-content:center;color:#fff;padding:0;overflow:hidden;background:var(--ink)}
@@ -147,12 +169,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(246,242,236,.9);backdrop
 
 /* Portafolio */
 .section-head{max-width:720px;margin-bottom:40px}
-.gallery{columns:2;column-gap:12px}
-@media(min-width:900px){.gallery{columns:3;column-gap:18px}}
-.gallery figure{break-inside:avoid;margin-bottom:12px;border-radius:14px;overflow:hidden;background:var(--bg-alt)}
-@media(min-width:900px){.gallery figure{margin-bottom:18px}}
-.gallery img{width:100%;height:auto;transition:transform .6s var(--ease)}
-.gallery figure:hover img{transform:scale(1.03)}
+.carousel{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab;margin-top:8px}
+.carousel::-webkit-scrollbar{display:none}
+.carousel.dragging{cursor:grabbing}
+.carousel-track{display:flex;gap:12px;width:max-content;padding:0 12px}
+.carousel-track img{height:clamp(300px,52vh,560px);width:auto;border-radius:12px;flex:none;user-select:none;-webkit-user-drag:none;background:var(--bg-alt)}
+@media(min-width:900px){.carousel-track{gap:18px}}
 .center-cta{text-align:center;margin-top:44px}
 
 /* Proceso */
@@ -226,7 +248,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(246,242,236,.9);backdrop
 footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size:14px}
 .foot{display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center}
 @media(min-width:768px){.foot{flex-direction:row;justify-content:space-between;text-align:left}}
-.foot img{height:36px;width:auto}
+.foot img{height:40px;width:auto}
 .foot nav{display:flex;gap:22px;flex-wrap:wrap;justify-content:center}
 .foot a{text-decoration:none}
 .foot a:hover{color:#fff}
@@ -239,7 +261,7 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   .hero h1,.hero .btn-ghost{animation:none}
-  .gallery img,.btn{transition:none}
+  .btn{transition:none}
 }
 #nl-badge-frame{display:none!important}
 </style>
@@ -249,7 +271,7 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 <header>
   <div class="nav">
     <a href="#inicio" aria-label="Albaside Studio, inicio">
-      <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_120/logo_negro" alt="Albaside Studio" width="122" height="42">
+      <img src="https://res.cloudinary.com/f3h66ynr/image/upload/e_trim/q_auto,f_auto,h_140/logo_negro" alt="Albaside Studio" width="140" height="46">
     </a>
     <a class="btn btn-sm js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Agendar</a>
   </div>
@@ -319,20 +341,29 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
       <h2>Historias reales, <em>sin poses forzadas</em></h2>
       <p class="lead" style="margin-top:16px">Iglesias coloniales, calles de piedra, el Valle Sagrado y destinos lejos de casa.</p>
     </div>
-    <div class="gallery reveal">
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC00446" width="800" height="1200" loading="lazy" alt="Novios saliendo de una iglesia colonial de Cusco bajo una lluvia de pétalos"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC00003" width="800" height="533" loading="lazy" alt="Pareja de novios en un mirador frente a las torres de la Catedral de Cusco"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC00503" width="800" height="1200" loading="lazy" alt="Novio emocionado secándose las lágrimas al ver llegar a la novia"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC07928" width="800" height="1200" loading="lazy" alt="Novia en una escalera de piedra inca y novio apoyado en el muro, con reflejo"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC04342" width="800" height="533" loading="lazy" alt="Invitados lanzando arroz a los novios a la salida de una capilla andina"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC06906" width="800" height="450" loading="lazy" alt="Detalle del anillo de compromiso entre flores de gypsophila"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC00442" width="800" height="1200" loading="lazy" alt="Beso de novios en blanco y negro frente a un portón colonial de madera"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC08046" width="800" height="533" loading="lazy" alt="Pareja caminando de la mano entre dunas de arena en una sesión de boda de destino"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC00869" width="800" height="1200" loading="lazy" alt="Novios abrazados en un jardín entre árboles"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC06934" width="800" height="1200" loading="lazy" alt="Retrato en blanco y negro de la novia de perfil con aretes"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC01166" width="800" height="533" loading="lazy" alt="Primer baile de los novios en una recepción bajo carpa iluminada"></figure>
-      <figure><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/DSC00196" width="800" height="1200" loading="lazy" alt="Novio besando la mano de la novia en una antigua estación de tren"></figure>
+  </div>
+  <div class="carousel reveal" aria-label="Galería de bodas de Albaside Studio">
+    <div class="carousel-track" id="carousel-track">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00446" width="600" height="900" loading="lazy" alt="Novios saliendo de una iglesia colonial de Cusco bajo una lluvia de pétalos" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00003" width="1350" height="900" loading="lazy" alt="Pareja de novios en un mirador frente a las torres de la Catedral de Cusco" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00503" width="600" height="900" loading="lazy" alt="Novio emocionado secándose las lágrimas al ver llegar a la novia" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC04342" width="1350" height="900" loading="lazy" alt="Invitados lanzando arroz a los novios a la salida de una capilla andina" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC07928" width="600" height="900" loading="lazy" alt="Novia en una escalera de piedra inca y novio apoyado en el muro, con reflejo" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC06906" width="1600" height="900" loading="lazy" alt="Detalle del anillo de compromiso entre flores de gypsophila" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00442" width="600" height="900" loading="lazy" alt="Beso de novios en blanco y negro frente a un portón colonial de madera" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC08046" width="1350" height="900" loading="lazy" alt="Pareja caminando de la mano entre dunas de arena en una boda de destino" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC08912" width="600" height="900" loading="lazy" alt="Novios abrazados frente a la iglesia de la Compañía de Jesús en Cusco" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC01166" width="1350" height="900" loading="lazy" alt="Primer baile de los novios en una recepción bajo carpa iluminada" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00869" width="600" height="900" loading="lazy" alt="Novios abrazados en un jardín entre árboles" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00840" width="1350" height="900" loading="lazy" alt="Detalles de la novia: anillos, perfume e invitación" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC06934" width="600" height="900" loading="lazy" alt="Retrato en blanco y negro de la novia de perfil con aretes" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC04301" width="1350" height="900" loading="lazy" alt="Novios brindando frente a muros coloniales bajo un cielo dramático" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC00196" width="600" height="900" loading="lazy" alt="Novio besando la mano de la novia en una antigua estación de tren" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/DSC05034" width="1350" height="900" loading="lazy" alt="Novios besándose en un altar de madera rodeado de flores y bosque" draggable="false">
+        <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_900/saves_2" width="600" height="900" loading="lazy" alt="Vista aérea en blanco y negro de una plaza con palmera y auto clásico" draggable="false">
     </div>
+  </div>
+  <div class="wrap">
     <div class="center-cta reveal">
       <a class="btn btn-accent js-agenda" href="https://cal.com/albaside/videollamada" target="_blank" rel="noopener">Quiero hablar sobre mi boda</a>
       <span class="micro">Cuéntanos tu idea de boda soñada</span>
@@ -453,7 +484,7 @@ footer{background:var(--ink);color:rgba(246,242,236,.7);padding:48px 0;font-size
 
 <footer>
   <div class="wrap foot">
-    <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,h_100/logo_blanco" alt="Albaside Studio" loading="lazy" width="104" height="36">
+    <img src="https://res.cloudinary.com/f3h66ynr/image/upload/e_trim/q_auto,f_auto,h_120/logo_blanco" alt="Albaside Studio" loading="lazy" width="122" height="40">
     <nav>
       <a href="https://www.instagram.com/albaside/" target="_blank" rel="noopener">Instagram</a>
       <a href="/privacidad.html">Privacidad</a>
@@ -475,6 +506,25 @@ document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',function(
   this.replaceWith(f);
 }));
 
+// Carrusel automático: se mueve solo, se pausa al tocarlo o pasar el mouse, y se puede arrastrar
+(function(){
+  const box=document.querySelector('.carousel'), track=document.getElementById('carousel-track');
+  if(!box||!track) return;
+  track.innerHTML+=track.innerHTML.replace(/ loading="lazy"/g,'').replace(/<img /g,'<img aria-hidden="true" loading="lazy" ');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let auto=!reduce, timer=null, down=false, startX=0, startScroll=0, pos=0;
+  const pause=()=>{auto=false;clearTimeout(timer);timer=setTimeout(()=>{if(!reduce)auto=true},2500)};
+  box.addEventListener('mouseenter',()=>{auto=false;clearTimeout(timer)});
+  box.addEventListener('mouseleave',()=>{if(!reduce)auto=true});
+  box.addEventListener('touchstart',pause,{passive:true});
+  box.addEventListener('wheel',pause,{passive:true});
+  box.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;startX=e.clientX;startScroll=box.scrollLeft;box.classList.add('dragging');pause()});
+  window.addEventListener('pointermove',e=>{if(down){box.scrollLeft=startScroll-(e.clientX-startX)}});
+  window.addEventListener('pointerup',()=>{down=false;box.classList.remove('dragging')});
+  box.addEventListener('scroll',()=>{if(!auto)pos=box.scrollLeft;const half=track.scrollWidth/2;if(box.scrollLeft>=half){box.scrollLeft-=half;pos=box.scrollLeft}});
+  (function step(){ if(auto){pos+=0.5;box.scrollLeft=pos} requestAnimationFrame(step) })();
+})();
+
 // Reveal al hacer scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
@@ -489,11 +539,17 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   });
 });
 
-// Tracking del clic al botón de agendar (evento de intención, NO de optimización).
-// La reserva confirmada (Schedule) se enviará desde el webhook de Cal.com cuando haya Pixel.
-document.querySelectorAll('.js-agenda').forEach(a=>a.addEventListener('click',()=>{
-  if(typeof fbq==='function') fbq('trackCustom','interesado_reunion');
-}));
+// Tracking: clic a agendar = intención (evento custom). La reserva confirmada (Schedule) llega por el webhook de Cal.com.
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a'); if(!a||!a.href) return;
+  if(a.href.indexOf('cal.com')>-1) trackBoth('interesado_reunion',{content_name:'Agendar videollamada'});
+  if(a.href.indexOf('wa.me')>-1||a.href.indexOf('api.whatsapp.com')>-1) trackBoth('Contact');
+});
+// ViewContent: llegó al portafolio (pasó de la portada a mirar el trabajo)
+(function(){var s=document.getElementById('portafolio');if(!s)return;
+  var o=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){trackBoth('ViewContent',{content_name:'Portafolio'});o.disconnect()}})},{threshold:.3});o.observe(s)})();
+// Videos: alguien dio play
+document.querySelectorAll('.yt').forEach(function(b){b.addEventListener('click',function(){trackBoth('vio_video',{content_name:b.getAttribute('aria-label')})})});
 </script>
 </body>
 </html>

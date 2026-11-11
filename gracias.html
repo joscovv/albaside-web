@@ -7,7 +7,28 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="https://res.cloudinary.com/f3h66ynr/image/upload/c_pad,w_96,h_96,b_rgb:F6F2EC,f_png/logo_negro">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
-<!-- META PIXEL: pendiente. Pegar aquí el mismo código base de index.html -->
+<!-- META PIXEL + CAPI (deduplicados con event_id) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('set','autoConfig',false,'2263785428352764');
+fbq('init','2263785428352764');
+var STD_EVENTS=['PageView','ViewContent','Contact','Lead','Schedule','InitiateCheckout','Purchase','CustomizeProduct'];
+function makeEventId(p){return p+'_'+Date.now()+'_'+Math.random().toString(36).slice(2,10)}
+function getCookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?m[2]:null}
+function sendCapiEvent(name,id,params){try{fetch('/.netlify/functions/capi',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
+  body:JSON.stringify({event_name:name,event_id:id,event_source_url:location.href,fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),custom_data:params||{}})}).catch(function(){})}catch(e){}}
+function trackBoth(name,params){var id=makeEventId(name.toLowerCase());
+  fbq(STD_EVENTS.indexOf(name)>-1?'track':'trackCustom',name,params||{},{eventID:id});sendCapiEvent(name,id,params)}
+trackBoth('PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2263785428352764&ev=PageView&noscript=1"/></noscript>
 <style>
 :root{--bg:#F6F2EC;--ink:#1C1A17;--accent:#5F6B3C;--accent-2:#4C5730;--muted:#6E655D}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -36,7 +57,8 @@ p{color:var(--muted);margin-top:16px;font-size:18px}
   <span class="micro">Se abre WhatsApp con un mensaje listo para enviar</span>
 </main>
 <script>
-document.querySelector('.btn').addEventListener('click',()=>{ if(typeof fbq==='function') fbq('track','Contact'); });
+document.querySelector('.btn').addEventListener('click',function(){ trackBoth('Contact'); });
+trackBoth('llego_gracias_reunion');
 </script>
 </body>
 </html>
