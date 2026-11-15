@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CRM · Albaside Studio</title>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--bg-alt:#F7F4EF;--ink:#2B2926;--text:#4A4743;--accent:#5F6B3C;--accent-2:#4C5730;--muted:#857E75;--line:rgba(43,41,38,.14);--red:#9B3B2E;--red-bg:#F6E5E1;--ok-bg:#E7EADB;--serif:'Cormorant',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:300;color:var(--text);background:var(--bg-alt);line-height:1.5;font-size:14px}
+a{color:inherit}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top-in{max-width:1400px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top h1{font-family:var(--serif);font-weight:300;font-size:30px;color:var(--ink);margin-right:auto}
+.top h1 em{color:var(--accent)}
+.top nav a{font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--muted);margin-left:14px}
+.top nav a:hover{color:var(--ink)}
+.wrap{max-width:1400px;margin:0 auto;padding:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:400 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--ink);color:#fff}
+.btn-accent{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.btn-sm{padding:7px 10px;font-size:10px;letter-spacing:.14em}
+.btn-danger{border-color:var(--red);color:var(--red)}
+.btn-danger:hover{background:var(--red);color:#fff}
+.login{max-width:460px;margin:80px auto;background:#fff;padding:32px}
+.login h2{font-family:var(--serif);font-weight:300;font-size:30px;color:var(--ink);margin-bottom:6px}
+.login p{color:var(--muted);margin-bottom:18px}
+.login form{display:flex;gap:10px}
+input,select,textarea{font:inherit;color:var(--ink);padding:10px 12px;border:1px solid var(--line);background:#fff;width:100%;border-radius:0}
+textarea{min-height:110px;resize:vertical}
+.msg{margin:10px 0;color:var(--accent);min-height:1em}
+.msg.err{color:var(--red)}
+
+/* Resumen */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:900px){.stats{grid-template-columns:repeat(5,1fr)}}
+.stat{background:#fff;padding:16px 18px}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.1;color:var(--ink)}
+.stat span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.stat.alert b{color:var(--red)}
+
+.panels{display:grid;gap:10px;margin-top:10px}
+@media(min-width:900px){.panels{grid-template-columns:1fr 1fr}}
+.panel{background:#fff;padding:16px 18px}
+.panel h3{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:10px}
+.panel ul{list-style:none}
+.panel li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line);cursor:pointer}
+.panel li:first-child{border-top:0}
+.panel li:hover b{color:var(--accent)}
+.panel li b{font-weight:400;color:var(--ink)}
+.panel .none{color:var(--muted);font-style:italic}
+
+/* Barra de filtros */
+.bar{display:flex;gap:10px;margin:22px 0 12px;flex-wrap:wrap;align-items:center}
+.bar input{max-width:320px}
+.bar label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer}
+.bar label input{width:auto}
+
+/* Tablero */
+.board{display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;align-items:flex-start}
+.col{flex:0 0 260px;background:#EFEAE2;padding:10px}
+.col h4{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--ink);display:flex;justify-content:space-between;margin:2px 2px 10px}
+.col h4 span{color:var(--muted);font-weight:400}
+.card{background:#fff;padding:12px 12px 10px;margin-bottom:8px;cursor:pointer;border-left:3px solid transparent}
+.card:hover{box-shadow:0 6px 18px -12px rgba(43,41,38,.5)}
+.card.late{border-left-color:var(--red)}
+.card .n{font-family:var(--serif);font-size:20px;line-height:1.2;color:var(--ink)}
+.card .d{font-size:12px;color:var(--muted);margin-top:2px}
+.card .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:10px;letter-spacing:.06em;padding:3px 7px;background:var(--bg-alt);color:var(--text)}
+.tag.red{background:var(--red-bg);color:var(--red)}
+.tag.ok{background:var(--ok-bg);color:var(--accent-2)}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:6px}
+.card .next{font-size:11px;color:var(--text)}
+.card .adv{border:1px solid var(--line);background:#fff;cursor:pointer;padding:4px 8px;font-size:12px;color:var(--ink)}
+.card .adv:hover{background:var(--ink);color:#fff}
+.empty-col{font-size:12px;color:var(--muted);font-style:italic;padding:4px 2px 8px}
+
+/* Ficha */
+.modal{position:fixed;inset:0;background:rgba(43,41,38,.45);display:none;align-items:flex-start;justify-content:center;z-index:50;overflow-y:auto;padding:30px 12px}
+.modal.open{display:flex}
+.sheet{background:#fff;width:100%;max-width:760px;padding:26px 24px}
+.sheet h2{font-family:var(--serif);font-weight:300;font-size:30px;color:var(--ink);margin-bottom:4px}
+.sheet .sub{color:var(--muted);font-size:12px;margin-bottom:12px}
+fieldset{border:0;border-top:1px solid var(--line);padding:16px 0 4px;margin-top:10px}
+legend{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);padding-right:10px}
+.grid{display:grid;gap:12px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}.grid .full{grid-column:1/-1}}
+.f label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.f .hint{font-size:11px;color:var(--muted);margin-top:4px}
+.checks{display:flex;gap:18px;flex-wrap:wrap}
+.checks label{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer}
+.checks input{width:auto}
+.money{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:4px}
+.money b{color:var(--ink);font-weight:500}
+.actions{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:22px}
+.actions div{display:flex;gap:10px;flex-wrap:wrap}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<header class="top" id="top" hidden>
+  <div class="top-in">
+    <h1>CRM <em>Albaside</em></h1>
+    <button class="btn btn-accent" id="nueva">+ Nueva pareja</button>
+    <nav><a href="/admin-testimonios.html">Testimonios</a><a href="/" target="_blank" rel="noopener">Ver web</a><a href="#" id="salir">Salir</a></nav>
+  </div>
+</header>
+
+<div class="login" id="login">
+  <h2>CRM <em style="color:var(--accent)">Albaside</em></h2>
+  <p>Entra con la misma clave del panel de testimonios.</p>
+  <form id="loginForm"><input type="password" id="key" placeholder="Clave de administración" autocomplete="current-password"><button class="btn btn-accent">Entrar</button></form>
+  <p class="msg" id="loginMsg"></p>
+</div>
+
+<main class="wrap" id="app" hidden>
+  <p class="msg" id="msg"></p>
+  <section class="stats" id="stats"></section>
+  <section class="panels">
+    <div class="panel"><h3>Seguimientos para hoy y atrasados</h3><ul id="pend"></ul></div>
+    <div class="panel"><h3>Próximas bodas y entregas</h3><ul id="prox"></ul></div>
+  </section>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Buscar por nombre, lugar, correo…">
+    <label><input type="checkbox" id="verCerradas"> Mostrar entregados y perdidos</label>
+  </div>
+  <section class="board" id="board"></section>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <form class="sheet" id="ficha">
+    <h2 id="fTitle">Nueva pareja</h2>
+    <p class="sub" id="fSub"></p>
+    <div class="quick" id="quick"></div>
+    <input type="hidden" name="id">
+
+    <fieldset><legend>Contacto y boda</legend>
+      <div class="grid">
+        <div class="f full"><label>Nombres</label><input name="nombres" placeholder="Ej. Ana & Luis" required></div>
+        <div class="f"><label>WhatsApp</label><input name="whatsapp" placeholder="+51 …"></div>
+        <div class="f"><label>Correo</label><input name="email" type="email"></div>
+        <div class="f"><label>Fecha de la boda</label><input name="fechaBoda" type="date"></div>
+        <div class="f"><label>Lugar</label><input name="lugar" placeholder="Cusco, Valle Sagrado…"></div>
+        <div class="f"><label>¿De dónde llegaron?</label>
+          <select name="origen"><option value="">—</option><option>Instagram</option><option>Facebook</option><option>Google</option><option>Web (Cal.com)</option><option>WhatsApp</option><option>Recomendación</option><option>Wedding planner</option><option>Otro</option></select></div>
+        <div class="f"><label>Etapa</label><select name="etapa" id="etapaSel"></select></div>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>Dinero</legend>
+      <div class="grid">
+        <div class="f"><label>Paquete (monto total)</label><input name="paquete" type="number" min="0" step="1" inputmode="decimal"></div>
+        <div class="f"><label>Moneda</label><select name="moneda"><option>USD</option><option>PEN</option></select></div>
+        <div class="f"><label>Total pagado hasta hoy</label><input name="pagado" type="number" min="0" step="1" inputmode="decimal"></div>
+        <div class="f checks" style="align-items:flex-end"><label><input type="checkbox" name="anticipoPagado"> Anticipo del 20% pagado</label></div>
+        <div class="f full money" id="money"></div>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>Seguimiento</legend>
+      <div class="grid">
+        <div class="f"><label>Próxima acción</label><input name="proximaAccion" placeholder="Enviar propuesta, cobrar saldo…"></div>
+        <div class="f"><label>Fecha de la próxima acción</label><input name="proximaFecha" type="date"></div>
+        <div class="f full"><label>Notas</label><textarea name="notas" placeholder="Lo que conversaron, gustos, horarios, contactos del wedding planner…"></textarea></div>
+        <div class="f full hint" id="llamadaInfo"></div>
+      </div>
+    </fieldset>
+
+    <fieldset><legend>Entrega</legend>
+      <div class="grid">
+        <div class="f"><label>Fecha límite de entrega</label><input name="entregaLimite" type="date"><p class="hint">Si la dejas vacía, se calcula sola: 6 semanas después de la boda.</p></div>
+        <div class="f checks" style="flex-direction:column;align-items:flex-start;justify-content:center"><label><input type="checkbox" name="entregado"> Fotos y película entregadas</label><label><input type="checkbox" name="testimonioPedido"> Ya les pedimos el testimonio</label></div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="button" class="btn btn-danger" id="borrar">Borrar</button>
+      <div><button type="button" class="btn" id="cerrar">Cancelar</button><button class="btn btn-accent">Guardar</button></div>
+    </div>
+  </form>
+</div>
+
+<script>
+var KEY='', DATA=[], ETAPAS=["Consulta","Videollamada agendada","Propuesta enviada","Reservó (20%)","Boda realizada","En edición","Entregado","Perdido"];
+var CERRADAS=["Entregado","Perdido"];
+try{KEY=sessionStorage.getItem('albaside_admin')||''}catch(e){}
+var $=function(s){return document.querySelector(s)};
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function hoy(){var d=new Date();d.setHours(0,0,0,0);return d}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function pd(s){if(!s)return null;var p=s.slice(0,10).split('-');return new Date(+p[0],+p[1]-1,+p[2])}
+function fmt(s){var d=pd(s);return d?d.toLocaleDateString('es-PE',{day:'numeric',month:'short',year:'numeric'}):''}
+function dias(s){var d=pd(s);return d?Math.round((d-hoy())/864e5):null}
+function limite(p){if(p.entregaLimite)return p.entregaLimite;var d=pd(p.fechaBoda);if(!d)return '';d.setDate(d.getDate()+42);return iso(d)}
+function money(n,m){if(n==null||n==='')return '—';return (m==='PEN'?'S/ ':'US$ ')+Number(n).toLocaleString('es-PE')}
+function saldo(p){return p.paquete!=null?Math.max(0,(p.paquete||0)-(p.pagado||0)):null}
+function atrasado(p){return CERRADAS.indexOf(p.etapa)<0&&p.proximaFecha&&dias(p.proximaFecha)<=0}
+function msg(t,err){var m=$('#msg');m.textContent=t||'';m.className='msg'+(err?' err':'')}
+
+function api(method,body){
+  return fetch('/api/crm',{method:method,headers:{'Content-Type':'application/json','x-admin-key':KEY},body:body?JSON.stringify(body):undefined})
+    .then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||'Error');return d})});
+}
+function load(){
+  return api('GET').then(function(d){
+    try{sessionStorage.setItem('albaside_admin',KEY)}catch(e){}
+    DATA=d.parejas||[]; if(d.etapas)ETAPAS=d.etapas;
+    $('#login').hidden=true;$('#app').hidden=false;$('#top').hidden=false;render();
+  }).catch(function(e){$('#login').hidden=false;$('#app').hidden=true;$('#top').hidden=true;$('#loginMsg').textContent=e.message;$('#loginMsg').className='msg err'});
+}
+
+function render(){
+  var activas=DATA.filter(function(p){return CERRADAS.indexOf(p.etapa)<0});
+  var idx=function(e){return ETAPAS.indexOf(e)};
+  var reservadas=DATA.filter(function(p){return idx(p.etapa)>=3&&p.etapa!=='Perdido'});
+  var anio=String(new Date().getFullYear());
+  var porCobrar=reservadas.reduce(function(s,p){return s+(p.moneda==='PEN'?0:(saldo(p)||0))},0);
+  var cobrado=DATA.filter(function(p){return (p.fechaBoda||'').slice(0,4)===anio&&p.moneda!=='PEN'}).reduce(function(s,p){return s+(p.pagado||0)},0);
+  var late=DATA.filter(atrasado);
+  $('#stats').innerHTML=
+    '<div class="stat"><b>'+activas.length+'</b><span>Parejas activas</span></div>'+
+    '<div class="stat"><b>'+reservadas.filter(function(p){return dias(p.fechaBoda)>=0}).length+'</b><span>Bodas reservadas por venir</span></div>'+
+    '<div class="stat"><b>'+money(cobrado)+'</b><span>Cobrado · bodas '+anio+'</span></div>'+
+    '<div class="stat"><b>'+money(porCobrar)+'</b><span>Saldo por cobrar</span></div>'+
+    '<div class="stat'+(late.length?' alert':'')+'"><b>'+late.length+'</b><span>Seguimientos pendientes</span></div>';
+
+  late.sort(function(a,b){return a.proximaFecha<b.proximaFecha?-1:1});
+  $('#pend').innerHTML=late.length?late.map(function(p){var d=dias(p.proximaFecha);
+    return '<li data-id="'+esc(p.id)+'"><span><b>'+esc(p.nombres)+'</b> · '+esc(p.proximaAccion||'Escribirles')+'</span><span class="tag '+(d<0?'red':'')+'">'+(d===0?'Hoy':'Hace '+(-d)+' d')+'</span></li>'}).join(''):'<li class="none">Nada pendiente. ✓</li>';
+
+  var prox=[];
+  DATA.forEach(function(p){
+    if(p.etapa==='Perdido')return;
+    var db=dias(p.fechaBoda);
+    if(idx(p.etapa)>=3&&db!=null&&db>=0&&db<=60)prox.push({p:p,d:db,t:'Boda '+(db===0?'hoy':'en '+db+' d')});
+    var lim=limite(p),dl=dias(lim);
+    if(!p.entregado&&p.etapa!=='Entregado'&&db!=null&&db<0&&dl!=null&&dl<=14)prox.push({p:p,d:dl,t:dl<0?'Entrega atrasada '+(-dl)+' d':'Entregar en '+dl+' d',red:dl<0});
+    if((p.entregado||p.etapa==='Entregado')&&!p.testimonioPedido)prox.push({p:p,d:999,t:'Pedir testimonio'});
+  });
+  prox.sort(function(a,b){return a.d-b.d});
+  $('#prox').innerHTML=prox.length?prox.slice(0,8).map(function(x){return '<li data-id="'+esc(x.p.id)+'"><span><b>'+esc(x.p.nombres)+'</b>'+(x.p.lugar?' · '+esc(x.p.lugar):'')+'</span><span class="tag '+(x.red?'red':'ok')+'">'+x.t+'</span></li>'}).join(''):'<li class="none">Sin bodas ni entregas en los próximos días.</li>';
+
+  var q=$('#q').value.trim().toLowerCase(), ver=$('#verCerradas').checked;
+  var cols=ETAPAS.filter(function(e){return ver||CERRADAS.indexOf(e)<0});
+  $('#board').innerHTML=cols.map(function(e){
+    var items=DATA.filter(function(p){return p.etapa===e&&(!q||[p.nombres,p.lugar,p.email,p.whatsapp,p.notas].join(' ').toLowerCase().indexOf(q)>=0)})
+      .sort(function(a,b){return (a.fechaBoda||'9')<(b.fechaBoda||'9')?-1:1});
+    return '<div class="col"><h4>'+esc(e)+' <span>'+items.length+'</span></h4>'+(items.length?items.map(card).join(''):'<p class="empty-col">Vacío</p>')+'</div>';
+  }).join('');
+}
+function card(p){
+  var tags=[], s=saldo(p), i=ETAPAS.indexOf(p.etapa);
+  if(p.origen)tags.push('<span class="tag">'+esc(p.origen)+'</span>');
+  if(p.paquete!=null)tags.push('<span class="tag">'+money(p.paquete,p.moneda)+'</span>');
+  if(i>=3&&i<7){tags.push(p.anticipoPagado?'<span class="tag ok">20% pagado</span>':'<span class="tag red">Falta 20%</span>');if(s)tags.push('<span class="tag">Saldo '+money(s,p.moneda)+'</span>')}
+  var next=p.proximaFecha?(esc(p.proximaAccion||'Seguimiento')+' · '+fmt(p.proximaFecha)):'';
+  var sig=i>=0&&i<6?'<button type="button" class="adv" data-adv="'+esc(p.id)+'" title="Pasar a '+esc(ETAPAS[i+1])+'">→</button>':'';
+  return '<div class="card'+(atrasado(p)?' late':'')+'" data-id="'+esc(p.id)+'"><div class="n">'+esc(p.nombres)+'</div>'+
+    '<div class="d">'+[p.fechaBoda?fmt(p.fechaBoda):'Sin fecha',p.lugar].filter(Boolean).map(esc).join(' · ')+'</div>'+
+    (tags.length?'<div class="tags">'+tags.join('')+'</div>':'')+
+    '<div class="row"><span class="next">'+next+'</span>'+sig+'</div></div>';
+}
+
+/* Ficha */
+var F=$('#ficha');
+$('#etapaSel').innerHTML=ETAPAS.map(function(e){return '<option>'+esc(e)+'</option>'}).join('');
+function abrir(p){
+  p=p||{etapa:'Consulta',moneda:'USD'};
+  F.reset();
+  ['id','nombres','whatsapp','email','fechaBoda','lugar','origen','etapa','paquete','moneda','pagado','proximaAccion','proximaFecha','notas','entregaLimite'].forEach(function(k){if(F[k])F[k].value=p[k]==null?'':p[k]});
+  if(!p.moneda)F.moneda.value='USD';
+  ['anticipoPagado','entregado','testimonioPedido'].forEach(function(k){F[k].checked=!!p[k]});
+  $('#fTitle').textContent=p.id?p.nombres:'Nueva pareja';
+  $('#fSub').textContent=p.id?('Creada '+fmt(p.creado)+(p.actualizado?' · actualizada '+fmt(p.actualizado):'')):'';
+  $('#llamadaInfo').textContent=p.llamada?'Videollamada reservada en Cal.com: '+new Date(p.llamada).toLocaleString('es-PE',{dateStyle:'full',timeStyle:'short'}):'';
+  var wa=(p.whatsapp||'').replace(/\D/g,'');
+  $('#quick').innerHTML=(wa?'<a class="btn btn-sm" target="_blank" rel="noopener" href="https://wa.me/'+wa+'">WhatsApp</a>':'')+(p.email?'<a class="btn btn-sm" href="mailto:'+esc(p.email)+'">Correo</a>':'');
+  $('#borrar').style.visibility=p.id?'visible':'hidden';
+  calc();$('#modal').classList.add('open');F.nombres.focus();
+}
+function cerrar(){$('#modal').classList.remove('open')}
+function calc(){
+  var paq=parseFloat(F.paquete.value),pag=parseFloat(F.pagado.value)||0,m=F.moneda.value;
+  $('#money').innerHTML=isNaN(paq)?'':'<span>Anticipo 20%: <b>'+money(Math.round(paq*.2),m)+'</b></span><span>Saldo: <b>'+money(Math.max(0,paq-pag),m)+'</b></span>';
+  if(!F.entregaLimite.value&&F.fechaBoda.value){var d=pd(F.fechaBoda.value);d.setDate(d.getDate()+42);F.entregaLimite.placeholder=iso(d)}
+}
+F.addEventListener('input',calc);
+F.addEventListener('submit',function(e){
+  e.preventDefault();
+  var p={};['id','nombres','whatsapp','email','fechaBoda','lugar','origen','etapa','paquete','moneda','pagado','proximaAccion','proximaFecha','notas','entregaLimite'].forEach(function(k){p[k]=F[k].value});
+  ['anticipoPagado','entregado','testimonioPedido'].forEach(function(k){p[k]=F[k].checked});
+  if(!p.id)delete p.id;
+  msg('Guardando…');
+  api('POST',{accion:'guardar',pareja:p}).then(function(r){
+    var i=DATA.findIndex(function(x){return x.id===r.pareja.id});if(i>=0)DATA[i]=r.pareja;else DATA.push(r.pareja);
+    cerrar();render();msg('Guardado.');setTimeout(function(){msg('')},2500);
+  }).catch(function(err){msg(err.message,true);alert(err.message)});
+});
+$('#borrar').onclick=function(){
+  var id=F.id.value,n=F.nombres.value;if(!id)return;
+  if(!confirm('¿Borrar a '+n+' del CRM? No se puede deshacer.'))return;
+  api('POST',{accion:'borrar',id:id}).then(function(){DATA=DATA.filter(function(x){return x.id!==id});cerrar();render();msg('Borrado.')}).catch(function(err){msg(err.message,true)});
+};
+$('#cerrar').onclick=cerrar;
+$('#modal').addEventListener('click',function(e){if(e.target.id==='modal')cerrar()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+$('#nueva').onclick=function(){abrir()};
+$('#q').addEventListener('input',render);
+$('#verCerradas').addEventListener('change',render);
+document.addEventListener('click',function(e){
+  var adv=e.target.closest('[data-adv]');
+  if(adv){e.stopPropagation();var p=DATA.find(function(x){return x.id===adv.dataset.adv});var i=ETAPAS.indexOf(p.etapa);
+    api('POST',{accion:'guardar',pareja:{id:p.id,etapa:ETAPAS[i+1]}}).then(function(r){Object.assign(p,r.pareja);render();msg(p.nombres+' → '+p.etapa)}).catch(function(err){msg(err.message,true)});return}
+  var el=e.target.closest('[data-id]');
+  if(el&&!$('#modal').classList.contains('open')){var p2=DATA.find(function(x){return x.id===el.dataset.id});if(p2)abrir(p2)}
+});
+$('#loginForm').addEventListener('submit',function(e){e.preventDefault();KEY=$('#key').value.trim();if(KEY)load()});
+$('#salir').onclick=function(e){e.preventDefault();try{sessionStorage.removeItem('albaside_admin')}catch(x){}KEY='';location.reload()};
+if(KEY)load();
+</script>
+</body>
+</html>

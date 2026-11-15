@@ -10,7 +10,10 @@
 <title>Fotógrafo y Videógrafo de Bodas en Cusco | Albaside Studio</title>
 <meta name="description" content="Fotografía y video de bodas en Cusco, Valle Sagrado y Machu Picchu. +180 bodas en 8 años. Agenda una videollamada gratis con Albaside Studio.">
 <link rel="canonical" href="https://albaside.com/">
-<link rel="icon" type="image/png" href="https://res.cloudinary.com/f3h66ynr/image/upload/c_pad,w_96,h_96,b_rgb:F6F2EC,f_png/logo_negro">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 
 <!-- OPEN GRAPH -->
 <meta property="og:type" content="website">
@@ -358,6 +361,94 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
 .ig-tile:hover img{transform:scale(1.04)}
 .ig-tile:hover::after{opacity:1}
 
+/* Antes y después */
+.ba{position:relative;max-width:1100px;margin:0 auto;aspect-ratio:3/2;overflow:hidden;background:#1d1b19;user-select:none;touch-action:pan-y}
+@media(max-width:700px){.ba{aspect-ratio:4/5}}
+.ba-img,.ba-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-before img{filter:brightness(2.35) contrast(.72) saturate(.75)}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:1px;background:#fff;transform:translateX(-.5px);pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.25)}
+.ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.95);color:var(--ink);display:grid;place-items:center;font:400 15px/1 var(--sans);letter-spacing:.1em;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba-tag{position:absolute;top:18px;padding:8px 12px;background:rgba(43,41,38,.55);color:#fff;font:400 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;pointer-events:none;backdrop-filter:blur(4px)}
+.ba-tag-l{left:18px}.ba-tag-r{right:18px}
+
+/* Conversación en celular */
+.chat-grid{display:grid;gap:56px;align-items:center}
+@media(min-width:900px){.chat-grid{grid-template-columns:1fr 1fr;gap:80px}}
+.chat-copy .lead{margin-top:22px}
+.phone-wrap{display:flex;flex-direction:column;align-items:center}
+.phone{position:relative;width:min(330px,86vw);aspect-ratio:9/19.5;border-radius:54px;padding:11px;background:linear-gradient(145deg,#8d8a86,#55524f 45%,#7d7a76);box-shadow:0 40px 80px -30px rgba(43,41,38,.55),inset 0 0 0 1.5px rgba(255,255,255,.25)}
+.phone::before{content:"";position:absolute;inset:4px;border-radius:50px;background:#0c0c0c}
+.phone-btn{position:absolute;width:4px;border-radius:2px;background:#6c6966}
+.phone-btn.b1{left:-3px;top:17%;height:5%}.phone-btn.b2{left:-3px;top:25%;height:9%}.phone-btn.b3{left:-3px;top:36%;height:9%}.phone-btn.b4{right:-3px;top:28%;height:13%}
+.screen{position:relative;height:100%;border-radius:44px;overflow:hidden;background:#F4EFE7;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',var(--sans);font-weight:400}
+.status{display:flex;justify-content:space-between;align-items:center;padding:14px 26px 6px;font-size:14px;font-weight:600;color:#111;background:#fff}
+.island{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:34%;height:30px;border-radius:20px;background:#000}
+.sicons{display:flex;gap:5px;align-items:center}
+.sicons i{display:block;background:#111}
+.sig{width:16px;height:10px;clip-path:polygon(0 100%,100% 0,100% 100%)}
+.wifi{width:14px;height:10px;border-radius:14px 14px 0 0;clip-path:polygon(50% 100%,0 0,100% 0)}
+.bat{width:22px;height:11px;border-radius:3px;background:#111!important;box-shadow:inset 0 0 0 1.5px #111}
+.chat-head{display:flex;align-items:center;gap:10px;padding:8px 14px 10px;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
+.chat-head .back{font-size:28px;line-height:1;color:var(--accent);margin-right:2px}
+.chat-head img{width:36px;height:36px;border-radius:50%}
+.chat-head b{display:block;font-size:14px;color:#111;font-weight:600}
+.chat-head small{display:block;font-size:11px;color:#7a7a7a}
+.chat-body{flex:1;overflow:hidden;padding:12px 10px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+.day{align-self:center;font-size:10px;color:#7a7a7a;background:rgba(255,255,255,.8);padding:3px 10px;border-radius:10px;margin-bottom:4px}
+.msg-b{max-width:80%;padding:7px 10px 6px;border-radius:16px;font-size:13px;line-height:1.35;color:#111;position:relative;animation:pop .35s var(--ease) both;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.msg-b small{display:block;text-align:right;font-size:9.5px;color:rgba(0,0,0,.45);margin-top:2px}
+.msg-b.me{align-self:flex-end;background:#DCE3C8;border-bottom-right-radius:5px}
+.msg-b.them{align-self:flex-start;background:#fff;border-bottom-left-radius:5px}
+.msg-b .lnk{display:block;margin-top:6px;padding:8px 10px;border-radius:10px;background:#F4EFE7;font-size:12px;color:var(--accent-2);text-decoration:none}
+.msg-b .lnk b{display:block;color:#111;font-weight:600}
+.typing{align-self:flex-start;background:#fff;border-radius:16px;padding:10px 12px;display:flex;gap:4px;animation:pop .3s var(--ease) both}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9a9a9a;animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.chat-input{display:flex;justify-content:space-between;align-items:center;margin:6px 10px 6px;padding:9px 14px;background:#fff;border-radius:20px;font-size:13px;color:#9a9a9a}
+.chat-input i{font-style:normal;color:var(--accent)}
+.home-bar{width:36%;height:5px;border-radius:3px;background:#111;margin:4px auto 9px}
+.replay{margin-top:22px;background:none;border:0;cursor:pointer;font:400 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.replay:hover{color:var(--ink)}
+
+/* Reel vertical */
+.reel-grid{display:grid;gap:56px;align-items:center}
+@media(min-width:900px){.reel-grid{grid-template-columns:1fr 1fr;gap:80px}.reel-wrap{order:-1}}
+.reel-copy .lead{margin-top:22px}
+.reel-wrap{display:flex;justify-content:center}
+.reel{position:relative;width:min(360px,86vw);aspect-ratio:9/16;overflow:hidden;background:#1d1b19;box-shadow:0 40px 80px -36px rgba(43,41,38,.55)}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.reel-sound{position:absolute;left:14px;bottom:14px;padding:10px 14px;border:1px solid rgba(255,255,255,.8);background:rgba(20,18,16,.35);color:#fff;font:400 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(4px)}
+.reel-sound:hover{background:#fff;color:var(--ink)}
+
+/* Escríbenos: animación */
+#conversacion{position:relative;overflow:hidden}
+.phone-wrap{position:relative}
+.phone-wrap::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(95,107,60,.22),rgba(95,107,60,0) 65%);animation:glow 6s ease-in-out infinite;pointer-events:none}
+@keyframes glow{0%,100%{transform:translate(-50%,-50%) scale(.9);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.08);opacity:1}}
+.phone-wrap.reveal{transform:translateY(60px) rotate(-6deg);transition:opacity 1.2s var(--ease),transform 1.4s var(--ease)}
+.phone-wrap.reveal.in-view{transform:none}
+.phone-wrap.in-view .phone{animation:float 6s ease-in-out 1.4s infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(.6deg)}}
+.chat-copy.reveal>*{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.chat-copy.reveal{opacity:1;transform:none}
+.chat-copy.in-view>*{opacity:1;transform:none}
+.chat-copy.in-view>*:nth-child(2){transition-delay:.15s}
+.chat-copy.in-view>*:nth-child(3){transition-delay:.3s}
+.chat-copy.in-view>*:nth-child(4){transition-delay:.45s}
+.chat-copy h2 em{background:linear-gradient(transparent 88%,rgba(95,107,60,.35) 88%) no-repeat 0 0/0% 100%;transition:background-size 1.2s var(--ease) .9s}
+.chat-copy.in-view h2 em{background-size:100% 100%}
+.chat-pings{position:absolute;inset:0;pointer-events:none}
+.ping{position:absolute;padding:8px 12px;background:#fff;border-radius:14px;font:400 12px/1.2 -apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;color:#111;box-shadow:0 12px 30px -14px rgba(43,41,38,.45);opacity:0}
+.phone-wrap.in-view .ping{animation:ping 7s ease-in-out infinite}
+.ping.p1{left:-6%;top:22%}.ping.p2{right:-4%;top:58%;animation-delay:2.3s!important}.ping.p3{left:2%;bottom:14%;animation-delay:4.6s!important}
+@keyframes ping{0%{opacity:0;transform:translateY(10px) scale(.95)}10%,35%{opacity:1;transform:none}48%,100%{opacity:0;transform:translateY(-12px)}}
+@media(max-width:600px){.ping{display:none}}
+@media (prefers-reduced-motion: reduce){.phone-wrap::before,.phone-wrap.in-view .phone,.phone-wrap.in-view .ping{animation:none}.chat-copy.reveal>*{opacity:1;transform:none}}
+
 /* Aparición al hacer scroll */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in-view{opacity:1;transform:none}
@@ -480,6 +571,45 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
   </div>
 </section>
 
+<!-- 8.5 · REEL: ¿Qué pasa si un fotógrafo y una videógrafa se casan? -->
+<section class="bg-alt" id="reel">
+  <div class="wrap reel-grid">
+    <div class="reel-copy reveal">
+      <span class="eyebrow">Detrás de cámaras</span>
+      <h2>¿Qué pasa si un fotógrafo y una videógrafa <em>se casan?</em></h2>
+      <p class="lead">Dale play y míranos trabajar en una boda real, desde adentro.</p>
+      <div class="cta-block">
+        <a class="btn" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener">Más en Instagram · @albaside</a>
+      </div>
+    </div>
+    <div class="reel-wrap reveal">
+      <div class="reel">
+        <video id="reel-video" src="/media/fotografo-y-videografa.mp4" poster="/media/fotografo-y-videografa.jpg" muted loop playsinline preload="none" width="576" height="1024" aria-label="Video: ¿Qué pasa si un fotógrafo y una videógrafa se casan?"></video>
+        <button type="button" class="reel-sound" id="reel-sound" aria-pressed="false">Activar sonido</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2.5 · ANTES Y DESPUÉS (la misma foto: sobreexpuesta 3 pasos vs. la final) -->
+<section id="edicion">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Antes y después</span>
+      <h2>La magia no está en el filtro, <em>está en la mirada</em></h2>
+      <p class="lead" style="margin-top:20px">Desliza para ver la misma foto: a la izquierda, el archivo sobreexpuesto tres pasos; a la derecha, la imagen final que entregamos.</p>
+    </div>
+    <div class="ba reveal" id="ba" style="--pos:50%">
+      <picture class="ba-img ba-after"><source media="(max-width:700px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_900,h_1125,c_fill,g_auto/DSC04301"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1800/DSC04301" alt="Foto final editada: novios brindando frente a muros coloniales bajo un cielo dramático" width="1800" height="1200" loading="lazy"></picture>
+      <picture class="ba-img ba-before" aria-hidden="true"><source media="(max-width:700px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_900,h_1125,c_fill,g_auto/DSC04301"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1800/DSC04301" alt="" width="1800" height="1200" loading="lazy"></picture>
+      <span class="ba-tag ba-tag-l">Antes · +3 pasos</span>
+      <span class="ba-tag ba-tag-r">Después</span>
+      <div class="ba-line" aria-hidden="true"><span class="ba-knob">‹ ›</span></div>
+      <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Deslizar para comparar antes y después">
+    </div>
+  </div>
+</section>
+
 <!-- 3 · VIDEO -->
 <section class="bg-alt" id="video">
   <div class="wrap reveal">
@@ -530,6 +660,41 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
   </div>
 </section>
 
+<!-- 5.5 · CONVERSACIÓN EN CELULAR (ejemplo de cómo es escribirnos) -->
+<section class="bg-alt" id="conversacion">
+  <div class="wrap chat-grid">
+    <div class="chat-copy reveal">
+      <span class="eyebrow">Escríbenos</span>
+      <h2>Como hablar con <em>una amiga</em> que sabe de bodas</h2>
+      <p class="lead">Sin formularios eternos ni respuestas automáticas. Nos cuentas tu idea, resolvemos tus dudas y, si conectamos, agendamos una videollamada.</p>
+      <div class="cta-block">
+        <a class="btn btn-accent" href="/whatsapp" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        <span class="micro">Así suele empezar una conversación con nosotros.</span>
+      </div>
+    </div>
+    <div class="phone-wrap reveal">
+      <div class="chat-pings" aria-hidden="true"><span class="ping p1">💍 ¡Nos casamos!</span><span class="ping p2">📸 ¿Foto y video?</span><span class="ping p3">🤍 ¡Gracias!</span></div>
+      <div class="phone" role="img" aria-label="Ejemplo de conversación en un celular entre una pareja y Albaside Studio">
+        <div class="phone-btn b1"></div><div class="phone-btn b2"></div><div class="phone-btn b3"></div><div class="phone-btn b4"></div>
+        <div class="screen">
+          <div class="status"><span>9:41</span><span class="island"></span><span class="sicons"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div>
+          <div class="chat-head">
+            <span class="back">‹</span>
+            <img src="/apple-touch-icon.png" alt="" width="36" height="36">
+            <div><b>Albaside Studio</b><small id="chat-status">en línea</small></div>
+          </div>
+          <div class="chat-body" id="chat-body" aria-live="off">
+            <div class="day">Hoy</div>
+          </div>
+          <div class="chat-input"><span>Mensaje</span><i>➤</i></div>
+          <div class="home-bar"></div>
+        </div>
+      </div>
+      <button type="button" class="replay" id="chat-replay" hidden>Ver de nuevo ↺</button>
+    </div>
+  </div>
+</section>
+
 <!-- 6 · PROMESA -->
 <section class="promise">
   <img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2000/DSC08046" loading="lazy" alt="" aria-hidden="true" style="object-position:44% 82%">
@@ -571,29 +736,10 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
   </div>
 </section>
 
-<!-- 8.5 · INSTAGRAM (feed en vivo con Behold; si no hay feed, muestra estas 6 fotos) -->
-<section class="bg-alt" id="instagram">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Instagram</span>
-      <h2><em>@albaside</em></h2>
-    </div>
-    <div class="ig-grid reveal" id="ig-grid">
-      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/IMG_1291" width="600" height="600" loading="lazy" alt="Novia con velo largo bordado frente a un arco de flores blancas"></a>
-      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/DSC04891" width="600" height="600" loading="lazy" alt="Novios en un campo verde con montañas del Valle Sagrado al fondo"></a>
-      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/DSC03474_1" width="600" height="600" loading="lazy" alt="Pedida de mano en Machu Picchu"></a>
-      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/DSC00003" width="600" height="600" loading="lazy" alt="Novios en un mirador frente a la Catedral de Cusco"></a>
-      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/DSC04301" width="600" height="600" loading="lazy" alt="Novios brindando frente a muros coloniales"></a>
-      <a class="ig-tile" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_600,h_600,c_fill,g_auto/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg" width="600" height="600" loading="lazy" alt="Ceremonia al aire libre frente a montañas nevadas de Cusco"></a>
-    </div>
-    <div class="center-cta reveal">
-      <a class="btn" href="https://www.instagram.com/albaside/" target="_blank" rel="noopener">Síguenos en Instagram</a>
-    </div>
-  </div>
-</section>
+
 
 <!-- 10 · PREGUNTAS FRECUENTES -->
-<section id="preguntas">
+<section class="bg-alt" id="preguntas">
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow">Preguntas frecuentes</span>
@@ -610,7 +756,7 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
 </section>
 
 <!-- 10.5 · BLOG -->
-<section class="bg-alt" id="blog">
+<section id="blog">
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow">Blog</span>
@@ -743,18 +889,68 @@ document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',function(
   }).catch(function(){});
 })();
 
-// Instagram en vivo con Behold (behold.so). Pega aquí el ID de tu feed JSON; si queda vacío se ven las fotos fijas.
-var BEHOLD_FEED_ID='';
+// Reel: se reproduce en silencio cuando se ve; botón para activar el sonido
 (function(){
-  var g=document.getElementById('ig-grid'); if(!g||!BEHOLD_FEED_ID) return;
-  var done=false, o=new IntersectionObserver(function(es){ if(done||!es[0].isIntersecting) return; done=true; o.disconnect();
-    fetch('https://feeds.behold.so/'+BEHOLD_FEED_ID).then(function(r){return r.json()}).then(function(d){
-      var ps=(d.posts||[]).slice(0,6); if(!ps.length) return;
-      g.innerHTML=ps.map(function(p){var s=(p.sizes&&p.sizes.medium&&p.sizes.medium.mediaUrl)||p.thumbnailUrl||p.mediaUrl;
-        var alt=(p.altText||p.prunedCaption||'Publicación de Albaside Studio en Instagram').slice(0,140).replace(/"/g,'&quot;');
-        return '<a class="ig-tile" href="'+p.permalink+'" target="_blank" rel="noopener"><img src="'+s+'" alt="'+alt+'" loading="lazy" width="700" height="700"></a>'}).join('');
-    }).catch(function(){});
-  },{rootMargin:'400px'}); o.observe(g);
+  var v=document.getElementById('reel-video'), b=document.getElementById('reel-sound'); if(!v) return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){v.controls=true;v.preload='metadata'}
+  else new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){v.play().catch(function(){v.controls=true})} else v.pause() })},{threshold:.4}).observe(v);
+  b.addEventListener('click',function(){
+    v.muted=!v.muted; if(!v.muted){v.play().catch(function(){})}
+    b.textContent=v.muted?'Activar sonido':'Silenciar'; b.setAttribute('aria-pressed',String(!v.muted));
+    if(!v.muted) try{trackBoth('vio_video',{content_name:'Reel fotógrafo y videógrafa'})}catch(e){}
+  });
+})();
+
+// Antes y después: deslizador
+(function(){
+  var ba=document.getElementById('ba'); if(!ba) return;
+  var r=ba.querySelector('.ba-range');
+  r.addEventListener('input',function(){ba.style.setProperty('--pos',r.value+'%')});
+})();
+
+// Conversación en celular: los mensajes aparecen uno a uno cuando la sección se ve
+(function(){
+  var body=document.getElementById('chat-body'); if(!body) return;
+  var st=document.getElementById('chat-status'), rep=document.getElementById('chat-replay');
+  var M=[
+    ['me','¡Hola! Nos casamos en el Valle Sagrado en septiembre 💍 ¿Tienen la fecha libre?','10:02'],
+    ['them','¡Hola! Qué emoción, felicidades 🤍 Cuéntanos el día exacto y lo revisamos. Solo tomamos 4 bodas por mes.','10:03'],
+    ['me','El 12 de septiembre. ¿Hacen foto y video?','10:03'],
+    ['them','Sí, el mismo equipo hace foto y video, coordinado, para que ese día no tengas dos proveedores distintos.','10:04'],
+    ['me','¿Y en cuánto tiempo entregan?','10:04'],
+    ['them','En 6 semanas tienes tus fotos editadas y tu película.','10:05'],
+    ['me','¿Cómo reservamos? 🙈','10:05'],
+    ['them','Primero una videollamada de 30 min, gratis. Te mostramos bodas completas y te enviamos una propuesta. La fecha se separa con el 20%.','10:06',true],
+    ['me','¡Perfecto, agendamos! 🙌','10:06']
+  ];
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, timers=[], started=false;
+  function add(m){
+    var d=document.createElement('div');d.className='msg-b '+m[0];
+    d.textContent=m[1];
+    if(m[3]){var a=document.createElement('a');a.className='lnk';a.href='https://cal.com/albaside/videollamada';a.target='_blank';a.rel='noopener';a.innerHTML='<b>Agenda tu videollamada</b>albaside.com/agenda';d.appendChild(a)}
+    var t=document.createElement('small');t.textContent=m[2]+(m[0]==='me'?' ✓✓':'');d.appendChild(t);
+    body.appendChild(d);
+    while(body.scrollHeight>body.clientHeight&&body.children.length>2)body.children[1].remove();
+  }
+  function play(){
+    timers.forEach(clearTimeout);timers=[];
+    body.innerHTML='<div class="day">Hoy</div>';rep.hidden=true;
+    if(reduce){M.forEach(add);rep.hidden=false;return}
+    var t=400;
+    M.forEach(function(m,i){
+      if(m[0]==='them'){
+        timers.push(setTimeout(function(){st.textContent='escribiendo…';var ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';body.appendChild(ty)},t));
+        t+=1100;
+        timers.push(setTimeout(function(){var ty=body.querySelector('.typing');if(ty)ty.remove();st.textContent='en línea';add(m)},t));
+      }else{timers.push(setTimeout(function(){add(m)},t))}
+      t+=m[0]==='them'?1300:900;
+    });
+    timers.push(setTimeout(function(){rep.hidden=false},t));
+  }
+  rep.addEventListener('click',play);
+  var o=new IntersectionObserver(function(es){if(es[0].isIntersecting&&!started){started=true;play();o.disconnect()}},{threshold:.35});
+  o.observe(body);
 })();
 
 // Reveal al hacer scroll

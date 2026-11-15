@@ -3,18 +3,21 @@ Allow: /
 Disallow: /gracias.html
 Disallow: /testimonio
 Disallow: /admin-testimonios
+Disallow: /crm
 
 User-agent: GPTBot
 Allow: /
 Disallow: /gracias.html
 Disallow: /testimonio
 Disallow: /admin-testimonios
+Disallow: /crm
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /gracias.html
 Disallow: /testimonio
 Disallow: /admin-testimonios
+Disallow: /crm
 
 User-agent: Google-Extended
 Allow: /
@@ -24,5 +27,6 @@ Allow: /
 Disallow: /gracias.html
 Disallow: /testimonio
 Disallow: /admin-testimonios
+Disallow: /crm
 
 Sitemap: https://albaside.com/sitemap.xml
