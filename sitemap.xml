@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://albaside.com/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://albaside.com/blog/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://albaside.com/blog/en/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -54,5 +54,15 @@
     <loc>https://albaside.com/blog/en/machu-picchu-engagement-photos</loc>
     <lastmod>2026-11-11</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/boda-en-tambo-del-inka</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albaside.com/blog/en/tambo-del-inka-wedding</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>

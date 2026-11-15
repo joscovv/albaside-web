@@ -25,32 +25,97 @@
 <meta property="og:image" content="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_jpg,w_1200,h_630,c_fill,g_auto/DSC04301">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Novios brindando frente a muros coloniales en Cusco">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fotografía y video de bodas en Cusco | Albaside Studio">
 <meta name="twitter:description" content="+180 bodas en Cusco, Valle Sagrado, Machu Picchu y el mundo.">
 <meta name="twitter:image" content="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_jpg,w_1200,h_630,c_fill,g_auto/DSC04301">
 
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" as="image" media="(min-width:768px)" imagesrcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1600/DSC04301 1600w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_2400/DSC04301 2400w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" media="(max-width:767px)" imagesrcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_800/saves_2 800w, https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1200/saves_2 1200w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://res.cloudinary.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- JSON-LD: negocio local -->
+<!-- JSON-LD: negocio, sitio y video -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "name":"Albaside Studio",
-  "description":"Fotografía y video de bodas en Cusco, Valle Sagrado, Machu Picchu, todo el Perú e internacional.",
-  "url":"https://albaside.com/",
-  "image":"https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_jpg,w_1200/DSC04301",
-  "logo":"https://res.cloudinary.com/f3h66ynr/image/upload/f_png,w_600/logo_negro",
-  "telephone":"+51977217281",
-  "priceRange":"Desde USD 1,500",
-  "address":{"@type":"PostalAddress","addressLocality":"Cusco","addressRegion":"Cusco","addressCountry":"PE"},
-  "areaServed":["Cusco","Valle Sagrado","Machu Picchu","Perú","Internacional"],
-  "sameAs":["https://www.instagram.com/albaside/","https://www.facebook.com/AlbaSideCusco"],
-  "knowsAbout":["Fotografía de bodas","Video de bodas","Bodas de destino en Cusco"]
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "ProfessionalService",
+   "@id": "https://albaside.com/#negocio",
+   "name": "Albaside Studio",
+   "description": "Fotografía y video de bodas en Cusco, Valle Sagrado, Machu Picchu, todo el Perú e internacional.",
+   "url": "https://albaside.com/",
+   "image": "https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_jpg,w_1200/DSC04301",
+   "logo": "https://res.cloudinary.com/f3h66ynr/image/upload/f_png,w_600/logo_negro",
+   "telephone": "+51977217281",
+   "priceRange": "Desde USD 1,500",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cusco",
+    "addressRegion": "Cusco",
+    "addressCountry": "PE"
+   },
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -13.5319,
+    "longitude": -71.9675
+   },
+   "areaServed": [
+    "Cusco",
+    "Valle Sagrado",
+    "Machu Picchu",
+    "Perú",
+    "Internacional"
+   ],
+   "sameAs": [
+    "https://www.instagram.com/albaside/",
+    "https://www.facebook.com/AlbaSideCusco"
+   ],
+   "knowsAbout": [
+    "Fotografía de bodas",
+    "Video de bodas",
+    "Bodas de destino en Cusco"
+   ],
+   "knowsLanguage": [
+    "es",
+    "en"
+   ],
+   "makesOffer": {
+    "@type": "Offer",
+    "name": "Fotografía y video de bodas",
+    "priceCurrency": "USD",
+    "price": "1500",
+    "description": "Cobertura de foto y video de boda desde USD 1,500. Entrega en 6 semanas."
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://albaside.com/#web",
+   "url": "https://albaside.com/",
+   "name": "Albaside Studio",
+   "inLanguage": "es",
+   "publisher": {
+    "@id": "https://albaside.com/#negocio"
+   }
+  },
+  {
+   "@type": "VideoObject",
+   "name": "¿Qué pasa si un fotógrafo y una videógrafa se casan?",
+   "description": "Detrás de cámaras de Albaside Studio trabajando en una boda real en Cusco.",
+   "thumbnailUrl": "https://albaside.com/media/fotografo-y-videografa.jpg",
+   "contentUrl": "https://albaside.com/media/fotografo-y-videografa.mp4",
+   "uploadDate": "2026-11-14",
+   "duration": "PT1M19S",
+   "publisher": {
+    "@id": "https://albaside.com/#negocio"
+   }
+  }
+ ]
 }
 </script>
 <!-- JSON-LD: preguntas frecuentes (mismo texto que el acordeón) -->
@@ -774,10 +839,10 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
       <h2>Guías para <em>tu boda en Cusco</em></h2>
     </div>
     <div class="post-grid reveal">
+      <a class="post-card" href="/blog/boda-en-tambo-del-inka"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg" alt="Casarte en Tambo del Inka" width="640" height="800" loading="lazy"></div><div><span>Destinos</span><h3>Casarte en Tambo del Inka: lo que debes saber</h3><p>Espacios, luz, traslados y consejos para tu foto y video.</p><span class="read">Leer más</span></div></a>
       <a class="post-card" href="/blog/cuanto-cuesta-fotografo-de-bodas-en-cusco"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/DSC04301" alt="¿Cuánto cuesta un fotógrafo de bodas en Cusco?" width="640" height="800" loading="lazy"></div><div><span>Precios</span><h3>¿Cuánto cuesta un fotógrafo de bodas en Cusco?</h3><p>Qué influye en el precio de la foto y el video de tu boda.</p><span class="read">Leer más</span></div></a>
       <a class="post-card" href="/blog/lugares-sesion-pre-boda-cusco"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/DSC00003" alt="Los mejores lugares de Cusco para tu sesión pre boda" width="640" height="800" loading="lazy"></div><div><span>Lugares</span><h3>Los mejores lugares de Cusco para tu sesión pre boda</h3><p>Plaza de Armas, San Blas, calles incas y miradores.</p><span class="read">Leer más</span></div></a>
-      <a class="post-card" href="/blog/boda-en-el-valle-sagrado"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg" alt="Casarte en el Valle Sagrado: guía práctica" width="640" height="800" loading="lazy"></div><div><span>Destinos</span><h3>Casarte en el Valle Sagrado: guía práctica</h3><p>Clima, temporada, traslados y planificación.</p><span class="read">Leer más</span></div></a>
-      <a class="post-card" href="/blog/sesion-de-fotos-en-machu-picchu"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/DSC03474_1" alt="Sesión de fotos de novios en Machu Picchu" width="640" height="800" loading="lazy"></div><div><span>Destinos</span><h3>Sesión de fotos de novios en Machu Picchu</h3><p>Boletos, circuitos, horarios y reglas.</p><span class="read">Leer más</span></div></a>
+      <a class="post-card" href="/blog/boda-en-el-valle-sagrado"><div class="pc-img"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_640,h_800,c_fill,g_auto/DSC04891" alt="Casarte en el Valle Sagrado: guía práctica" width="640" height="800" loading="lazy"></div><div><span>Destinos</span><h3>Casarte en el Valle Sagrado: guía práctica</h3><p>Clima, temporada, traslados y planificación.</p><span class="read">Leer más</span></div></a>
     </div>
     <div class="center-cta reveal">
       <a class="link-more" href="/blog/">Ver todas las guías</a>

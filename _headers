@@ -1,0 +1,25 @@
+# Cabeceras de Albaside (Netlify)
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/media/*
+  Cache-Control: public, max-age=2592000
+
+/favicon.ico
+  Cache-Control: public, max-age=604800
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+/icon-*.png
+  Cache-Control: public, max-age=604800
+
+/crm*
+  X-Robots-Tag: noindex, nofollow
+/admin-testimonios*
+  X-Robots-Tag: noindex, nofollow
+/gracias*
+  X-Robots-Tag: noindex
+/testimonio*
+  X-Robots-Tag: noindex

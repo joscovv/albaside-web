@@ -2,6 +2,8 @@
 // Para publicar un post nuevo: agrega UNA línea aquí (y su URL al sitemap.xml). related.js hace el resto.
 window.ALBASIDE_POSTS = [
   // --- Español ---
+  {lang:'es', url:'/blog/boda-en-tambo-del-inka', tag:'Destinos', img:'c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg',
+   title:'Casarte en Tambo del Inka: lo que debes saber para tu foto y video', summary:'Espacios, luz, traslados y consejos para tu boda en Tambo del Inka, en el Valle Sagrado.'},
   {lang:'es', url:'/blog/cuanto-cuesta-fotografo-de-bodas-en-cusco', tag:'Precios', img:'DSC04301',
    title:'¿Cuánto cuesta un fotógrafo de bodas en Cusco?', summary:'Qué influye en el precio de la foto y el video de tu boda, y qué incluye una cobertura en Albaside.'},
   {lang:'es', url:'/blog/lugares-sesion-pre-boda-cusco', tag:'Lugares', img:'DSC00003',
@@ -11,6 +13,8 @@ window.ALBASIDE_POSTS = [
   {lang:'es', url:'/blog/sesion-de-fotos-en-machu-picchu', tag:'Destinos', img:'DSC03474_1',
    title:'Sesión de fotos de novios en Machu Picchu: lo que debes saber', summary:'Boletos, circuitos, horarios, reglas y consejos para tu sesión pre boda en Machu Picchu.'},
   // --- English ---
+  {lang:'en', url:'/blog/en/tambo-del-inka-wedding', tag:'Destinations', img:'c59d7dfc-e532-4582-9f51-4b74ff493ba5.jpg.jpg',
+   title:'Getting married at Tambo del Inka: what to know for your photos and film', summary:'Spaces, light, transfers and tips for your wedding at Tambo del Inka in the Sacred Valley.'},
   {lang:'en', url:'/blog/en/cusco-wedding-photographer-cost', tag:'Pricing', img:'DSC04301',
    title:'How much does a wedding photographer in Cusco cost?', summary:'What shapes the price of wedding photo and video in Cusco, and what an Albaside coverage includes.'},
   {lang:'en', url:'/blog/en/cusco-pre-wedding-photo-locations', tag:'Locations', img:'DSC00003',
