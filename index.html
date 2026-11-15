@@ -364,9 +364,8 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
 /* Antes y después */
 .ba{position:relative;max-width:1100px;margin:0 auto;aspect-ratio:3/2;overflow:hidden;background:#1d1b19;user-select:none;touch-action:pan-y}
 @media(max-width:700px){.ba{aspect-ratio:4/5}}
-.ba-img,.ba-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-img,.ba-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 50%}
 .ba-before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
-.ba-before img{filter:brightness(2.35) contrast(.72) saturate(.75)}
 .ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:1px;background:#fff;transform:translateX(-.5px);pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.25)}
 .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.95);color:var(--ink);display:grid;place-items:center;font:400 15px/1 var(--sans);letter-spacing:.1em;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
@@ -395,7 +394,8 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
 .chat-head img{width:36px;height:36px;border-radius:50%}
 .chat-head b{display:block;font-size:14px;color:#111;font-weight:600}
 .chat-head small{display:block;font-size:11px;color:#7a7a7a}
-.chat-body{flex:1;overflow:hidden;padding:12px 10px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+.chat-body{flex:1;overflow:hidden;padding:12px 10px;display:flex;flex-direction:column;gap:6px;scroll-behavior:smooth}
+.chat-body .day{margin-top:auto}
 .day{align-self:center;font-size:10px;color:#7a7a7a;background:rgba(255,255,255,.8);padding:3px 10px;border-radius:10px;margin-bottom:4px}
 .msg-b{max-width:80%;padding:7px 10px 6px;border-radius:16px;font-size:13px;line-height:1.35;color:#111;position:relative;animation:pop .35s var(--ease) both;box-shadow:0 1px 1px rgba(0,0,0,.06)}
 .msg-b small{display:block;text-align:right;font-size:9.5px;color:rgba(0,0,0,.45);margin-top:2px}
@@ -408,8 +408,19 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
 .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
 @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
-.chat-input{display:flex;justify-content:space-between;align-items:center;margin:6px 10px 6px;padding:9px 14px;background:#fff;border-radius:20px;font-size:13px;color:#9a9a9a}
-.chat-input i{font-style:normal;color:var(--accent)}
+.chat-input{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 10px 6px;padding:9px 14px;background:#fff;border-radius:20px;font-size:13px;color:#9a9a9a;min-height:38px}
+.chat-input span{flex:1;overflow:hidden;white-space:nowrap;text-overflow:clip;direction:rtl;text-align:left}
+.chat-input span bdi{direction:ltr;unicode-bidi:isolate}
+.chat-input.typing-now span{color:#111}
+.chat-input.typing-now span::after{content:"";display:inline-block;width:1.5px;height:14px;background:var(--accent);margin-left:1px;vertical-align:-2px;animation:caret .9s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.chat-input i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:var(--accent);transition:background .2s,color .2s,transform .2s}
+.chat-input.typing-now i{background:var(--accent);color:#fff}
+.chat-input i.sent{transform:scale(.8)}
+.msg-b.me{transform-origin:100% 100%}
+.msg-b.them{transform-origin:0 100%}
+.msg-b small .tick{color:rgba(0,0,0,.35);transition:color .4s}
+.msg-b small .tick.read{color:#4F8BC9}
 .home-bar{width:36%;height:5px;border-radius:3px;background:#111;margin:4px auto 9px}
 .replay{margin-top:22px;background:none;border:0;cursor:pointer;font:400 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 .replay:hover{color:var(--ink)}
@@ -596,13 +607,13 @@ footer{background:var(--bg-alt);color:var(--muted);padding:72px 0 40px;font-size
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow">Antes y después</span>
-      <h2>La magia no está en el filtro, <em>está en la mirada</em></h2>
-      <p class="lead" style="margin-top:20px">Desliza para ver la misma foto: a la izquierda, el archivo sobreexpuesto tres pasos; a la derecha, la imagen final que entregamos.</p>
+      <h2>Cuidamos cada detalle, <em>en cada foto</em></h2>
+      <p class="lead" style="margin-top:20px">Desliza y mira la diferencia: a la izquierda, la foto tal como salió de la cámara; a la derecha, la imagen final que te entregamos.</p>
     </div>
     <div class="ba reveal" id="ba" style="--pos:50%">
-      <picture class="ba-img ba-after"><source media="(max-width:700px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_900,h_1125,c_fill,g_auto/DSC04301"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1800/DSC04301" alt="Foto final editada: novios brindando frente a muros coloniales bajo un cielo dramático" width="1800" height="1200" loading="lazy"></picture>
-      <picture class="ba-img ba-before" aria-hidden="true"><source media="(max-width:700px)" srcset="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_900,h_1125,c_fill,g_auto/DSC04301"><img src="https://res.cloudinary.com/f3h66ynr/image/upload/q_auto,f_auto,w_1800/DSC04301" alt="" width="1800" height="1200" loading="lazy"></picture>
-      <span class="ba-tag ba-tag-l">Antes · +3 pasos</span>
+      <img class="ba-img ba-after" src="/media/pisac-despues.jpg" srcset="/media/pisac-despues-900.jpg 900w, /media/pisac-despues.jpg 1800w" sizes="(max-width:1100px) 100vw, 1100px" width="1800" height="1200" loading="lazy" alt="Foto final editada: novios en el mercado de Písac bajo guirnaldas de pompones de colores">
+      <img class="ba-img ba-before" src="/media/pisac-antes.jpg" srcset="/media/pisac-antes-900.jpg 900w, /media/pisac-antes.jpg 1800w" sizes="(max-width:1100px) 100vw, 1100px" width="1800" height="1200" loading="lazy" alt="La misma foto sin editar, tal como salió de la cámara, con el asistente de luz a un costado">
+      <span class="ba-tag ba-tag-l">Antes</span>
       <span class="ba-tag ba-tag-r">Después</span>
       <div class="ba-line" aria-hidden="true"><span class="ba-knob">‹ ›</span></div>
       <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Deslizar para comparar antes y después">
@@ -909,10 +920,12 @@ document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',function(
   r.addEventListener('input',function(){ba.style.setProperty('--pos',r.value+'%')});
 })();
 
-// Conversación en celular: los mensajes aparecen uno a uno cuando la sección se ve
+// Conversación en celular: se "graba" como un video. La pareja escribe en el campo de texto,
+// envía, Albaside aparece "escribiendo…" y responde. Al terminar vuelve a empezar (solo mientras se ve).
 (function(){
   var body=document.getElementById('chat-body'); if(!body) return;
   var st=document.getElementById('chat-status'), rep=document.getElementById('chat-replay');
+  var box=document.querySelector('.chat-input'), field=box.querySelector('span'), send=box.querySelector('i');
   var M=[
     ['me','¡Hola! Nos casamos en el Valle Sagrado en septiembre 💍 ¿Tienen la fecha libre?','10:02'],
     ['them','¡Hola! Qué emoción, felicidades 🤍 Cuéntanos el día exacto y lo revisamos. Solo tomamos 4 bodas por mes.','10:03'],
@@ -924,33 +937,50 @@ document.querySelectorAll('.yt').forEach(b=>b.addEventListener('click',function(
     ['them','Primero una videollamada de 30 min, gratis. Te mostramos bodas completas y te enviamos una propuesta. La fecha se separa con el 20%.','10:06',true],
     ['me','¡Perfecto, agendamos! 🙌','10:06']
   ];
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, timers=[], started=false;
-  function add(m){
-    var d=document.createElement('div');d.className='msg-b '+m[0];
-    d.textContent=m[1];
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, run=0, visible=false, playing=false;
+  function wait(ms,id){return new Promise(function(ok,no){setTimeout(function(){id===run?ok():no('stop')},ms)})}
+  function scroll(){body.scrollTo({top:body.scrollHeight,behavior:reduce?'auto':'smooth'})}
+  function bubble(m){
+    var d=document.createElement('div');d.className='msg-b '+m[0];d.textContent=m[1];
     if(m[3]){var a=document.createElement('a');a.className='lnk';a.href='https://cal.com/albaside/videollamada';a.target='_blank';a.rel='noopener';a.innerHTML='<b>Agenda tu videollamada</b>albaside.com/agenda';d.appendChild(a)}
-    var t=document.createElement('small');t.textContent=m[2]+(m[0]==='me'?' ✓✓':'');d.appendChild(t);
-    body.appendChild(d);
-    while(body.scrollHeight>body.clientHeight&&body.children.length>2)body.children[1].remove();
+    var t=document.createElement('small');t.textContent=m[2]+' ';
+    if(m[0]==='me'){var k=document.createElement('span');k.className='tick';k.textContent='✓✓';t.appendChild(k)}
+    d.appendChild(t);body.appendChild(d);scroll();return d;
   }
-  function play(){
-    timers.forEach(clearTimeout);timers=[];
-    body.innerHTML='<div class="day">Hoy</div>';rep.hidden=true;
-    if(reduce){M.forEach(add);rep.hidden=false;return}
-    var t=400;
-    M.forEach(function(m,i){
-      if(m[0]==='them'){
-        timers.push(setTimeout(function(){st.textContent='escribiendo…';var ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';body.appendChild(ty)},t));
-        t+=1100;
-        timers.push(setTimeout(function(){var ty=body.querySelector('.typing');if(ty)ty.remove();st.textContent='en línea';add(m)},t));
-      }else{timers.push(setTimeout(function(){add(m)},t))}
-      t+=m[0]==='them'?1300:900;
-    });
-    timers.push(setTimeout(function(){rep.hidden=false},t));
+  function readAll(){body.querySelectorAll('.tick').forEach(function(k){k.classList.add('read')})}
+  function reset(){body.innerHTML='<div class="day">Hoy</div>';field.innerHTML='Mensaje';box.classList.remove('typing-now');st.textContent='en línea';body.scrollTop=0}
+  async function typeIn(text,id){
+    box.classList.add('typing-now');var chars=Array.from(text),out='';
+    for(var i=0;i<chars.length;i++){out+=chars[i];field.innerHTML='<bdi></bdi>';field.firstChild.textContent=out;await wait(chars[i]===' '?50:24+Math.random()*30,id)}
+    await wait(350,id);send.classList.add('sent');await wait(140,id);send.classList.remove('sent');
+    field.innerHTML='Mensaje';box.classList.remove('typing-now');
   }
-  rep.addEventListener('click',play);
-  var o=new IntersectionObserver(function(es){if(es[0].isIntersecting&&!started){started=true;play();o.disconnect()}},{threshold:.35});
-  o.observe(body);
+  async function play(){
+    var id=++run;playing=true;rep.hidden=true;reset();
+    try{
+      if(reduce){M.forEach(bubble);readAll();rep.hidden=false;playing=false;return}
+      await wait(700,id);
+      for(var i=0;i<M.length;i++){
+        var m=M[i];
+        if(m[0]==='me'){await typeIn(m[1],id);bubble(m);await wait(900,id)}
+        else{
+          readAll();await wait(500,id);
+          st.textContent='escribiendo…';
+          var ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';body.appendChild(ty);scroll();
+          await wait(Math.min(2600,800+m[1].length*14),id);
+          ty.remove();st.textContent='en línea';bubble(m);await wait(1200,id);
+        }
+      }
+      readAll();rep.hidden=false;
+      await wait(5000,id);
+      if(visible)play();else playing=false;
+    }catch(e){/* detenido */}
+  }
+  rep.addEventListener('click',function(){play()});
+  new IntersectionObserver(function(es){
+    visible=es[0].isIntersecting;
+    if(visible&&!playing)play();
+  },{threshold:.35}).observe(body);
 })();
 
 // Reveal al hacer scroll
