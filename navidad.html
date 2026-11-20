@@ -704,7 +704,7 @@ var FIN_PREVENTA=new Date('2026-12-01T00:00:00-05:00');
   }
 })();
 // Códigos de descuento (se guardan como huella, no en texto plano). La pareja/familia paga la diferencia luego; tú confirmas el código en el CRM.
-var CODES={'bdf0c9c6':{pct:50,label:'ABLAFRIENDS'},'01a5a4da':{pct:50,label:'ALBAFRIENDS'},'09c091f6':{pct:30,label:'ALBACLIENTES'}};
+var CODES={'bdf0c9c6':{pct:50,label:'ABLAFRIENDS'},'01a5a4da':{pct:50,label:'ALBAFRIENDS'},'09c091f6':{pct:30,label:'ALBACLIENTES'},'f610a139':{pct:30,label:'ALBAMAMA'}};
 function huella(s){var h=2166136261>>>0;s=String(s).trim().toUpperCase();for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return ('0000000'+h.toString(16)).slice(-8)}
 (function(){
   var f=document.getElementById('pickForm'); if(!f) return;
