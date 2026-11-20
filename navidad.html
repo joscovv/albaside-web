@@ -138,6 +138,42 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.95);backdro
 .masonry img:last-child{grid-column:span 2;aspect-ratio:2/1}
 @media(min-width:760px){.masonry.duo{grid-template-columns:1fr 1fr;max-width:760px;margin:0 auto}.masonry{grid-template-columns:repeat(3,1fr);gap:12px}.masonry img:first-child{grid-row:span 2;aspect-ratio:auto}.masonry img:last-child{grid-column:auto;aspect-ratio:1}}
 
+/* Sets como publicaciones de Instagram (carrusel por set) */
+.ig-feed{display:grid;gap:28px;margin:56px auto 0;max-width:470px}
+@media(min-width:900px){.ig-feed{grid-template-columns:repeat(3,1fr);max-width:1180px;gap:24px}}
+.ig{background:#fff;border:1px solid #dbdbdb;border-radius:10px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#262626;text-align:left}
+.ig-h{display:flex;align-items:center;gap:10px;padding:10px 12px}
+.ig-av{width:36px;height:36px;border-radius:50%;padding:2px;background:conic-gradient(from 200deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);flex:none}
+.ig-av img{width:100%;height:100%;border-radius:50%;border:2px solid #fff;background:#fff;object-fit:cover;display:block}
+.ig-h b{font-size:14px;font-weight:600;display:block;line-height:1.2}
+.ig-h small{font-size:12px;color:#737373}
+.ig-more{margin-left:auto;font-size:12px;letter-spacing:1px;color:#262626}
+.ig-media{position:relative;background:#f2f2f2}
+.ig-track{aspect-ratio:4/5;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none}
+.ig-track::-webkit-scrollbar{display:none}
+.ig-track img{flex:0 0 100%;width:100%;height:100%;max-width:none;object-fit:cover;scroll-snap-align:start;scroll-snap-stop:always;display:block}
+.ig-count{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:4px 9px;border-radius:12px;font-variant-numeric:tabular-nums}
+.ig-ref{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.88);color:#262626;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:4px}
+.ig-nav{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:0;background:rgba(255,255,255,.85);color:#262626;font-size:22px;line-height:28px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);opacity:0;transition:opacity .2s}
+.ig-nav.prev{left:10px}.ig-nav.next{right:10px}
+.ig-media:hover .ig-nav:not([disabled]),.ig-nav:focus-visible{opacity:1}
+@media(hover:none){.ig-nav{display:none}}
+.ig-act{display:flex;align-items:center;gap:14px;padding:10px 12px 4px}
+.ig-act svg{width:24px;height:24px;fill:none;stroke:#262626;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round;flex:none}
+.ig-act svg:first-child{fill:#ed4956;stroke:#ed4956}
+.ig-act svg:last-child{margin-left:auto}
+.ig-dots{flex:1;display:flex;justify-content:center;gap:4px;margin-right:-38px}
+.ig-dots i{width:6px;height:6px;border-radius:50%;background:#c7c7c7;transition:background .2s}
+.ig-dots i.on{background:#0095f6}
+.ig-cap{padding:6px 12px 16px;font-size:14px;line-height:1.45}
+.ig-cap b{font-weight:600}
+.ig-cap strong{font-weight:600}
+.ig-tags{color:#00376b}
+/* Carrusel de precios */
+.car-dots{display:none;justify-content:center;gap:8px;margin-top:18px}
+.car-dots button{width:8px;height:8px;border-radius:50%;border:0;background:rgba(110,20,35,.25);padding:0;cursor:pointer}
+.car-dots button.on{background:var(--wine);width:22px;border-radius:4px}
+.swipe-hint{display:none;text-align:center;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:30px}
 /* Precios */
 .prices{background:var(--cream)}
 .price-grid{display:grid;gap:22px;margin-top:56px;max-width:900px;margin-left:auto;margin-right:auto}
@@ -273,6 +309,13 @@ footer small{display:block;opacity:.75}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(30px);background:var(--ink);color:#fff;padding:12px 18px;font-size:13px;opacity:0;transition:.3s;z-index:60;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%)}
 #nl-badge-frame{display:none!important}
+@media(max-width:859px){
+  .price-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:18px 9% 6px;margin-left:-20px;margin-right:-20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .price-grid::-webkit-scrollbar{display:none}
+  .price-grid .price{flex:0 0 82%;scroll-snap-align:center}
+  .car-dots,.swipe-hint{display:flex}
+  .swipe-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -336,59 +379,55 @@ footer small{display:block;opacity:.75}
       <h2>Tres sets, <em>tres navidades</em></h2>
       <p class="lead" style="margin-top:18px">Cada set está armado en el estudio. Eliges uno, dos o los tres, y nosotros nos encargamos de la luz, la dirección y los detalles.</p>
     </div>
-    <div class="sets">
-      <article class="set reveal">
-        <div class="ph"><img src="/media/navidad/set-bosque-nevado.jpg" alt="Set Bosque nevado: sillón blanco, pared de madera, guirnalda con luces y árbol escarchado con ositos de peluche" width="1000" height="1499" loading="lazy"></div>
-        <span class="num">Set 1</span>
-        <h3>Bosque nevado</h3>
-        <p>Árbol escarchado, guirnalda con luces, ositos de peluche, regalos rojos y un sillón blanco sobre una alfombra de pelo. Luz natural, tierno y cálido, ideal para los más pequeños.</p>
-        <a class="see" href="#galeria-bosque">Ver el set →</a>
+    <div class="ig-feed">
+      <article class="ig reveal" aria-label="Set 1: Bosque nevado">
+        <header class="ig-h"><span class="ig-av"><img src="/icon-192.png" alt="" width="36" height="36"></span><div><b>albaside</b><small>Estudio Albaside · Larapa, Cusco</small></div><span class="ig-more" aria-hidden="true">•••</span></header>
+        <div class="ig-media" data-car>
+          <div class="ig-track" tabindex="0" aria-label="Fotos del set Bosque nevado, desliza para ver más"><img src="/media/navidad/set-bosque-nevado.jpg" alt="Sillón blanco junto a la pared de madera, la guirnalda con luces y el árbol escarchado con ositos" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/blanco-1.jpg" alt="Vista completa del set Bosque nevado" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/blanco-ositos.jpg" alt="Ositos de peluche con moños rojos junto a los regalos" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/blanco-arbol.jpg" alt="Árbol escarchado con estrella roja y moño de terciopelo" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/blanco-cascanueces.jpg" alt="Cascanueces de madera con tambor" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/blanco-caramelo.jpg" alt="Adorno de caramelo rojo y blanco en el árbol" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/blanco-2.jpg" alt="Sillón blanco de borrego junto al árbol" width="800" height="1000" loading="lazy" style="object-position:50% 50%"></div>
+          <span class="ig-count"><span>1</span>/7</span>
+          <button class="ig-nav prev" type="button" aria-label="Foto anterior">‹</button><button class="ig-nav next" type="button" aria-label="Foto siguiente">›</button>
+        </div>
+        <div class="ig-act" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.6 0 5.6 3.5 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-4.2A8.5 8.5 0 1 1 20.5 11.5z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M21.5 3 10 14.5M21.5 3l-7 18-4.5-6.5L3.5 10z"/></svg>
+          <span class="ig-dots"></span>
+          <svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-5-6 5z"/></svg>
+        </div>
+        <p class="ig-cap"><b>albaside</b> <strong>Set 1 · Bosque nevado.</strong> Árbol escarchado, guirnalda con luces, ositos de peluche, regalos rojos y un sillón blanco sobre alfombra de pelo. Luz natural, tierno y cálido, ideal para los más pequeños. <span class="ig-tags">#NavidadEnCusco #BosqueNevado</span></p>
       </article>
-      <article class="set reveal">
-        <div class="ph"><img src="/media/navidad/set-terciopelo.jpg" alt="Set Terciopelo rojo: árbol con un gran moño rojo, cortinas rojas drapeadas y sillón blanco" width="1000" height="1499" loading="lazy"></div>
-        <span class="num">Set 2</span>
-        <h3>Terciopelo rojo</h3>
-        <p>Cortinas rojas drapeadas, un árbol envuelto en un moño gigante, velas doradas y un sillón blanco. Elegante y teatral, perfecto para fotos en familia o en pareja.</p>
-        <a class="see" href="#galeria-terciopelo">Ver el set →</a>
+      <article class="ig reveal" aria-label="Set 2: Terciopelo rojo">
+        <header class="ig-h"><span class="ig-av"><img src="/icon-192.png" alt="" width="36" height="36"></span><div><b>albaside</b><small>Estudio Albaside · Larapa, Cusco</small></div><span class="ig-more" aria-hidden="true">•••</span></header>
+        <div class="ig-media" data-car>
+          <div class="ig-track" tabindex="0" aria-label="Fotos del set Terciopelo rojo, desliza para ver más"><img src="/media/navidad/rojo-1.jpg" alt="Set Terciopelo rojo completo: árbol con moño gigante, cortinas rojas, velas doradas y sillón blanco" width="800" height="1000" loading="lazy" style="object-position:28% 50%"><img src="/media/navidad/rojo-lazo.jpg" alt="Estrella dorada y moño rojo gigante sobre el árbol" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/set-terciopelo.jpg" alt="Árbol envuelto en un moño rojo junto al sillón blanco" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/rojo-letrero.jpg" alt="Bastón de caramelo con letrero Merry Christmas" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/rojo-velas.jpg" alt="Copos de nieve, esferas de terciopelo y una vela encendida" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/rojo-3.jpg" alt="Sillón blanco con cojín rojo frente a las cortinas" width="800" height="1000" loading="lazy" style="object-position:62% 50%"></div>
+          <span class="ig-count"><span>1</span>/6</span>
+          <button class="ig-nav prev" type="button" aria-label="Foto anterior">‹</button><button class="ig-nav next" type="button" aria-label="Foto siguiente">›</button>
+        </div>
+        <div class="ig-act" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.6 0 5.6 3.5 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-4.2A8.5 8.5 0 1 1 20.5 11.5z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M21.5 3 10 14.5M21.5 3l-7 18-4.5-6.5L3.5 10z"/></svg>
+          <span class="ig-dots"></span>
+          <svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-5-6 5z"/></svg>
+        </div>
+        <p class="ig-cap"><b>albaside</b> <strong>Set 2 · Terciopelo rojo.</strong> Cortinas rojas drapeadas, un árbol envuelto en un moño gigante, velas doradas y un sillón blanco. Elegante y teatral, perfecto para fotos en familia o en pareja. <span class="ig-tags">#NavidadEnCusco #TerciopeloRojo</span></p>
       </article>
-      <article class="set reveal">
-        <div class="ph"><img src="/media/navidad/set-disco.jpg" alt="Set Disco navideño: fondo verde, torres de regalos rojos y esferas de espejo plateadas alrededor de un asiento blanco" width="1000" height="1499" loading="lazy"><span class="ref">Imagen referencial</span></div>
-        <span class="num">Set 3</span>
-        <h3>Disco navideño</h3>
-        <p>Fondo verde profundo, torres de regalos rojos y esferas de espejo que llenan la foto de brillos. Divertido y moderno, ideal para amigas, parejas o fotos individuales.</p>
-        <a class="see" href="#galeria-disco">Ver el set →</a>
+      <article class="ig reveal" aria-label="Set 3: Disco navideño">
+        <header class="ig-h"><span class="ig-av"><img src="/icon-192.png" alt="" width="36" height="36"></span><div><b>albaside</b><small>Estudio Albaside · Larapa, Cusco</small></div><span class="ig-more" aria-hidden="true">•••</span></header>
+        <div class="ig-media" data-car>
+          <div class="ig-track" tabindex="0" aria-label="Fotos del set Disco navideño, desliza para ver más"><img src="/media/navidad/set-disco.jpg" alt="Mujer sentada entre regalos rojos y esferas de espejo, con los brazos abiertos" width="800" height="1000" loading="lazy" style="object-position:50% 50%"><img src="/media/navidad/disco-2.jpg" alt="Mujer abrazando una esfera de espejo, rodeada de regalos rojos" width="800" height="1000" loading="lazy" style="object-position:50% 50%"></div>
+          <span class="ig-count"><span>1</span>/2</span><span class="ig-ref">Imagen referencial</span>
+          <button class="ig-nav prev" type="button" aria-label="Foto anterior">‹</button><button class="ig-nav next" type="button" aria-label="Foto siguiente">›</button>
+        </div>
+        <div class="ig-act" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.6 0 5.6 3.5 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-4.2A8.5 8.5 0 1 1 20.5 11.5z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M21.5 3 10 14.5M21.5 3l-7 18-4.5-6.5L3.5 10z"/></svg>
+          <span class="ig-dots"></span>
+          <svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-5-6 5z"/></svg>
+        </div>
+        <p class="ig-cap"><b>albaside</b> <strong>Set 3 · Disco navideño.</strong> Fondo verde profundo, torres de regalos rojos y esferas de espejo que llenan la foto de brillos. Divertido y moderno, ideal para amigas, parejas o fotos individuales. <span class="ig-tags">#NavidadEnCusco #DiscoNavideño</span></p>
       </article>
-    </div>
-
-    <div class="gal reveal" id="galeria-bosque">
-      <div class="gal-h"><span class="num">Set 1</span><h3>Bosque nevado</h3></div>
-      <div class="masonry">
-        <img src="/media/navidad/blanco-1.jpg" alt="Set Bosque nevado completo: pared de listones de madera, guirnalda con luces, sillón blanco, árbol escarchado y ositos" width="1400" height="934" loading="lazy">
-        <img src="/media/navidad/blanco-arbol.jpg" alt="Árbol escarchado con estrella roja, moño de terciopelo y esferas rojas" width="800" height="1199" loading="lazy">
-        <img src="/media/navidad/blanco-ositos.jpg" alt="Ositos de peluche con moños rojos junto a regalos y el árbol escarchado" width="800" height="1200" loading="lazy">
-        <img src="/media/navidad/blanco-cascanueces.jpg" alt="Cascanueces de madera con tambor sobre una mesa con luces" width="800" height="1200" loading="lazy">
-        <img src="/media/navidad/blanco-caramelo.jpg" alt="Adorno de caramelo rojo y blanco en el árbol escarchado" width="800" height="1200" loading="lazy">
-        <img src="/media/navidad/blanco-2.jpg" alt="Sillón blanco de borrego con cojines de piel junto al árbol de Navidad" width="1400" height="934" loading="lazy">
-      </div>
-    </div>
-    <div class="gal reveal" id="galeria-terciopelo">
-      <div class="gal-h"><span class="num">Set 2</span><h3>Terciopelo rojo</h3></div>
-      <div class="masonry">
-        <img src="/media/navidad/rojo-1.jpg" alt="Set Terciopelo rojo completo: cortinas rojas, árbol con un gran moño, velas doradas y sillón blanco" width="1400" height="934" loading="lazy">
-        <img src="/media/navidad/rojo-lazo.jpg" alt="Estrella dorada y moño rojo gigante sobre el árbol de Navidad" width="800" height="1200" loading="lazy">
-        <img src="/media/navidad/rojo-letrero.jpg" alt="Bastón de caramelo con letrero Merry Christmas junto a un regalo rojo" width="800" height="1200" loading="lazy">
-        <img src="/media/navidad/rojo-velas.jpg" alt="Árbol con copos de nieve blancos, esferas de terciopelo y una vela encendida" width="800" height="1200" loading="lazy">
-        <img src="/media/navidad/set-terciopelo.jpg" alt="Árbol de Navidad envuelto en un moño rojo gigante junto al sillón blanco" width="1000" height="1499" loading="lazy">
-        <img src="/media/navidad/rojo-3.jpg" alt="Vista amplia del set Terciopelo rojo con el árbol, el sillón y el bastón de caramelo" width="1400" height="933" loading="lazy">
-      </div>
-    </div>
-    <div class="gal reveal" id="galeria-disco">
-      <div class="gal-h"><span class="num">Set 3</span><h3>Disco navideño</h3></div>
-      <div class="masonry duo">
-        <img src="/media/navidad/set-disco.jpg" alt="Mujer sentada entre regalos rojos y esferas de espejo, con los brazos abiertos" width="1000" height="1499" loading="lazy">
-        <img src="/media/navidad/disco-2.jpg" alt="Mujer sonriendo abrazando una esfera de espejo, rodeada de regalos rojos sobre fondo verde" width="1000" height="1499" loading="lazy">
-      </div>
-      <p class="ref-note">Imágenes referenciales del set.</p>
     </div>
   </div>
 </section>
@@ -423,6 +462,7 @@ footer small{display:block;opacity:.75}
       <h2>Precios <em>de preventa</em></h2>
       <p class="lead" style="margin-top:18px">Aprovecha el precio especial mientras dure la preventa.</p>
     </div>
+    <p class="swipe-hint">Desliza para ver los paquetes →</p>
     <div class="price-grid" role="radiogroup" aria-label="Elige tu paquete">
       <button type="button" class="price reveal" data-pk="1 set" role="radio" aria-checked="true">
         <h3>1 set</h3>
@@ -447,6 +487,7 @@ footer small{display:block;opacity:.75}
         <span class="pick">Elegir</span>
       </button>
     </div>
+    <div class="car-dots" id="priceDots" aria-hidden="true"></div>
     <ul class="includes reveal" aria-label="Qué incluye tu sesión" aria-live="polite">
       <li><b id="incMin">30</b> minutos de sesión</li>
       <li><b id="incPer">3</b> personas como máximo</li>
@@ -591,6 +632,32 @@ document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener(
   if(navigator.clipboard){navigator.clipboard.writeText(v).then(function(){toast('Número copiado: '+v)}).catch(function(){toast('Copia el número: '+v)})}else toast('Copia el número: '+v);
 })});
 
+// Carruseles: publicaciones de Instagram por set
+document.querySelectorAll('[data-car]').forEach(function(m){
+  var t=m.querySelector('.ig-track'), imgs=t.querySelectorAll('img'), cnt=m.querySelector('.ig-count span');
+  var dots=m.parentNode.querySelector('.ig-dots'), prev=m.querySelector('.prev'), next=m.querySelector('.next');
+  imgs.forEach(function(){dots.appendChild(document.createElement('i'))});
+  function idx(){return Math.round(t.scrollLeft/t.clientWidth)}
+  function upd(){var i=idx();cnt.textContent=i+1;[].forEach.call(dots.children,function(d,k){d.className=k===i?'on':''});prev.disabled=i===0;next.disabled=i===imgs.length-1}
+  var raf;t.addEventListener('scroll',function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(upd)},{passive:true});
+  prev.onclick=function(){t.scrollBy({left:-t.clientWidth,behavior:'smooth'})};
+  next.onclick=function(){t.scrollBy({left:t.clientWidth,behavior:'smooth'})};
+  t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();next.onclick()}if(e.key==='ArrowLeft'){e.preventDefault();prev.onclick()}});
+  if(imgs.length<2){m.querySelector('.ig-count').hidden=true;prev.hidden=next.hidden=true;dots.style.visibility='hidden'}
+  upd();
+});
+// Carrusel de precios (en celular)
+(function(){
+  var g=document.querySelector('.price-grid'), d=document.getElementById('priceDots'); if(!g||!d) return;
+  var cards=[].slice.call(g.querySelectorAll('.price'));
+  cards.forEach(function(c){c.addEventListener('click',function(){if(getComputedStyle(d).display!=='none')g.scrollTo({left:c.offsetLeft-(g.clientWidth-c.offsetWidth)/2,behavior:'smooth'})})});
+  cards.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ver paquete '+(i+1));b.onclick=function(){g.scrollTo({left:c.offsetLeft-(g.clientWidth-c.offsetWidth)/2,behavior:'smooth'})};d.appendChild(b)});
+  function upd(){var mid=g.scrollLeft+g.clientWidth/2,best=0,bd=1e9;cards.forEach(function(c,i){var dd=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(dd<bd){bd=dd;best=i}});[].forEach.call(d.children,function(b,i){b.className=i===best?'on':''})}
+  g.addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});
+  // Empieza centrado en el paquete elegido
+  function centrar(){if(getComputedStyle(d).display==='none')return;var c=g.querySelector('.price[aria-checked="true"]')||cards[0];g.scrollLeft=c.offsetLeft-(g.clientWidth-c.offsetWidth)/2;upd()}
+  window.addEventListener('load',centrar);upd();
+})();
 // Paquetes: datos, selección desde Precios y reserva con Cal.com
 var PK={
   '1 set': {n:1,precio:280,regular:350,min:30,per:3,fot:8, cal:'albaside/navidad-1-set'},
