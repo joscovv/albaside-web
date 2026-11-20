@@ -23,6 +23,7 @@ exports.handler = async (event) => {
   const att = (p.attendees || [])[0] || {};
   const phone = att.phoneNumber || att.phone || (p.responses && p.responses.attendeePhoneNumber && p.responses.attendeePhoneNumber.value);
   const notas = p.responses && p.responses.notes && p.responses.notes.value ? 'Nota al reservar: ' + p.responses.notes.value : (p.additionalNotes ? 'Nota al reservar: ' + p.additionalNotes : '');
+  const esNavidad = /navidad/i.test([p.type, p.eventTitle, p.title].filter(Boolean).join(' '));
   const resultado = [];
 
   // 1) CRM
@@ -30,7 +31,7 @@ exports.handler = async (event) => {
     try {
       const r = await fetch(SITE + '/api/crm', {
         method: 'POST', headers: { 'Content-Type': 'application/json', 'x-admin-key': ADMIN_KEY },
-        body: JSON.stringify({ accion: 'lead', uid: p.uid, nombres: att.name || '', email: att.email || '', whatsapp: phone || '', llamada: p.startTime || '', notas })
+        body: JSON.stringify({ accion: 'lead', uid: p.uid, nombres: att.name || '', email: att.email || '', whatsapp: phone || '', llamada: p.startTime || '', notas, tipo: esNavidad ? 'navidad' : 'boda' })
       });
       resultado.push('crm ' + r.status);
     } catch (e) { resultado.push('crm error'); }
@@ -43,7 +44,7 @@ exports.handler = async (event) => {
         event_name: 'Schedule', event_time: Math.floor(Date.now() / 1000), event_id: 'cal_' + (p.uid || Date.now()),
         action_source: 'other',
         user_data: { em: sha256(att.email), ph: phone ? sha256(String(phone).replace(/\D/g, '')) : undefined },
-        custom_data: { content_name: 'Videollamada Albaside' }
+        custom_data: { content_name: esNavidad ? 'Sesión de Navidad' : 'Videollamada Albaside' }
       }] };
       const res = await fetch(`https://graph.facebook.com/v21.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,
         { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });

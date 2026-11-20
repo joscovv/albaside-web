@@ -58,10 +58,15 @@ export default async (req) => {
     // Llega desde cal-webhook.js. Si la pareja ya existe (mismo id de reserva), solo actualiza la llamada.
     const id = "cal_" + String(b.uid || crypto.randomUUID()).replace(/[^\w-]/g, "");
     const prev = await store.get("p/" + id, { type: "json" });
-    const base = prev || { id, creado: ahora, etapa: "Videollamada agendada", origen: "Web (Cal.com)" };
+    const navidad = b.tipo === "navidad";
+    const base = prev || { id, creado: ahora, etapa: navidad ? "Consulta" : "Videollamada agendada", origen: navidad ? "Sesión de Navidad (Cal.com)" : "Web (Cal.com)" };
     const p = limpiar({ nombres: b.nombres, email: b.email, whatsapp: b.whatsapp, llamada: b.llamada, notas: prev ? prev.notas : (b.notas || "") }, base);
     p.id = id; p.actualizado = ahora;
-    if (!prev) { p.proximaAccion = "Videollamada"; p.proximaFecha = (b.llamada || "").slice(0, 10); }
+    if (!prev) {
+      p.proximaAccion = navidad ? "Confirmar adelanto Yape S/ 50 · sesión de Navidad" : "Videollamada";
+      p.proximaFecha = navidad ? ahora.slice(0, 10) : (b.llamada || "").slice(0, 10);
+      if (navidad) p.notas = ["Sesión de Navidad: " + (b.llamada ? new Date(b.llamada).toLocaleString("es-PE", { timeZone: "America/Lima", dateStyle: "full", timeStyle: "short" }) : ""), b.notas || ""].filter(Boolean).join("\n");
+    }
     await store.setJSON("p/" + id, p);
     return json({ ok: true });
   }
