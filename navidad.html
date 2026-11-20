@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sesiones de fotos de Navidad en Cusco 2026 | Albaside Studio</title>
-<meta name="description" content="Sesiones de fotos navideñas de 30 a 50 minutos en estudio en Cusco, del 20 de noviembre al 15 de diciembre. Preventa desde S/ 280. De lunes a viernes. Separa tu fecha y paga tu reserva con Yape.">
+<meta name="description" content="Sesiones de fotos navideñas de 30 a 50 minutos en estudio en Cusco, del 20 de noviembre al 15 de diciembre. Preventa desde S/ 280 hasta el 30 de noviembre. De lunes a viernes. Separa tu fecha y paga tu reserva con Yape.">
 <link rel="canonical" href="https://albaside.com/navidad">
 <meta name="theme-color" content="#6E1423">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Sesiones de fotos de Navidad en Cusco", "serviceType": "Sesión de fotos navideña en estudio", "provider": {"@type": "ProfessionalService", "name": "Albaside Studio", "url": "https://albaside.com/", "telephone": "+51977217281", "address": {"@type": "PostalAddress", "addressLocality": "San Jerónimo", "addressRegion": "Cusco", "addressCountry": "PE", "streetAddress": "Larapa"}}, "areaServed": "Cusco", "url": "https://albaside.com/navidad", "offers": [{"@type": "Offer", "name": "Sesión de Navidad · 1 set", "price": "280", "priceCurrency": "PEN", "availabilityEnds": "2026-12-15"}, {"@type": "Offer", "name": "Sesión de Navidad · 2 sets", "price": "380", "priceCurrency": "PEN", "availabilityEnds": "2026-12-15"}, {"@type": "Offer", "name": "Sesión de Navidad · 3 sets", "price": "450", "priceCurrency": "PEN", "availabilityEnds": "2026-12-15"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Sesiones de fotos de Navidad en Cusco", "serviceType": "Sesión de fotos navideña en estudio", "provider": {"@type": "ProfessionalService", "name": "Albaside Studio", "url": "https://albaside.com/", "telephone": "+51977217281", "address": {"@type": "PostalAddress", "addressLocality": "San Jerónimo", "addressRegion": "Cusco", "addressCountry": "PE", "streetAddress": "Larapa"}}, "areaServed": "Cusco", "url": "https://albaside.com/navidad", "offers": [{"@type": "Offer", "name": "Sesión de Navidad · 1 set", "price": "280", "priceCurrency": "PEN", "priceValidUntil": "2026-11-30", "availabilityEnds": "2026-12-15"}, {"@type": "Offer", "name": "Sesión de Navidad · 2 sets", "price": "380", "priceCurrency": "PEN", "priceValidUntil": "2026-11-30", "availabilityEnds": "2026-12-15"}, {"@type": "Offer", "name": "Sesión de Navidad · 3 sets", "price": "450", "priceCurrency": "PEN", "priceValidUntil": "2026-11-30", "availabilityEnds": "2026-12-15"}]}</script>
 <!-- META PIXEL + CAPI (deduplicados con event_id) -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -316,6 +316,17 @@ footer small{display:block;opacity:.75}
   .car-dots,.swipe-hint{display:flex}
   .swipe-hint{display:block}
 }
+.pre-banner{display:inline-block;margin-top:20px;background:#fff;border:1px solid rgba(110,20,35,.35);padding:12px 18px;font-size:14px;line-height:1.5;color:var(--ink);max-width:620px}
+.pre-banner b{color:var(--wine);font-weight:500}
+.pre-banner #preLeft{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.pre-banner #preLeft:empty{display:none}
+.pre-note{font-size:12.5px;color:var(--muted);margin-top:16px}
+@media(max-width:759px){
+  .outfit-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:6px 9% 6px;margin-left:-20px;margin-right:-20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .outfit-grid::-webkit-scrollbar{display:none}
+  .outfit-grid figure{flex:0 0 82%;scroll-snap-align:center}
+  #outfit .car-dots,#outfit .swipe-hint{display:flex;justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -343,7 +354,7 @@ footer small{display:block;opacity:.75}
       <ul class="hero-facts">
         <li>Del 20 de noviembre al 15 de diciembre, de lunes a viernes</li>
         <li>Larapa, San Jerónimo · Cusco</li>
-        <li>Preventa desde S/ 280</li>
+        <li id="heroPre">Preventa desde S/ 280 hasta el 30 de noviembre</li>
       </ul>
       <div class="hero-ctas">
         <a class="btn btn-wine" href="#separar">Separar mi fecha</a>
@@ -441,11 +452,13 @@ footer small{display:block;opacity:.75}
       <h2>Colores que <em>recomendamos</em></h2>
       <p class="lead" style="margin-top:18px">Elegimos estas paletas para que su ropa combine con cada decoración. No tienen que ir iguales: basta con que todos usen colores de la misma paleta.</p>
     </div>
+    <p class="swipe-hint">Desliza para ver cada set →</p>
     <div class="outfit-grid">
       <figure class="reveal"><img src="/media/navidad/outfit-bosque-nevado.jpg" alt="Paleta para el set Bosque nevado: marfil, crema, camel, chocolate y verde pino. Recomendamos tejidos de punto, lino, pana, vestidos marfil y pantalones camel; mejor evitar rojo intenso, negro total, neón y logos grandes." width="1080" height="1350" loading="lazy"><figcaption>Set Bosque nevado · tonos cálidos y naturales</figcaption></figure>
       <figure class="reveal"><img src="/media/navidad/outfit-terciopelo-rojo.jpg" alt="Paleta para el set Terciopelo rojo: blanco roto, champagne, dorado, negro y esmeralda. Recomendamos satén, encaje, camisas blancas, trajes negros y detalles dorados; mejor evitar rojo, estampados recargados y neón." width="1080" height="1350" loading="lazy"><figcaption>Set Terciopelo rojo · elegante, sin rojo</figcaption></figure>
       <figure class="reveal"><img src="/media/navidad/outfit-disco.jpg" alt="Paleta para el set Disco navideño: blanco, plateado, rojo cereza, negro y dorado. Recomendamos lentejuelas, brillos, tejidos de punto blancos, vestidos rojos o plateados y accesorios metálicos; mejor evitar verde, estampados recargados y neón." width="1080" height="1350" loading="lazy"><figcaption>Set Disco navideño · brillos, sin verde</figcaption></figure>
     </div>
+    <div class="car-dots" id="outfitDots" aria-hidden="true"></div>
     <ul class="tips reveal">
       <li><b>Telas con textura</b> como punto, lana, terciopelo o encaje se ven muy bien en foto.</li>
       <li><b>Evita logos y personajes</b> grandes: distraen y envejecen rápido.</li>
@@ -458,9 +471,9 @@ footer small{display:block;opacity:.75}
 <section class="prices" id="precios">
   <div class="wrap">
     <div class="center reveal">
-      <span class="eyebrow">Preventa navideña</span>
-      <h2>Precios <em>de preventa</em></h2>
-      <p class="lead" style="margin-top:18px">Aprovecha el precio especial mientras dure la preventa.</p>
+      <span class="eyebrow" id="preEyebrow">Preventa navideña</span>
+      <h2 id="preH2">Precios <em>de preventa</em></h2>
+      <p class="pre-banner" id="preBanner"><b>La preventa es hasta el 30 de noviembre.</b> Desde el 1 de diciembre rigen los precios regulares. <span id="preLeft"></span></p>
     </div>
     <p class="swipe-hint">Desliza para ver los paquetes →</p>
     <div class="price-grid" role="radiogroup" aria-label="Elige tu paquete">
@@ -533,6 +546,7 @@ footer small{display:block;opacity:.75}
           <div class="code-row"><input id="code" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Escribe tu código"><button type="button" class="btn btn-ghost" id="applyCode">Aplicar</button></div>
           <p class="code-msg" id="codeMsg" aria-live="polite"></p>
         </div>
+        <p class="pre-note" id="preNote">Precio de preventa válido para reservas hechas hasta el 30 de noviembre.</p>
         <div class="form-total"><span>Total de tu paquete</span><b><s id="totalWas" hidden></s> <span id="total">S/ 280</span></b></div>
         <button class="btn btn-wine" style="margin-top:20px;width:100%" type="submit">Elegir día y hora</button>
       </form>
@@ -646,6 +660,14 @@ document.querySelectorAll('[data-car]').forEach(function(m){
   if(imgs.length<2){m.querySelector('.ig-count').hidden=true;prev.hidden=next.hidden=true;dots.style.visibility='hidden'}
   upd();
 });
+// Carrusel de "Qué ponerse" (en celular)
+(function(){
+  var g=document.querySelector('.outfit-grid'), d=document.getElementById('outfitDots'); if(!g||!d) return;
+  var it=[].slice.call(g.children);
+  it.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ver paleta '+(i+1));b.onclick=function(){g.scrollTo({left:c.offsetLeft-(g.clientWidth-c.offsetWidth)/2,behavior:'smooth'})};d.appendChild(b)});
+  function upd(){var mid=g.scrollLeft+g.clientWidth/2,best=0,bd=1e9;it.forEach(function(c,i){var dd=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(dd<bd){bd=dd;best=i}});[].forEach.call(d.children,function(b,i){b.className=i===best?'on':''})}
+  g.addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});upd();
+})();
 // Carrusel de precios (en celular)
 (function(){
   var g=document.querySelector('.price-grid'), d=document.getElementById('priceDots'); if(!g||!d) return;
@@ -664,8 +686,25 @@ var PK={
   '2 sets':{n:2,precio:380,regular:450,min:40,per:4,fot:12,cal:'albaside/navidad-2-sets'},
   '3 sets':{n:3,precio:450,regular:550,min:50,per:6,fot:18,cal:'albaside/navidad-3-sets'}
 };
+// Preventa: hasta el 30 de noviembre de 2026 (hora de Lima). Desde el 1 de diciembre se cobran los precios regulares.
+var FIN_PREVENTA=new Date('2026-12-01T00:00:00-05:00');
+(function(){
+  var hoy=new Date(), en=hoy<FIN_PREVENTA;
+  if(!en){
+    Object.keys(PK).forEach(function(k){PK[k].precio=PK[k].regular});
+    document.querySelectorAll('.price[data-pk]').forEach(function(c){var k=PK[c.getAttribute('data-pk')];c.querySelector('.amt').innerHTML='<small>S/</small>'+k.regular;var w=c.querySelector('.was');if(w)w.hidden=true});
+    var e=document.getElementById('preEyebrow');if(e)e.textContent='Sesiones de Navidad';
+    var t=document.getElementById('preH2');if(t)t.innerHTML='Nuestros <em>paquetes</em>';
+    var b=document.getElementById('preBanner');if(b)b.innerHTML='La preventa terminó el 30 de noviembre. Estos son los precios regulares.';
+    var hp=document.getElementById('heroPre');if(hp)hp.textContent='Desde S/ '+PK['1 set'].regular;
+    var n=document.getElementById('preNote');if(n)n.hidden=true;
+  } else {
+    var dias=Math.ceil((FIN_PREVENTA-hoy)/864e5), l=document.getElementById('preLeft');
+    if(l)l.textContent=dias<=1?'¡Último día de preventa!':'Quedan '+dias+' días de preventa';
+  }
+})();
 // Códigos de descuento (se guardan como huella, no en texto plano). La pareja/familia paga la diferencia luego; tú confirmas el código en el CRM.
-var CODES={'bdf0c9c6':{pct:50,label:'ABLAFRIENDS'},'01a5a4da':{pct:50,label:'ALBAFRIENDS'},'5a772116':{pct:30,label:'ALBA30'}};
+var CODES={'bdf0c9c6':{pct:50,label:'ABLAFRIENDS'},'01a5a4da':{pct:50,label:'ALBAFRIENDS'},'09c091f6':{pct:30,label:'ALBACLIENTES'}};
 function huella(s){var h=2166136261>>>0;s=String(s).trim().toUpperCase();for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return ('0000000'+h.toString(16)).slice(-8)}
 (function(){
   var f=document.getElementById('pickForm'); if(!f) return;
